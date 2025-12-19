@@ -1,0 +1,63 @@
+/* Your custom CSS styles here */
+
+/* Font Family Variables */
+:root {
+  --font-libre-baskerville: 'Libre Baskerville', serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-baskervville: 'Baskervville', serif;
+  --font-open-sans: 'Open Sans', sans-serif;
+}
+
+/* Font Family Utility Classes */
+.font-libre-baskerville {
+  font-family: var(--font-libre-baskerville);
+}
+
+.font-montserrat {
+  font-family: var(--font-montserrat);
+}
+
+.font-baskervville {
+  font-family: var(--font-baskervville);
+}
+
+.font-open-sans {
+  font-family: var(--font-open-sans);
+}
+
+/* Font Weight Utility Classes */
+.font-regular {
+  font-weight: 400;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+/* Set placeholder color to black for all input tags */
+input::placeholder {
+  color: #000000;
+}
+
+/* For better browser compatibility */
+input::-webkit-input-placeholder {
+  color: #000000;
+}
+
+input::-moz-placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+input:-ms-input-placeholder {
+  color: #000000;
+}
+

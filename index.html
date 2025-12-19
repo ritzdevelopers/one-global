@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Baskervville:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Header  -->
+    <nav id="navbar" class="w-full fixed top-0 z-50 flex justify-between px-12 py-6 transition-all duration-300">
+      <!-- Logo 1  -->
+      <div>
+        <img src="images/logo1.png" alt="" />
+      </div>
+
+      <!-- Links List  -->
+      <div class="flex justify-between gap-12">
+        <ul class="flex justify-between gap-4 h-[69px] items-center ">
+          <li
+            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer bg-black text-white rounded-[4px]"
+          >
+            Home
+          </li>
+          <li
+            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+          >
+            Overview
+          </li>
+          <li
+            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+          >
+            Highlights
+          </li>
+          <li
+            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+          >
+            Amenities
+          </li>
+          <li
+            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+          >
+            Location
+          </li>
+          <li
+            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+          >
+            Why Us
+          </li>
+          <li
+            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+          >
+            Contact Us
+          </li>
+        </ul>
+
+        <div><img src="images/logo2.png" alt=""></div>
+      </div>
+    </nav>
+
+    <!-- Section 1 -->
+    <section class="s1 w-full min-h-[50vh] relative">
+      <!-- Banner Image  -->
+      <img src="/images/s1/s1-banner.png" class="w-full h-full" alt="" />
+
+      <!-- Absolute Position Content -->
+      <div
+        class="w-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+      >
+        <div
+          class="w-full h-full relative flex flex-col justify-center items-center"
+        >
+          <!-- Top Container  -->
+          <div
+            class="w-[448px] min-h-[159px] flex justify-center items-center bg-black relative z-10 -mb-8"
+          >
+            <p class="font-[400] text-[25px] text-white text-center">
+              Fab Luxe Residences by Forbes Global Properties exhibited by One
+              Global Developers
+            </p>
+          </div>
+
+          <!-- Bottom Container  -->
+          <div
+            class="w-full h-[209px] border-2 border-white flex flex-col justify-end items-center gap-3 relative z-0 pb-4"
+          >
+            <p class="font-[400] text-[16px] text-white">
+              At Greater Noida (West)
+            </p>
+            <h2 class="font-[800] text-[30px] text-white">3 & 4 BHK + Study</h2>
+            <button
+              class="w-[193px] h-[48px] bg-black text-white font-[500] text-[14px] cursor-pointer"
+            >
+              Price: On Request
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Absolute Position Button  -->
+      <button
+        class="w-[302px] h-[58px] bg-black rounded-tl-[50px] rounded-bl-[50px] text-white flex items-center gap-2 font-[600] text-[17px] cursor-pointer absolute bottom-28 right-0 pl-8"
+      >
+        <img src="./svgs/excelIcon.svg" alt="" />
+        Enquire Now
+        <img src="./svgs/rightArr.svg" alt="" />
+      </button>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="w-full relative flex justify-center">
+      <!-- Absolute Position Image  -->
+      <div class="w-auto h-auto absolute top-0 right-0 z-0">
+        <img src="/images/s2/s2-bg1.png" class="w-full h-full" alt="" />
+      </div>
+
+      <!-- Centered Align Container  -->
+      <div
+        class="w-[90%] h-full relative z-10 flex flex-col gap-12 border-b-[1px] border-[#E6E6E6] py-20"
+      >
+        <!-- Row 1 -->
+        <div class="w-full flex flex-col gap-12">
+          <!-- Top Container  -->
+          <div class="w-full flex justify-between">
+            <!-- Left Side Container  -->
+            <div class="w-[45%] px-10">
+              <p class="font-[400] text-[22px] text-black">
+                <strong>
+                  One Global Developers leads the creation of FAB-LUXE by
+                  bringing together two powerful pillars:</strong
+                >
+                the century-old Forbes legacy of luxury and aspiration, and
+                NBCC’s reputation as India’s most trusted Government PSU
+                developer.
+                <br /><br />
+                This partnership sets a new benchmark for residential living in
+                Greater Noida (West), blending brand value, lifestyle
+                credibility and construction certainty in one address.
+              </p>
+            </div>
+
+            <!-- Right Side Container  -->
+            <div
+              class="min-w-[45%] px-10 flex flex-col gap-4 border-l-2 border-[#D9D9D9]"
+            >
+              <h2 class="font-[400] text-[29px] text-black">
+                Request a Call Back
+              </h2>
+              <form class="flex flex-col gap-4">
+                <div class="flex justify-between gap-4">
+                  <input
+                    type="text"
+                    placeholder="Your Name*"
+                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Your Email*"
+                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  />
+                </div>
+                <div class="flex justify-between gap-4">
+                  <input
+                    type="text"
+                    placeholder="Your Phone*"
+                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Your Message*"
+                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  />
+                </div>
+                <div class="flex justify-between gap-4">
+                  <div class="w-[274px]">
+                    <p class="font-[400] text-[16px] text-black">
+                      Explore premium properties with trusted !
+                    </p>
+                  </div>
+                  <button
+                    class="w-[221px] h-[58px] flex justify-end items-center bg-black text-white rounded-full gap-6 pr-1 cursor-pointer"
+                  >
+                    <p class="font-[600] text-[16px]">Get a Call Back</p>
+                    <div
+                      class="w-[50px] h-[50px] bg-white rounded-full flex justify-center items-center"
+                    >
+                      <img src="./svgs/top-arrow.svg" alt="" />
+                    </div>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Bottom Container  -->
+          <div class="w-full flex justify-between px-10 gap-4">
+            <div
+              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+            >
+              <img src="/svgs/building.svg" alt="" />
+
+              <div
+                class="flex flex-col gap-2 justify-center items-center text-center"
+              >
+                <p class="font-[400] text-[16px] text-black">Apartments</p>
+                <b class="font-[700] text-[16px] text-black">4 & 5 BHK</b>
+              </div>
+            </div>
+
+            <div
+              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+            >
+              <img src="/svgs/location.svg" alt="" />
+
+              <div
+                class="flex flex-col gap-2 justify-center items-center text-center"
+              >
+                <p class="font-[400] text-[16px] text-black">Location</p>
+                <b class="font-[700] text-[16px] text-black">Noida</b>
+              </div>
+            </div>
+
+            <div
+              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+            >
+              <img src="/svgs/container.svg" alt="" />
+
+              <div
+                class="flex flex-col gap-2 justify-center items-center text-center"
+              >
+                <p class="font-[400] text-[16px] text-black">Size</p>
+                <b class="font-[700] text-[16px] text-black">2690-3307 sq ft</b>
+              </div>
+            </div>
+
+            <div
+              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+            >
+              <img src="/svgs/rupee.svg" alt="" />
+
+              <div
+                class="flex flex-col gap-2 justify-center items-center text-center"
+              >
+                <p class="font-[400] text-[16px] text-black">Price</p>
+                <b class="font-[700] text-[16px] text-black">On Request</b>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 2  -->
+        <div class="w-full flex justify-end items-end relative">
+          <!-- Left Side Container  -->
+          <div class="absolute -top-4 -left-[18rem] z-0">
+            <img src="images/s2/s2i1.jpg" alt="" />
+          </div>
+
+          <!-- Right Side Container   -->
+          <div class="flex flex-col gap-8 z-10 bg-white">
+            <!-- 1st Row  -->
+            <div class="flex flex-col justify-end items-end gap-2">
+              <h2 class="font-[400] text-[36px] text-black">Amenities</h2>
+              <p class="font-[400] text-[16px] text-black">
+                Where Everyday Living Feels Like a Dream
+              </p>
+            </div>
+
+            <!-- 2nd Row  -->
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+              >
+                <img src="svgs/basket.svg" alt="" />
+                <p class="font-[400] text-[16px] text-black">Indoor Games</p>
+              </div>
+              <div
+                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+              >
+                <img src="svgs/women.svg" alt="" />
+                <p class="font-[400] text-[16px] text-black">Yoga Center</p>
+              </div>
+              <div
+                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+              >
+                <img src="svgs/hall.svg" alt="" />
+                <p class="font-[400] text-[16px] text-black">
+                  Multi-Purpose Hall
+                </p>
+              </div>
+              <div
+                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+              >
+                <img src="svgs/hall.svg" alt="" />
+                <p class="font-[400] text-[16px] text-black">Spa & Salon</p>
+              </div>
+              <div
+                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+              >
+                <img src="svgs/park.svg" alt="" />
+                <p class="font-[400] text-[16px] text-black">Kids Play Area</p>
+              </div>
+              <div
+                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+              >
+                <img src="svgs/lift.svg" alt="" />
+                <p class="font-[400] text-[16px] text-black">
+                  Double Height Entrance Lobby
+                </p>
+              </div>
+            </div>
+
+            <!-- Row 3  -->
+            <div class="flex w-full justify-end items-end">
+              <button
+                class="w-[168px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+              >
+                <p class="font-[400] text-[16px]">Know more</p>
+                <img src="svgs/top-arr2.svg" alt="" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 3  -->
+        <div class="w-full flex flex-col gap-8">
+          <!-- 1st Container  -->
+          <div class="flex justify-center items-center">
+            <h2 class="font-[400] text-[36px] text-black">Floor Price</h2>
+          </div>
+
+          <!-- 2nd Container  -->
+          <div class="flex justify-between w-full">
+            <div
+              class="w-[500px] h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden"
+            >
+              <div class="flex flex-col gap-4 pl-6">
+                <p class="font-[400] text-[18px] text-black">Type</p>
+
+                <div class="relative">
+                  <div
+                    class="w-[324px] h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-6 absolute top-0 -left-6"
+                  >
+                    <h2 class="font-[700] text-[26px] text-black">
+                      3 BHK + Study
+                    </h2>
+                  </div>
+                </div>
+                <p class="font-[400] text-[18px] text-black mt-14">Area</p>
+                <p class="font-[700] text-[23px] text-black">2690–2718 sq ft</p>
+
+                <button
+                  class="w-[216px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+                >
+                  <p class="font-[600] text-[16px]">Price: on Request</p>
+                  <img src="svgs/top-arr2.svg" alt="" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="w-[500px] h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden"
+            >
+              <div class="flex flex-col gap-4 pl-6">
+                <p class="font-[400] text-[18px] text-black">Type</p>
+
+                <div class="relative">
+                  <div
+                    class="w-[324px] h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-6 absolute top-0 -left-6"
+                  >
+                    <h2 class="font-[700] text-[26px] text-black">
+                      4 BHK + Study
+                    </h2>
+                  </div>
+                </div>
+                <p class="font-[400] text-[18px] text-black mt-14">Area</p>
+                <p class="font-[700] text-[23px] text-black">3307 sq ft</p>
+
+                <button
+                  class="w-[216px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+                >
+                  <p class="font-[600] text-[16px]">Price: on Request</p>
+                  <img src="svgs/top-arr2.svg" alt="" />
+                </button>
+              </div>
+            </div>
+
+            <div class="w-[206px] h-[328px] border-[1px] border-[#E6E6E6]">
+              <img src="images/s2/s2i2.png" alt="" class="w-full h-full" />
+            </div>
+          </div>
+
+          <!-- 3rd Container  -->
+          <div class="flex justify-between items-center mt-10">
+            <div class="w-[218px] flex justify-center items-center text-center">
+              <p class="font-[400] text-[16px] text-black">
+                11 ft ceiling heights
+              </p>
+            </div>
+            <div class="w-[218px] flex justify-center items-center text-center">
+              <p class="font-[400] text-[16px] text-black">
+                Wide balconies for natural light and ventilation
+              </p>
+            </div>
+            <div class="w-[218px] flex justify-center items-center text-center">
+              <p class="font-[400] text-[16px] text-black">
+                G+35 towers with only four residences per floor
+              </p>
+            </div>
+            <div class="w-[218px] flex justify-center items-center text-center">
+              <p class="font-[400] text-[16px] text-black">
+                Possession from
+                <b> 2027 onwards</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="w-full min-h-screen flex justify-center items-center">
+      <!-- Centered Align Container   -->
+      <div class="w-[90%] h-full relative z-10 flex flex-col gap-6 py-20">
+        <!-- Top Container  -->
+        <div
+          class="w-full flex justify-center items-center text-center flex-col"
+        >
+          <h2 class="font-[400] text-[36px] text-black">Gallery</h2>
+          <p class="font-[400] text-[16px] text-black">
+            Moments That Define Your Dream Home
+          </p>
+        </div>
+
+        <!-- Main Container  -->
+        <div class="w-full grid grid-cols-3 gap-4">
+          <div class="w-[403px] h-[396px]">
+            <img src="images/s3/g1.png" alt="" class="w-full h-full" />
+          </div>
+          <div class="w-[403px] h-[396px]">
+            <img src="images/s3/g2.png" alt="" class="w-full h-full" />
+          </div>
+          <div class="w-[403px] h-[396px]">
+            <img src="images/s3/g3.png" alt="" class="w-full h-full" />
+          </div>
+          <div class="w-[403px] h-[396px]">
+            <img src="images/s3/g4.png" alt="" class="w-full h-full" />
+          </div>
+          <div class="w-[403px] h-[396px]">
+            <img src="images/s3/g5.png" alt="" class="w-full h-full" />
+          </div>
+          <div class="w-[403px] h-[396px]">
+            <img src="images/s3/g6.png" alt="" class="w-full h-full" />
+          </div>
+        </div>
+
+        <!-- Bottom Container  -->
+        <div class="w-full flex justify-center items-center">
+          <button
+            class="w-[168px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+          >
+            <p class="font-[600] text-[16px]">View more</p>
+            <img src="svgs/top-arr2.svg" alt="" />
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="w-full flex justify-center border-b-[1px] border-[#DBDADA]">
+      <!-- Centered Align Container   -->
+      <div class="w-[90%] h-full relative z-10 flex justify-between pb-20">
+        <!-- Left Side Container  -->
+        <div class="w-[512px] flex flex-col gap-6">
+          <!-- Top Container  -->
+          <div class="flex flex-col gap-2">
+            <p class="font-[400] text-[16px] text-black">Features</p>
+            <h2 class="font-[400] text-[34px] text-black">
+              India’s First AQI-Controlled Luxury Community
+            </h2>
+            <p class="font-[400] text-[16px] text-black">
+              FAB-LUXE introduces a wellness standard no other residential
+              project in India currently offers.
+            </p>
+          </div>
+
+          <!-- Bottom Container  -->
+          <div
+            class="w-full h-[306px] flex items-center relative pl-6 border-2 border-[#E6E6E6]"
+          >
+            <p class="font-[400] text-[19px] text-black w-[274px]">
+              Indoor AQI maintained significantly lower than the city’s severe
+              levels
+            </p>
+
+            <!-- Absolute Position Image  -->
+            <div class="absolute top-0 right-0 z-0">
+              <img src="images/s4/s4i1.png" alt="" class="w-full h-full" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side Container  -->
+        <div class="flex flex-col justify-between gap-4">
+          <!-- Top Container  -->
+          <div class="flex justify-between gap-4 items-start">
+            <!-- Left Side Card  -->
+            <div class="flex flex-col justify-center items-center gap-4">
+              <!-- Image Div  -->
+              <div class="w-[365px] h-[382px]">
+                <img src="images/s4/s4i2.png" alt="" class="w-full h-full" />
+              </div>
+              <p class="font-[400] text-[19px] text-black text-center">
+                Outdoor purification towers
+              </p>
+            </div>
+
+            <!-- Right Side Card  -->
+            <div class="flex flex-col justify-center items-center gap-4">
+              <!-- Image Div  -->
+              <div class="w-[328px] h-[252px]">
+                <img src="images/s4/s4i3.png" alt="" class="w-full h-full" />
+              </div>
+              <p class="font-[400] text-[19px] text-black text-center">
+                Medical-grade HEPA air systems
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Container  -->
+          <div class="w-full flex justify-end items-end">
+            <p class="w-[410px] font-[400] text-[16px] text-end">
+              Designed for families who prioritise long-term health, this
+              community brings wellness into everyday living.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="w-full flex justify-center min-h-screen py-20">
+      <!-- Centered Align Container   -->
+      <div class="w-[90%] h-full relative z-10 flex flex-col gap-12">
+        <!-- Row 1  -->
+        <div class="w-full flex flex-col justify-center items-center gap-4">
+          <h2 class="font-[400] text-[36px] text-black">Location</h2>
+          <p class="font-[400] text-[16px] text-black">
+            A Location Shaping the Future of Western Noida
+          </p>
+        </div>
+
+        <!-- Row 2  -->
+        <div class="w-full flex gap-12">
+          <!-- Left Side Container   -->
+          <div class="w-[620px] h-[411px]">
+            <img src="images/s5/map.png" alt="" class="w-full h-full" />
+          </div>
+
+          <!-- Right Side Container  -->
+          <div class="flex flex-col gap-4">
+            <h2 class="font-[400] text-[30px] text-color">Advantages</h2>
+            <ul class="flex flex-col gap-6 w-[507px]">
+              <li>
+                <div class="flex items-center gap-6">
+                  <img src="svgs/delhi.svg" alt="" />
+                  <p class="font-[400] text-[17px] text-black">
+                    40 minutes to <b>Delhi CBD</b> via new expressways
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="flex items-center gap-6">
+                  <img src="svgs/airplane.svg" alt="" />
+                  <p class="font-[400] text-[17px] text-black">
+                    60 minutes to Noida International <b>Airport</b> (Jewar)
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="flex items-center gap-6">
+                  <img src="svgs/mall.svg" alt="" />
+                  <p class="font-[400] text-[17px] text-black">
+                    Close to <b>Gaur City Mall</b>, global F&B brands,
+                    entertainment hubs and top schools
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="flex items-center gap-6">
+                  <img src="svgs/building2.svg" alt="" />
+                  <p class="font-[400] text-[17px] text-black">
+                    Surrounded by <b>business parks</b>, IT clusters and
+                    upcoming infrastructure
+                  </p>
+                </div>
+              </li>
+
+              <li>
+                <div class="flex items-center gap-6">
+                  <img src="svgs/home.svg" alt="" />
+                  <p class="font-[400] text-[17px] text-black">
+                    Strong appreciation potential driven by Western Noida’s
+                    rising demand and <b>NRI/HNI</b> interest
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- Row 3  -->
+        <div class="w-full flex justify-between">
+          <!-- Left Side Container   -->
+          <div class="flex flex-col gap-4">
+            <h2 class="font-[400] text-[30px] text-black">
+              Request a Call Back
+            </h2>
+            <form class="flex flex-col gap-4">
+              <div class="flex gap-4">
+                <input
+                  type="text"
+                  placeholder="Your Name*"
+                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                />
+                <input
+                  type="text"
+                  placeholder="Your Email*"
+                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                />
+              </div>
+              <div class="flex gap-4">
+                <input
+                  type="text"
+                  placeholder="Your Phone*"
+                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                />
+                <input
+                  type="text"
+                  placeholder="Your Message*"
+                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                />
+              </div>
+              <div class="flex justify-between gap-4">
+                <div class="w-[274px]">
+                  <p class="font-[400] text-[16px] text-black">
+                    Explore premium properties with trusted !
+                  </p>
+                </div>
+
+                <button
+                  class="w-[221px] h-[58px] flex justify-end items-center bg-black text-white rounded-full gap-6 pr-1 cursor-pointer"
+                >
+                  <p class="font-[600] text-[16px]">Get a Call Back</p>
+                  <div
+                    class="w-[50px] h-[50px] bg-white rounded-full flex justify-center items-center"
+                  >
+                    <img src="svgs/top-arrow.svg" alt="" />
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Side Container  -->
+          <div
+            class="w-[626px] min-h-[281px] border-2 border-[#DFDBDB] flex justify-between"
+          >
+            <!-- Left Side Container  -->
+            <div class="flex flex-col gap-3 pl-6 py-6">
+              <div class="flex flex-col gap-2">
+                <h2 class="font-[700] text-[17px]">Address</h2>
+                <p class="font-[400] text-[16px]">
+                  Lorem Ipsum is simply dummy, <br />
+                  Noida Extension, Uttar Pradesh
+                </p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h2 class="font-[700] text-[17px]">Email</h2>
+                <p class="font-[400] text-[16px]">info@fabluxe.com</p>
+              </div>
+              <div class="flex flex-col gap-2">
+                <h2 class="font-[700] text-[17px]">Mobile</h2>
+                <p class="font-[400] text-[16px]">+91 99887 76655</p>
+              </div>
+            </div>
+
+            <!-- Right Side Container  -->
+            <div class="h-full w-[242px]">
+              <img src="images/s5/s5i1.png" alt="" class="w-full h-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="w-full min-h-[487px] bg-[#F7F7F7] flex flex-col justify-center items-center gap-8"
+    >
+      <img src="images/footer-logo.png" alt="" />
+      <p class="font-[400] text-[18px] text-black w-[688px] text-center">
+        Together, they create a home that offers credibility, luxury, wellness
+        and future-ready living in one of NCR’s most promising destinations.
+      </p>
+      <div class="flex justify-center items-center gap-4">
+        <img src="svgs/insta.svg" alt="" />
+        <img src="svgs/x.svg" alt="" />
+        <img src="svgs/fb.svg" alt="" />
+        <img src="svgs/linkdin.svg" alt="" />
+        <img src="svgs/yt.svg" alt="" />
+      </div>
+      <p class="font-[400] text-[14px]">
+        © 2025 <b>FAB LUXE</b>. All rights reserved. Digital media planned by
+        <b>Ritz Media World</b>
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
