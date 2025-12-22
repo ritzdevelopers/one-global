@@ -908,12 +908,5 @@ if (popupForm) {
   });
 }
 
-// Auto-open popup after 15 seconds on page load
-window.addEventListener('load', () => {
-  if (!isFormSubmitted) {
-    popupAutoOpenTimer = setTimeout(() => {
-      openPopup();
-    }, 15000); // 15 seconds
-  }
-});
+// Auto-open popup removed - popup will only open on button clicks
 

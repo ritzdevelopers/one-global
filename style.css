@@ -238,15 +238,121 @@ section:not(:first-of-type) img:not(.no-hover-scale):hover {
   transform: scale(1.1) !important;
 }
 
-/* Make image containers overflow hidden - target divs that contain images */
-section:not(:first-of-type) div:has(> img) {
+/* Make image containers overflow hidden - target divs that contain images (exclude section 1 and section 2) */
+section:not(:first-of-type):not(#overview) div:has(> img) {
   overflow: hidden;
 }
 
-/* Fallback for browsers that don't support :has() */
-section:not(:first-of-type) div[class*='grid'] > div,
-section:not(:first-of-type) div[class*='flex'] > div:has(img) {
+/* Fallback for browsers that don't support :has() - exclude section 1 and section 2 */
+section:not(:first-of-type):not(#overview) div[class*='grid'] > div,
+section:not(:first-of-type):not(#overview) div[class*='flex'] > div:has(img) {
   overflow: hidden;
+}
+
+/* Explicitly exclude Section 2 (#overview) from overflow hidden */
+#overview div[class*='grid'] > div,
+#overview div[class*='flex'] > div {
+  overflow: visible;
+}
+
+/* ============================================
+   Button Icon Hover Effect
+   ============================================ */
+
+/* Enquire Now Button - Separate CSS with display-based hover */
+.popup-trigger .enquire-default-icon {
+  display: block;
+}
+
+.popup-trigger .enquire-hover-icon {
+  display: none;
+}
+
+.popup-trigger:hover .enquire-default-icon {
+  display: none;
+}
+
+.popup-trigger:hover .enquire-hover-icon {
+  display: block;
+}
+
+/* All Buttons with top-arr2.svg - Default state - show top-arr2, hide top-black-arr2 */
+.popup-trigger .default-icon,
+button .default-icon {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-trigger .hover-icon,
+button .hover-icon {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* All Buttons with top-arr2.svg - Hover state - hide top-arr2, show top-black-arr2 */
+.popup-trigger:hover .default-icon,
+button:hover .default-icon {
+  opacity: 0;
+}
+
+.popup-trigger:hover .hover-icon,
+button:hover .hover-icon {
+  opacity: 1;
+}
+
+/* ============================================
+   Get a Call Back Button Hover Effect
+   ============================================ */
+
+/* Default state - show top-arrow icon, hide top-white-arr icon */
+.callback-icon-container span {
+  position: relative;
+  display: inline-block;
+}
+
+.callback-icon-container .callback-default-icon {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  position: relative;
+  z-index: 1;
+  display: block !important;
+}
+
+.callback-icon-container .callback-hover-icon {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: block !important;
+}
+
+/* Hover state on button - change button bg to white, inner div bg to black, swap icons */
+button:hover .callback-icon-container {
+  background-color: #000000 !important;
+}
+
+button:hover .callback-default-icon {
+  opacity: 0;
+}
+
+button:hover .callback-hover-icon {
+  opacity: 1;
+}
+
+/* Specific hover for Get a Call Back buttons - change button bg to white */
+button:has(.callback-icon-container):hover {
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 /* ============================================
@@ -462,4 +568,5 @@ button > img {
     max-height: 90vh;
   }
 }
+
 
