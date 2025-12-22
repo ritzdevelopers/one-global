@@ -61,3 +61,404 @@ input:-ms-input-placeholder {
   color: #000000;
 }
 
+/* Mobile Menu Styles */
+#mobile-menu {
+  will-change: transform;
+  overflow-y: auto;
+  transform: translateY(-100%);
+}
+
+#mobile-menu ul li a {
+  transition: color 0.3s ease;
+}
+
+#mobile-menu ul li a:hover {
+  color: #BF4927;
+}
+
+#menu-toggle {
+  transition: transform 0.3s ease;
+}
+
+#menu-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Prevent body scroll when menu is open */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1279px) {
+  #navbar {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  #mobile-navbar,
+  #mobile-menu {
+    display: none !important;
+  }
+}
+
+/* Additional Responsive Styles */
+@media (max-width: 1279px) {
+  /* Ensure images scale properly */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Better touch targets for mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Prevent horizontal scroll */
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better image handling */
+img {
+  display: block;
+}
+
+@media (min-width: 768px) and (max-width:891px) {
+  .blDv {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1445px) {
+  section:not(:first-of-type) {
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+}
+
+/* ============================================
+   GSAP ScrollTrigger & Lenis Performance
+   ============================================ */
+
+/* Smooth scrolling container */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Performance optimizations for animations */
+section,
+.animate-fade-up,
+.animate-fade-in,
+.animate-scale,
+.animate-slide-left,
+.animate-slide-right {
+  will-change: transform, opacity;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .lenis {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* GPU acceleration for smooth animations */
+img,
+section,
+div[class*='animate'] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Optimize scroll performance */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Image Hover Scale Effect (Except Section 1)
+   ============================================ */
+
+/* Image hover scale effect - exclude section 1 and images with no-hover-scale class */
+section:not(:first-of-type) img:not(.no-hover-scale) {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  display: block;
+}
+
+section:not(:first-of-type) img:not(.no-hover-scale):hover {
+  transform: scale(1.1);
+}
+
+/* Explicit gallery image hover effect */
+.gallery-image {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+  will-change: transform;
+}
+
+.gallery-image:hover {
+  transform: scale(1.1) !important;
+}
+
+/* Make image containers overflow hidden - target divs that contain images */
+section:not(:first-of-type) div:has(> img) {
+  overflow: hidden;
+}
+
+/* Fallback for browsers that don't support :has() */
+section:not(:first-of-type) div[class*='grid'] > div,
+section:not(:first-of-type) div[class*='flex'] > div:has(img) {
+  overflow: hidden;
+}
+
+/* ============================================
+   Button Fill Effect (Water Fill with Waves)
+   ============================================ */
+
+button {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: color 0.4s ease 0.1s, border-color 0.3s ease;
+  isolation: isolate;
+  border: 1px solid transparent;
+}
+
+/* Border color on hover */
+button:hover {
+  border-color: #000000;
+}
+
+/* Water fill container with wave pattern */
+button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background: 
+    /* Water base color with slight gradient */
+    linear-gradient(
+      to top,
+      #ffffff 0%,
+      #fafafa 40%,
+      #ffffff 80%,
+      #f5f5f5 100%
+    ),
+    /* Wave pattern overlay */
+    url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,10 Q25,5 50,10 T100,10 L100,20 L0,20 Z' fill='rgba(255,255,255,0.3)'/%3E%3Cpath d='M0,12 Q25,7 50,12 T100,12 L100,20 L0,20 Z' fill='rgba(255,255,255,0.2)'/%3E%3C/svg%3E");
+  background-size: 100% 100%, 200px 30px;
+  background-position: 0 0, 0 0;
+  background-repeat: no-repeat, repeat-x;
+  transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+  animation: water-wave 3s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+button:hover::before {
+  height: 100%;
+  animation-play-state: running;
+}
+
+/* Wave layer - Secondary wave effect */
+button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 0;
+  background-image: 
+    /* Ripple effect */
+    radial-gradient(
+      ellipse 60% 40% at 30% 100%,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.2) 40%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 35% at 70% 100%,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.15) 50%,
+      transparent 80%
+    ),
+    /* Wave lines */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 8px,
+      rgba(255, 255, 255, 0.15) 8px,
+      rgba(255, 255, 255, 0.15) 10px
+    );
+  background-size: 50% 60%, 40% 50%, 100% 20px;
+  background-position: 0 0, 100% 0, 0 0;
+  opacity: 0;
+  transition: height 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease 0.2s;
+  z-index: -1;
+  animation: wave-movement 2.5s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+button:hover::after {
+  height: 100%;
+  opacity: 1;
+  animation-play-state: running;
+}
+
+/* Water wave animation - moves the wave pattern */
+@keyframes water-wave {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  50% {
+    background-position: 0 0, -100px 0;
+  }
+  100% {
+    background-position: 0 0, -200px 0;
+  }
+}
+
+/* Wave movement animation - creates flowing effect */
+@keyframes wave-movement {
+  0% {
+    background-position: 0 0, 100% 0, 0 0;
+    transform: translateX(0);
+  }
+  50% {
+    background-position: -50px 0, calc(100% + 50px) 0, -25px 0;
+    transform: translateX(-15px);
+  }
+  100% {
+    background-position: -100px 0, calc(100% + 100px) 0, -50px 0;
+    transform: translateX(0);
+  }
+}
+
+/* For black buttons, change text color on hover */
+button.bg-black:hover,
+button[class*='bg-black']:hover {
+  color: #000000 !important;
+}
+
+/* For buttons with white text, ensure text stays visible during fill */
+button.text-white:hover,
+button[class*='text-white']:hover {
+  color: #000000 !important;
+}
+
+/* Ensure button content stays above fill effect */
+button > *,
+button > p,
+button > img {
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+/* Exclude menu toggle button from fill effects */
+#menu-toggle {
+  overflow: visible;
+  border: none !important;
+}
+
+#menu-toggle::before,
+#menu-toggle::after {
+  display: none !important;
+  content: none !important;
+}
+
+#menu-toggle:hover {
+  border-color: transparent !important;
+  background-image: none !important;
+}
+
+#menu-toggle:hover::before,
+#menu-toggle:hover::after {
+  display: none !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+/* ============================================
+   Popup Modal Styles
+   ============================================ */
+
+.popup-modal {
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.popup-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.popup-content {
+  transform: scale(0.9) translateY(20px);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popup-modal.show .popup-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Popup form inputs match existing form styling */
+#popup-form input {
+  border: none;
+  outline: none;
+}
+
+#popup-form input:focus {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
+
+/* Responsive popup */
+@media (max-width: 1023px) {
+  .popup-content {
+    max-height: 90vh;
+  }
+}

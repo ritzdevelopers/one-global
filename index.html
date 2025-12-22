@@ -11,77 +11,233 @@
       rel="stylesheet"
     />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Header  -->
-    <nav id="navbar" class="w-full fixed top-0 z-50 flex justify-between px-12 py-6 transition-all duration-300">
+    <!-- Header Desktop -->
+    <nav
+      id="navbar"
+      class="hidden xl:flex w-full fixed top-0 z-50 justify-between items-center px-6 md:px-12 py-6 transition-all duration-300"
+    >
       <!-- Logo 1  -->
       <div>
-        <img src="images/logo1.png" alt="" />
+        <img src="images/forbus-logo3.png" alt="" class="h-auto w-[186px]" />
       </div>
 
       <!-- Links List  -->
-      <div class="flex justify-between gap-12">
-        <ul class="flex justify-between gap-4 h-[69px] items-center ">
+      <div class="flex justify-between gap-8 lg:gap-12">
+        <ul
+          class="flex justify-between gap-2 lg:gap-4 h-[69px] items-center font-libre-baskerville font-bold"
+        >
           <li
-            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer bg-black text-white rounded-[4px]"
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer bg-black text-white rounded-[4px] transition-all duration-300"
+            data-nav="home"
           >
             Home
           </li>
           <li
-            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+            data-nav="overview"
           >
             Overview
           </li>
           <li
-            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+            data-nav="features"
           >
-            Highlights
+            Features
           </li>
           <li
-            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+            data-nav="amenities"
           >
             Amenities
           </li>
           <li
-            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+            data-nav="floor-price"
+          >
+            Floor Price
+          </li>
+          <li
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+            data-nav="location"
           >
             Location
           </li>
           <li
-            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+            data-nav="gallery"
           >
-            Why Us
+            Gallery
           </li>
           <li
-            class="w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white"
+            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+            data-nav="contact"
           >
             Contact Us
           </li>
         </ul>
 
-        <div><img src="images/logo2.png" alt=""></div>
+        <div class="hidden xl:block"><img src="images/logo2.png" alt="" /></div>
       </div>
     </nav>
 
+    <!-- Header Mobile -->
+    <nav
+      id="mobile-navbar"
+      class="xl:hidden w-full fixed top-0 z-50 flex justify-between items-center px-4 py-4 transition-all duration-300"
+    >
+      <!-- Logo 1  -->
+      <div>
+        <img src="images/forbus-logo3.png" alt="" class="w-[174px] w-[116px]" />
+      </div>
+
+      <!-- Menu Icon Button -->
+      <button
+        id="menu-toggle"
+        class="z-50 p-2 cursor-pointer"
+        aria-label="Toggle menu"
+      >
+        <svg
+          id="menu-icon"
+          class="w-8 h-8 text-white"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          ></path>
+        </svg>
+        <svg
+          id="close-icon"
+          class="w-8 h-8 text-white hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"
+          ></path>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div
+      id="mobile-menu"
+      class="xl:hidden fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full"
+    >
+      <div class="w-full h-full flex flex-col items-center justify-center px-6">
+        <!-- Logo 2 in Mobile Menu -->
+        <div class="mb-12">
+          <img src="images/logo2.png" alt="" class="h-auto w-auto mx-auto md:block hidden" />
+        </div>
+
+        <!-- Mobile Menu Links -->
+        <ul
+          class="flex flex-col gap-8 items-center font-libre-baskerville font-bold"
+        >
+          <li class="w-full text-center">
+            <a
+              href="#home"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Home</a
+            >
+          </li>
+          <li class="w-full text-center">
+            <a
+              href="#overview"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Overview</a
+            >
+          </li>
+          <li class="w-full text-center">
+            <a
+              href="#features"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Features</a
+            >
+          </li>
+          <li class="w-full text-center">
+            <a
+              href="#floor-price"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Floor Price</a
+            >
+          </li>
+          <li class="w-full text-center">
+            <a
+              href="#amenities"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Amenities</a
+            >
+          </li>
+          <li class="w-full text-center">
+            <a
+              href="#location"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Location</a
+            >
+          </li>
+          <li class="w-full text-center">
+            <a
+              href="#gallery"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Gallery</a
+            >
+          </li>
+          <li class="w-full text-center">
+            <a
+              href="#contact"
+              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
+              >Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+
     <!-- Section 1 -->
-    <section class="s1 w-full min-h-[50vh] relative">
+    <section id="home" class="s1 w-full  relative">
       <!-- Banner Image  -->
-      <img src="/images/s1/s1-banner.png" class="w-full h-full" alt="" />
+      <img
+        src="/images/s1/s1-banner.png"
+        class="w-full h-full object-cover hidden md:block "
+        alt=""
+      />
+      <img
+        src="/images/s1/mobilebanner.png"
+        class="w-full h-auto object-cover block md:hidden"
+        alt=""
+      />
 
       <!-- Absolute Position Content -->
       <div
-        class="w-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        class="w-[400px] lg:w-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 md:px-0"
       >
         <div
           class="w-full h-full relative flex flex-col justify-center items-center"
         >
           <!-- Top Container  -->
           <div
-            class="w-[448px] min-h-[159px] flex justify-center items-center bg-black relative z-10 -mb-8"
+            class="w-[90%] lg:w-[448px] min-h-[120px] lg:min-h-[159px] flex justify-center items-center bg-black relative z-10 -mb-8 px-4 md:px-0 blDv"
           >
-            <p class="font-[400] text-[25px] text-white text-center">
+            <p
+              class="font-[400] text-[16px] lg:text-[25px] text-white text-center font-libre-baskerville font-regular"
+            >
               Fab Luxe Residences by Forbes Global Properties exhibited by One
               Global Developers
             </p>
@@ -89,14 +245,20 @@
 
           <!-- Bottom Container  -->
           <div
-            class="w-full h-[209px] border-2 border-white flex flex-col justify-end items-center gap-3 relative z-0 pb-4"
+            class="w-full h-[180px] lg:h-[209px] border-2 border-white flex flex-col justify-end items-center gap-2 md:gap-3 relative z-0 pb-4"
           >
-            <p class="font-[400] text-[16px] text-white">
+            <p
+              class="font-[400] text-[14px] lg:text-[16px] text-white font-montserrat font-medium"
+            >
               At Greater Noida (West)
             </p>
-            <h2 class="font-[800] text-[30px] text-white">3 & 4 BHK + Study</h2>
+            <h2
+              class="font-[800] text-[24px] lg:text-[30px] text-white font-montserrat font-bold text-center px-2"
+            >
+              3 & 4 BHK + Study
+            </h2>
             <button
-              class="w-[193px] h-[48px] bg-black text-white font-[500] text-[14px] cursor-pointer"
+              class="popup-trigger w-[160px] md:w-[193px] h-[40px] md:h-[48px] bg-black text-white font-[500] text-[12px] lg:text-[14px] cursor-pointer font-montserrat font-medium uppercase"
             >
               Price: On Request
             </button>
@@ -106,40 +268,53 @@
 
       <!-- Absolute Position Button  -->
       <button
-        class="w-[302px] h-[58px] bg-black rounded-tl-[50px] rounded-bl-[50px] text-white flex items-center gap-2 font-[600] text-[17px] cursor-pointer absolute bottom-28 right-0 pl-8"
+        class="popup-trigger hidden lg:flex w-[302px] h-[58px] bg-black rounded-tl-[50px] rounded-bl-[50px] text-white items-center gap-2 font-[600] text-[17px] cursor-pointer absolute bottom-28 right-0 pl-8 font-open-sans font-semibold"
       >
         <img src="./svgs/excelIcon.svg" alt="" />
         Enquire Now
         <img src="./svgs/rightArr.svg" alt="" />
       </button>
+
+      <button
+        class="popup-trigger lg:hidden fixed bottom-4 right-4 w-[140px] h-[48px] bg-black rounded-full text-white flex items-center justify-center gap-2 font-[600] text-[14px] cursor-pointer font-open-sans font-semibold z-40"
+      >
+        <img src="./svgs/excelIcon.svg" alt="" class="w-4 h-4" />
+        Enquire
+      </button>
     </section>
 
     <!-- Section 2 -->
-    <section class="w-full relative flex justify-center">
+    <section id="overview" class="w-full relative flex justify-center overflow-hidden bg-white">
+      <!-- Highlights anchor for smooth scrolling -->
+      <div id="highlights" style="position: absolute; top: 0; pointer-events: none;"></div>
       <!-- Absolute Position Image  -->
-      <div class="w-auto h-auto absolute top-0 right-0 z-0">
+      <div class="hidden md:block w-auto h-auto absolute top-0 right-0 z-0">
         <img src="/images/s2/s2-bg1.png" class="w-full h-full" alt="" />
       </div>
 
       <!-- Centered Align Container  -->
       <div
-        class="w-[90%] h-full relative z-10 flex flex-col gap-12 border-b-[1px] border-[#E6E6E6] py-20"
+        class="w-[90%] md:w-[90%] h-full relative z-10 flex flex-col gap-8 md:gap-12 border-b-[1px] border-[#E6E6E6] py-10 md:py-20"
       >
         <!-- Row 1 -->
-        <div class="w-full flex flex-col gap-12">
+        <div class="w-full flex flex-col gap-8 md:gap-12">
           <!-- Top Container  -->
-          <div class="w-full flex justify-between">
+          <div
+            class="w-full flex flex-col-reverse xl:flex-row justify-between gap-10 xl:gap-0"
+          >
             <!-- Left Side Container  -->
-            <div class="w-[45%] px-10">
-              <p class="font-[400] text-[22px] text-black">
+            <div class="w-full xl:w-[45%] px-4 md:px-10">
+              <p
+                class="font-[400] text-[16px] md:text-[22px] xl:text-left text-center text-black font-libre-baskerville font-regular"
+              >
                 <strong>
                   One Global Developers leads the creation of FAB-LUXE by
                   bringing together two powerful pillars:</strong
                 >
-                the century-old Forbes legacy of luxury and aspiration, and
-                NBCC’s reputation as India’s most trusted Government PSU
-                developer.
-                <br /><br />
+                the century-old
+                <span class="text-[#BF4927]">Forbes</span> legacy of luxury and
+                aspiration, and NBCC's reputation as India's most trusted
+                Government PSU developer. <br /><br />
                 This partnership sets a new benchmark for residential living in
                 Greater Noida (West), blending brand value, lifestyle
                 credibility and construction certainty in one address.
@@ -148,50 +323,62 @@
 
             <!-- Right Side Container  -->
             <div
-              class="min-w-[45%] px-10 flex flex-col gap-4 border-l-2 border-[#D9D9D9]"
+              class="w-full xl:w-[45%] px-4 md:px-10 flex flex-col gap-4 border-t-2 md:border-t-0 md:border-l-2 border-[#D9D9D9] pt-6 md:pt-0"
             >
-              <h2 class="font-[400] text-[29px] text-black">
+              <h2
+                class="font-[400] text-[24px] md:text-[29px] text-black font-baskervville font-regular"
+              >
                 Request a Call Back
               </h2>
               <form class="flex flex-col gap-4">
-                <div class="flex justify-between gap-4">
+                <div class="flex flex-col md:flex-row justify-between gap-4">
                   <input
                     type="text"
                     placeholder="Your Name*"
-                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                    class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                   />
                   <input
                     type="text"
                     placeholder="Your Email*"
-                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                    class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                   />
                 </div>
-                <div class="flex justify-between gap-4">
+                <div class="flex flex-col md:flex-row justify-between gap-4">
                   <input
                     type="text"
                     placeholder="Your Phone*"
-                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                    class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                   />
                   <input
                     type="text"
                     placeholder="Your Message*"
-                    class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                    class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                   />
                 </div>
-                <div class="flex justify-between gap-4">
-                  <div class="w-[274px]">
-                    <p class="font-[400] text-[16px] text-black">
+                <div class="flex flex-col md:flex-row justify-between gap-4">
+                  <div class="w-full md:w-[274px]">
+                    <p
+                      class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                    >
                       Explore premium properties with trusted !
                     </p>
                   </div>
                   <button
-                    class="w-[221px] h-[58px] flex justify-end items-center bg-black text-white rounded-full gap-6 pr-1 cursor-pointer"
+                    class="w-full md:w-[221px] h-[50px] md:h-[58px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 md:gap-6 pr-1 cursor-pointer"
                   >
-                    <p class="font-[600] text-[16px]">Get a Call Back</p>
-                    <div
-                      class="w-[50px] h-[50px] bg-white rounded-full flex justify-center items-center"
+                    <p
+                      class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
                     >
-                      <img src="./svgs/top-arrow.svg" alt="" />
+                      Get a Call Back
+                    </p>
+                    <div
+                      class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white hidden  rounded-full md:flex justify-center items-center"
+                    >
+                      <img
+                        src="./svgs/top-arrow.svg"
+                        alt=""
+                        class="w-4 h-4 md:w-auto md:h-auto"
+                      />
                     </div>
                   </button>
                 </div>
@@ -200,221 +387,405 @@
           </div>
 
           <!-- Bottom Container  -->
-          <div class="w-full flex justify-between px-10 gap-4">
+          <div
+            class="w-full flex flex-col md:flex-row justify-between px-4 md:px-10 gap-4"
+          >
             <div
-              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+              class="w-full md:w-[301px] lg:h-[80px]  bg-[#F2F2F2] rounded-[2px] flex lg:flex-row flex-col lg:justify-between items-center px-4 xl:px-6 min-h-[120px] py-2 justify-center "
             >
-              <img src="/svgs/building.svg" alt="" />
+              <img
+                src="/svgs/building.svg"
+                alt=""
+                class="w-8 h-8 md:w-auto md:h-auto"
+              />
 
               <div
                 class="flex flex-col gap-2 justify-center items-center text-center"
               >
-                <p class="font-[400] text-[16px] text-black">Apartments</p>
-                <b class="font-[700] text-[16px] text-black">4 & 5 BHK</b>
+                <p class="font-[400] text-[14px] md:text-[16px] text-black">
+                  Apartments
+                </p>
+                <b class="font-[700] text-[14px] md:text-[16px] text-black"
+                  >4 & 5 BHK</b
+                >
               </div>
             </div>
 
             <div
-              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+              class="w-full md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6  min-h-[120px] py-2 justify-center flex-col lg:flex-row"
             >
-              <img src="/svgs/location.svg" alt="" />
+              <img
+                src="/svgs/location.svg"
+                alt=""
+                class="w-8 h-8 md:w-auto md:h-auto"
+              />
 
               <div
                 class="flex flex-col gap-2 justify-center items-center text-center"
               >
-                <p class="font-[400] text-[16px] text-black">Location</p>
-                <b class="font-[700] text-[16px] text-black">Noida</b>
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                >
+                  Location
+                </p>
+                <b
+                  class="font-[700] text-[14px] md:text-[16px] text-black font-open-sans font-bold"
+                  >Noida</b
+                >
               </div>
             </div>
 
             <div
-              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+              class="w-full md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6  min-h-[120px] py-2 justify-center flex-col lg:flex-row"
             >
-              <img src="/svgs/container.svg" alt="" />
+              <img
+                src="/svgs/container.svg"
+                alt=""
+                class="w-8 h-8 md:w-auto md:h-auto"
+              />
 
               <div
                 class="flex flex-col gap-2 justify-center items-center text-center"
               >
-                <p class="font-[400] text-[16px] text-black">Size</p>
-                <b class="font-[700] text-[16px] text-black">2690-3307 sq ft</b>
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                >
+                  Size
+                </p>
+                <b
+                  class="font-[700] text-[14px] md:text-[16px] text-black font-open-sans font-bold"
+                  >2690-3307 sq ft</b
+                >
               </div>
             </div>
 
             <div
-              class="w-[301px] h-[94px] bg-[#F2F2F2] rounded-[2px] flex justify-between items-center px-6"
+              class="w-full md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6  min-h-[120px] py-2 justify-center flex-col lg:flex-row"
             >
-              <img src="/svgs/rupee.svg" alt="" />
+              <img
+                src="/svgs/rupee.svg"
+                alt=""
+                class="w-8 h-8 md:w-auto md:h-auto"
+              />
 
               <div
                 class="flex flex-col gap-2 justify-center items-center text-center"
               >
-                <p class="font-[400] text-[16px] text-black">Price</p>
-                <b class="font-[700] text-[16px] text-black">On Request</b>
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                >
+                  Price
+                </p>
+                <b
+                  class="font-[700] text-[14px] md:text-[16px] text-black font-open-sans font-bold"
+                  >On Request</b
+                >
               </div>
             </div>
           </div>
         </div>
 
         <!-- Row 2  -->
-        <div class="w-full flex justify-end items-end relative">
+        <div
+          class="w-full flex flex-col-reverse xl:flex-row xl:justify-end xl:items-end relative mt-8 md:mt-0 justify-center items-center"
+        >
           <!-- Left Side Container  -->
-          <div class="absolute -top-4 -left-[18rem] z-0">
-            <img src="images/s2/s2i1.jpg" alt="" />
+          <div class="xl:absolute -top-4 -left-[18rem] z-0">
+            <img src="images/s2/s2i1.jpg" alt="" class="w-auto h-auto no-hover-scale" />
           </div>
 
           <!-- Right Side Container   -->
-          <div class="flex flex-col gap-8 z-10 bg-white">
+          <div
+            id="amenities"
+            class="w-full md:w-auto flex flex-col gap-6 md:gap-8 z-10 bg-white"
+          >
             <!-- 1st Row  -->
-            <div class="flex flex-col justify-end items-end gap-2">
-              <h2 class="font-[400] text-[36px] text-black">Amenities</h2>
-              <p class="font-[400] text-[16px] text-black">
+            <div
+              class="flex flex-col justify-center xl:justify-end items-center xl:items-end gap-2"
+            >
+              <h2
+                class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular"
+              >
+                Amenities
+              </h2>
+              <p
+                class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular text-center md:text-right"
+              >
                 Where Everyday Living Feels Like a Dream
               </p>
             </div>
 
             <!-- 2nd Row  -->
-            <div class="grid grid-cols-2 gap-4">
+            <div
+              class="grid grid-cols-3 xl:grid-cols-2 gap-3 xl:gap-4 w-full md:w-auto"
+            >
               <div
-                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
               >
-                <img src="svgs/basket.svg" alt="" />
-                <p class="font-[400] text-[16px] text-black">Indoor Games</p>
+                <img
+                  src="svgs/basket.svg"
+                  alt=""
+                  class="w-6 h-6 md:w-auto md:h-auto"
+                />
+                <p
+                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
+                >
+                  Indoor Games
+                </p>
               </div>
               <div
-                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
               >
-                <img src="svgs/women.svg" alt="" />
-                <p class="font-[400] text-[16px] text-black">Yoga Center</p>
+                <img
+                  src="svgs/women.svg"
+                  alt=""
+                  class="w-6 h-6 md:w-auto md:h-auto"
+                />
+                <p
+                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
+                >
+                  Yoga Center
+                </p>
               </div>
               <div
-                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
               >
-                <img src="svgs/hall.svg" alt="" />
-                <p class="font-[400] text-[16px] text-black">
+                <img
+                  src="svgs/hall.svg"
+                  alt=""
+                  class="w-6 h-6 md:w-auto md:h-auto"
+                />
+                <p
+                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
+                >
                   Multi-Purpose Hall
                 </p>
               </div>
               <div
-                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
               >
-                <img src="svgs/hall.svg" alt="" />
-                <p class="font-[400] text-[16px] text-black">Spa & Salon</p>
+                <img
+                  src="svgs/hall.svg"
+                  alt=""
+                  class="w-6 h-6 md:w-auto md:h-auto"
+                />
+                <p
+                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
+                >
+                  Spa & Salon
+                </p>
               </div>
               <div
-                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
               >
-                <img src="svgs/park.svg" alt="" />
-                <p class="font-[400] text-[16px] text-black">Kids Play Area</p>
+                <img
+                  src="svgs/park.svg"
+                  alt=""
+                  class="w-6 h-6 md:w-auto md:h-auto"
+                />
+                <p
+                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
+                >
+                  Kids Play Area
+                </p>
               </div>
               <div
-                class="w-[277px] h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2"
+                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
               >
-                <img src="svgs/lift.svg" alt="" />
-                <p class="font-[400] text-[16px] text-black">
+                <img
+                  src="svgs/lift.svg"
+                  alt=""
+                  class="w-6 h-6 md:w-auto md:h-auto"
+                />
+                <p
+                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
+                >
                   Double Height Entrance Lobby
                 </p>
               </div>
             </div>
 
             <!-- Row 3  -->
-            <div class="flex w-full justify-end items-end">
+            <div class="flex w-full justify-center md:justify-end items-end">
               <button
-                class="w-[168px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+                class="w-[140px] popup-trigger md:w-[168px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
               >
-                <p class="font-[400] text-[16px]">Know more</p>
-                <img src="svgs/top-arr2.svg" alt="" />
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular"
+                >
+                  Know more
+                </p>
+                <img
+                  src="svgs/top-arr2.svg"
+                  alt=""
+                  class="w-4 h-4 md:w-auto md:h-auto"
+                />
               </button>
             </div>
           </div>
         </div>
 
         <!-- Row 3  -->
-        <div class="w-full flex flex-col gap-8">
+        <div class="w-full flex flex-col gap-6 md:gap-8" id="floor-price">
           <!-- 1st Container  -->
           <div class="flex justify-center items-center">
-            <h2 class="font-[400] text-[36px] text-black">Floor Price</h2>
+            <h2
+              class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular"
+            >
+              Floor Price
+            </h2>
           </div>
 
           <!-- 2nd Container  -->
-          <div class="flex justify-between w-full">
+          <div
+            class="flex flex-col lg:flex-row justify-between w-full gap-6 "
+          >
             <div
-              class="w-[500px] h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden"
+              class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-6 lg:py-0"
             >
-              <div class="flex flex-col gap-4 pl-6">
-                <p class="font-[400] text-[18px] text-black">Type</p>
+              <div class="flex flex-col gap-4 pl-4 md:pl-6 w-full">
+                <p
+                  class="font-[400] text-[16px] md:text-[18px] text-black font-open-sans font-regular"
+                >
+                  Type
+                </p>
 
                 <div class="relative">
                   <div
-                    class="w-[324px] h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-6 absolute top-0 -left-6"
+                    class="w-[280px] md:w-[324px] h-[56px] md:h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-4 md:pl-6 absolute top-0 -left-4 md:-left-6"
                   >
-                    <h2 class="font-[700] text-[26px] text-black">
+                    <h2
+                      class="font-[700] text-[20px] md:text-[26px] text-black font-montserrat font-bold"
+                    >
                       3 BHK + Study
                     </h2>
                   </div>
                 </div>
-                <p class="font-[400] text-[18px] text-black mt-14">Area</p>
-                <p class="font-[700] text-[23px] text-black">2690–2718 sq ft</p>
+                <p
+                  class="font-[400] text-[16px] md:text-[18px] text-black mt-12 md:mt-14 font-open-sans font-regular"
+                >
+                  Area
+                </p>
+                <p
+                  class="font-[700] text-[20px] md:text-[23px] text-black font-montserrat font-bold"
+                >
+                  2690–2718 sq ft
+                </p>
 
                 <button
-                  class="w-[216px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+                  class="popup-trigger w-[180px] md:w-[216px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
                 >
-                  <p class="font-[600] text-[16px]">Price: on Request</p>
-                  <img src="svgs/top-arr2.svg" alt="" />
+                  <p
+                    class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
+                  >
+                    Price: on Request
+                  </p>
+                  <img
+                    src="svgs/top-arr2.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-auto md:h-auto"
+                  />
                 </button>
               </div>
             </div>
 
             <div
-              class="w-[500px] h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden"
+              class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-6 lg:py-0"
             >
-              <div class="flex flex-col gap-4 pl-6">
-                <p class="font-[400] text-[18px] text-black">Type</p>
+              <div class="flex flex-col gap-4 pl-4 md:pl-6 w-full">
+                <p
+                  class="font-[400] text-[16px] md:text-[18px] text-black font-open-sans font-regular"
+                >
+                  Type
+                </p>
 
                 <div class="relative">
                   <div
-                    class="w-[324px] h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-6 absolute top-0 -left-6"
+                    class="w-[280px] md:w-[324px] h-[56px] md:h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-4 md:pl-6 absolute top-0 -left-4 md:-left-6"
                   >
-                    <h2 class="font-[700] text-[26px] text-black">
+                    <h2
+                      class="font-[700] text-[20px] md:text-[26px] text-black font-montserrat font-bold"
+                    >
                       4 BHK + Study
                     </h2>
                   </div>
                 </div>
-                <p class="font-[400] text-[18px] text-black mt-14">Area</p>
-                <p class="font-[700] text-[23px] text-black">3307 sq ft</p>
+                <p
+                  class="font-[400] text-[16px] md:text-[18px] text-black mt-12 md:mt-14 font-open-sans font-regular"
+                >
+                  Area
+                </p>
+                <p
+                  class="font-[700] text-[20px] md:text-[23px] text-black font-montserrat font-bold"
+                >
+                  3307 sq ft
+                </p>
 
                 <button
-                  class="w-[216px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+                  class="popup-trigger w-[180px] md:w-[216px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
                 >
-                  <p class="font-[600] text-[16px]">Price: on Request</p>
-                  <img src="svgs/top-arr2.svg" alt="" />
+                  <p
+                    class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
+                  >
+                    Price: on Request
+                  </p>
+                  <img
+                    src="svgs/top-arr2.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-auto md:h-auto"
+                  />
                 </button>
               </div>
             </div>
 
-            <div class="w-[206px] h-[328px] border-[1px] border-[#E6E6E6]">
-              <img src="images/s2/s2i2.png" alt="" class="w-full h-full" />
+            <div
+              class="w-full lg:w-auto h-[200px] hidden lg:block lg:h-[328px] border-[1px] border-[#E6E6E6] mx-auto lg:mx-0"
+            >
+              <img
+                src="images/s2/s2i2.png"
+                alt=""
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
 
           <!-- 3rd Container  -->
-          <div class="flex justify-between items-center mt-10">
-            <div class="w-[218px] flex justify-center items-center text-center">
-              <p class="font-[400] text-[16px] text-black">
+          <div
+            class="flex flex-col md:flex-row justify-between items-center mt-6 md:mt-10 gap-4 md:gap-0"
+          >
+            <div
+              class="w-full md:w-[218px] flex justify-center items-center text-center px-4"
+            >
+              <p
+                class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+              >
                 11 ft ceiling heights
               </p>
             </div>
-            <div class="w-[218px] flex justify-center items-center text-center">
-              <p class="font-[400] text-[16px] text-black">
+            <div
+              class="w-full md:w-[218px] flex justify-center items-center text-center px-4"
+            >
+              <p
+                class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+              >
                 Wide balconies for natural light and ventilation
               </p>
             </div>
-            <div class="w-[218px] flex justify-center items-center text-center">
-              <p class="font-[400] text-[16px] text-black">
+            <div
+              class="w-full md:w-[218px] flex justify-center items-center text-center px-4"
+            >
+              <p
+                class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+              >
                 G+35 towers with only four residences per floor
               </p>
             </div>
-            <div class="w-[218px] flex justify-center items-center text-center">
-              <p class="font-[400] text-[16px] text-black">
+            <div
+              class="w-full md:w-[218px] flex justify-center items-center text-center px-4"
+            >
+              <p
+                class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+              >
                 Possession from
                 <b> 2027 onwards</b>
               </p>
@@ -425,66 +796,118 @@
     </section>
 
     <!-- Section 3 -->
-    <section class="w-full min-h-screen flex justify-center items-center">
+    <section id="gallery" class="w-full min-h-screen flex justify-center items-center">
       <!-- Centered Align Container   -->
-      <div class="w-[90%] h-full relative z-10 flex flex-col gap-6 py-20">
+      <div
+        class="w-[90%] h-full relative z-10 flex flex-col gap-6 md:gap-6 py-10 md:py-20"
+      >
         <!-- Top Container  -->
         <div
           class="w-full flex justify-center items-center text-center flex-col"
         >
-          <h2 class="font-[400] text-[36px] text-black">Gallery</h2>
-          <p class="font-[400] text-[16px] text-black">
+          <h2
+            class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular"
+          >
+            Gallery
+          </h2>
+          <p
+            class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+          >
             Moments That Define Your Dream Home
           </p>
         </div>
 
         <!-- Main Container  -->
-        <div class="w-full grid grid-cols-3 gap-4">
-          <div class="w-[403px] h-[396px]">
-            <img src="images/s3/g1.png" alt="" class="w-full h-full" />
+        <div
+          class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        >
+          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+            <img
+              src="images/s3/g1.png"
+              alt=""
+              class="w-full h-full object-cover gallery-image"
+            />
           </div>
-          <div class="w-[403px] h-[396px]">
-            <img src="images/s3/g2.png" alt="" class="w-full h-full" />
+          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+            <img
+              src="images/s3/g2.png"
+              alt=""
+              class="w-full h-full object-cover gallery-image"
+            />
           </div>
-          <div class="w-[403px] h-[396px]">
-            <img src="images/s3/g3.png" alt="" class="w-full h-full" />
+          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+            <img
+              src="images/s3/g3.png"
+              alt=""
+              class="w-full h-full object-cover gallery-image"
+            />
           </div>
-          <div class="w-[403px] h-[396px]">
-            <img src="images/s3/g4.png" alt="" class="w-full h-full" />
+          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+            <img
+              src="images/s3/g4.png"
+              alt=""
+              class="w-full h-full object-cover gallery-image"
+            />
           </div>
-          <div class="w-[403px] h-[396px]">
-            <img src="images/s3/g5.png" alt="" class="w-full h-full" />
+          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+            <img
+              src="images/s3/g5.png"
+              alt=""
+              class="w-full h-full object-cover gallery-image"
+            />
           </div>
-          <div class="w-[403px] h-[396px]">
-            <img src="images/s3/g6.png" alt="" class="w-full h-full" />
+          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+            <img
+              src="images/s3/g6.png"
+              alt=""
+              class="w-full h-full object-cover gallery-image"
+            />
           </div>
         </div>
 
         <!-- Bottom Container  -->
         <div class="w-full flex justify-center items-center">
           <button
-            class="w-[168px] h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-3 cursor-pointer"
+            class="w-[140px] popup-trigger md:w-[168px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
           >
-            <p class="font-[600] text-[16px]">View more</p>
-            <img src="svgs/top-arr2.svg" alt="" />
+            <p
+              class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
+            >
+              View more
+            </p>
+            <img
+              src="svgs/top-arr2.svg"
+              alt=""
+              class="w-4 h-4 md:w-auto md:h-auto"
+            />
           </button>
         </div>
       </div>
     </section>
 
     <!-- Section 4 -->
-    <section class="w-full flex justify-center border-b-[1px] border-[#DBDADA]">
+    <section id="features" class="w-full flex justify-center border-b-[1px] border-[#DBDADA]">
       <!-- Centered Align Container   -->
-      <div class="w-[90%] h-full relative z-10 flex justify-between pb-20">
+      <div
+        class="w-[90%] max-w-[1440px] h-full relative z-10 flex flex-col lg:flex-row justify-between pb-10 md:pb-20 gap-8"
+      >
         <!-- Left Side Container  -->
-        <div class="w-[512px] flex flex-col gap-6">
+        <div class="w-full lg:w-[512px] flex flex-col gap-4 md:gap-6">
           <!-- Top Container  -->
-          <div class="flex flex-col gap-2">
-            <p class="font-[400] text-[16px] text-black">Features</p>
-            <h2 class="font-[400] text-[34px] text-black">
-              India’s First AQI-Controlled Luxury Community
+          <div class="flex flex-col gap-2 px-4 md:px-0">
+            <p
+              class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+            >
+              Features
+            </p>
+            <h2
+              class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] text-black font-baskervville font-regular leading-tight"
+            >
+              India's First AQI-Controlled Luxury Community
             </h2>
-            <p class="font-[400] text-[16px] text-black">
+            <p
+              class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+            >
               FAB-LUXE introduces a wellness standard no other residential
               project in India currently offers.
             </p>
@@ -492,50 +915,76 @@
 
           <!-- Bottom Container  -->
           <div
-            class="w-full h-[306px] flex items-center relative pl-6 border-2 border-[#E6E6E6]"
+            class="w-full lg:w-auto min-h-[200px] sm:min-h-[280px] md:min-h-[306px] flex items-center relative border-2 border-[#E6E6E6] overflow-hidden"
           >
-            <p class="font-[400] text-[19px] text-black w-[274px]">
-              Indoor AQI maintained significantly lower than the city’s severe
+            <p
+              class="font-[400] text-[14px] sm:text-[16px] md:text-[19px] text-black w-[200px] sm:w-[280px] md:w-[274px] font-baskervville font-regular z-10 absolute top-1/2 transform -translate-y-1/2 left-4 md:left-6 px-2 md:px-0"
+            >
+              Indoor AQI maintained significantly lower than the city's severe
               levels
             </p>
 
             <!-- Absolute Position Image  -->
-            <div class="absolute top-0 right-0 z-0">
-              <img src="images/s4/s4i1.png" alt="" class="w-full h-full" />
+            <div class="w-full h-full min-h-[200px] sm:min-h-[280px] md:min-h-[306px]">
+              <img
+                src="images/s4/s4i1.png"
+                alt=""
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
 
         <!-- Right Side Container  -->
-        <div class="flex flex-col justify-between gap-4">
+        <div class="flex flex-col justify-between gap-6 md:gap-4 w-full lg:w-[512px] xl:w-auto">
           <!-- Top Container  -->
-          <div class="flex justify-between gap-4 items-start">
+          <div
+            class="flex flex-col sm:flex-row justify-between gap-6 md:gap-4 items-start"
+          >
             <!-- Left Side Card  -->
-            <div class="flex flex-col justify-center items-center gap-4">
+            <div
+              class="flex flex-col justify-center items-center gap-3 md:gap-4 w-full sm:w-auto"
+            >
               <!-- Image Div  -->
-              <div class="w-[365px] h-[382px]">
-                <img src="images/s4/s4i2.png" alt="" class="w-full h-full" />
+              <div class="w-full sm:w-[280px] md:w-[365px] h-[250px] sm:h-[300px] md:h-[382px]">
+                <img
+                  src="images/s4/s4i2.png"
+                  alt=""
+                  class="w-full h-full object-cover"
+                />
               </div>
-              <p class="font-[400] text-[19px] text-black text-center">
+              <p
+                class="font-[400] text-[14px] sm:text-[16px] md:text-[19px] text-black text-center font-baskervville font-regular px-2"
+              >
                 Outdoor purification towers
               </p>
             </div>
 
             <!-- Right Side Card  -->
-            <div class="flex flex-col justify-center items-center gap-4">
+            <div
+              class="flex flex-col justify-center items-center gap-3 md:gap-4 w-full sm:w-auto"
+            >
               <!-- Image Div  -->
-              <div class="w-[328px] h-[252px]">
-                <img src="images/s4/s4i3.png" alt="" class="w-full h-full" />
+              <div class="w-full sm:w-[250px] md:w-[328px] min-h-[180px] sm:min-h-[200px] md:h-[252px] bg-[#D9D9D9]">
+                <img
+                  src="images/s4/s4i3.png"
+                  alt=""
+                  class="w-full h-full object-cover"
+                />
               </div>
-              <p class="font-[400] text-[19px] text-black text-center">
+              <p
+                class="font-[400] text-[14px] sm:text-[16px] md:text-[19px] text-black text-center font-baskervville font-regular px-2"
+              >
                 Medical-grade HEPA air systems
               </p>
             </div>
           </div>
 
           <!-- Bottom Container  -->
-          <div class="w-full flex justify-end items-end">
-            <p class="w-[410px] font-[400] text-[16px] text-end">
+          <div class="w-full flex justify-center md:justify-end items-end px-4 md:px-0">
+            <p
+              class="w-full sm:w-[90%] md:w-[410px] font-[400] text-[14px] md:text-[16px] text-center md:text-end font-open-sans font-regular"
+            >
               Designed for families who prioritise long-term health, this
               community brings wellness into everyday living.
             </p>
@@ -545,50 +994,82 @@
     </section>
 
     <!-- Section 5 -->
-    <section class="w-full flex justify-center min-h-screen py-20">
+    <section id="location" class="w-full flex justify-center min-h-screen py-10 md:py-20">
       <!-- Centered Align Container   -->
-      <div class="w-[90%] h-full relative z-10 flex flex-col gap-12">
+      <div class="w-[90%] h-full relative z-10 flex flex-col gap-8 md:gap-12">
         <!-- Row 1  -->
         <div class="w-full flex flex-col justify-center items-center gap-4">
-          <h2 class="font-[400] text-[36px] text-black">Location</h2>
-          <p class="font-[400] text-[16px] text-black">
+          <h2
+            class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular"
+          >
+            Location
+          </h2>
+          <p
+            class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular text-center"
+          >
             A Location Shaping the Future of Western Noida
           </p>
         </div>
 
         <!-- Row 2  -->
-        <div class="w-full flex gap-12">
+        <div class="w-full flex flex-col-reverse xl:flex-row gap-8 lg:gap-12">
           <!-- Left Side Container   -->
-          <div class="w-[620px] h-[411px]">
-            <img src="images/s5/map.png" alt="" class="w-full h-full" />
+          <div class="w-full xl:w-[620px] h-[250px] md:h-[411px]">
+            <img
+              src="images/s5/map.png"
+              alt=""
+              class="w-full h-full object-cover"
+            />
           </div>
 
           <!-- Right Side Container  -->
-          <div class="flex flex-col gap-4">
-            <h2 class="font-[400] text-[30px] text-color">Advantages</h2>
-            <ul class="flex flex-col gap-6 w-[507px]">
+          <div class="flex flex-col gap-4 w-full lg:w-auto">
+            <h2
+              class="font-[400] text-[24px] md:text-[30px] text-color font-baskervville font-regular"
+            >
+              Advantages
+            </h2>
+            <ul class="flex flex-col gap-4 md:gap-6 w-full xl:w-[507px]">
               <li>
-                <div class="flex items-center gap-6">
-                  <img src="svgs/delhi.svg" alt="" />
-                  <p class="font-[400] text-[17px] text-black">
+                <div class="flex items-start md:items-center gap-4 md:gap-6">
+                  <img
+                    src="svgs/delhi.svg"
+                    alt=""
+                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
+                  />
+                  <p
+                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
+                  >
                     40 minutes to <b>Delhi CBD</b> via new expressways
                   </p>
                 </div>
               </li>
 
               <li>
-                <div class="flex items-center gap-6">
-                  <img src="svgs/airplane.svg" alt="" />
-                  <p class="font-[400] text-[17px] text-black">
+                <div class="flex items-start md:items-center gap-4 md:gap-6">
+                  <img
+                    src="svgs/airplane.svg"
+                    alt=""
+                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
+                  />
+                  <p
+                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
+                  >
                     60 minutes to Noida International <b>Airport</b> (Jewar)
                   </p>
                 </div>
               </li>
 
               <li>
-                <div class="flex items-center gap-6">
-                  <img src="svgs/mall.svg" alt="" />
-                  <p class="font-[400] text-[17px] text-black">
+                <div class="flex items-start md:items-center gap-4 md:gap-6">
+                  <img
+                    src="svgs/mall.svg"
+                    alt=""
+                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
+                  />
+                  <p
+                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
+                  >
                     Close to <b>Gaur City Mall</b>, global F&B brands,
                     entertainment hubs and top schools
                   </p>
@@ -596,9 +1077,15 @@
               </li>
 
               <li>
-                <div class="flex items-center gap-6">
-                  <img src="svgs/building2.svg" alt="" />
-                  <p class="font-[400] text-[17px] text-black">
+                <div class="flex items-start md:items-center gap-4 md:gap-6">
+                  <img
+                    src="svgs/building2.svg"
+                    alt=""
+                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
+                  />
+                  <p
+                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
+                  >
                     Surrounded by <b>business parks</b>, IT clusters and
                     upcoming infrastructure
                   </p>
@@ -606,10 +1093,16 @@
               </li>
 
               <li>
-                <div class="flex items-center gap-6">
-                  <img src="svgs/home.svg" alt="" />
-                  <p class="font-[400] text-[17px] text-black">
-                    Strong appreciation potential driven by Western Noida’s
+                <div class="flex items-start md:items-center gap-4 md:gap-6">
+                  <img
+                    src="svgs/home.svg"
+                    alt=""
+                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
+                  />
+                  <p
+                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
+                  >
+                    Strong appreciation potential driven by Western Noida's
                     rising demand and <b>NRI/HNI</b> interest
                   </p>
                 </div>
@@ -618,52 +1111,67 @@
           </div>
         </div>
         <!-- Row 3  -->
-        <div class="w-full flex justify-between">
+        <div
+          id="contact"
+          class="w-full flex flex-col xl:flex-row justify-between gap-8 "
+        >
           <!-- Left Side Container   -->
-          <div class="flex flex-col gap-4">
-            <h2 class="font-[400] text-[30px] text-black">
+          <div class="flex flex-col gap-4 w-full lg:w-auto">
+            <h2
+              class="font-[400] text-[24px] md:text-[30px] text-black font-baskervville font-regular"
+            >
               Request a Call Back
             </h2>
             <form class="flex flex-col gap-4">
-              <div class="flex gap-4">
+              <div class="flex flex-col md:flex-row gap-4">
                 <input
                   type="text"
                   placeholder="Your Name*"
-                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                 />
                 <input
                   type="text"
                   placeholder="Your Email*"
-                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                 />
               </div>
-              <div class="flex gap-4">
+              <div class="flex flex-col md:flex-row gap-4">
                 <input
                   type="text"
                   placeholder="Your Phone*"
-                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                 />
                 <input
                   type="text"
                   placeholder="Your Message*"
-                  class="w-[274px] h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6"
+                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
                 />
               </div>
-              <div class="flex justify-between gap-4">
-                <div class="w-[274px]">
-                  <p class="font-[400] text-[16px] text-black">
+              <div class="flex flex-col md:flex-row justify-between gap-4">
+                <div class="w-full md:w-[274px]">
+                  <p
+                    class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                  >
                     Explore premium properties with trusted !
                   </p>
                 </div>
 
                 <button
-                  class="w-[221px] h-[58px] flex justify-end items-center bg-black text-white rounded-full gap-6 pr-1 cursor-pointer"
+                  class="w-full md:w-[221px] h-[50px] md:h-[58px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 md:gap-6 pr-1 cursor-pointer"
                 >
-                  <p class="font-[600] text-[16px]">Get a Call Back</p>
-                  <div
-                    class="w-[50px] h-[50px] bg-white rounded-full flex justify-center items-center"
+                  <p
+                    class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
                   >
-                    <img src="svgs/top-arrow.svg" alt="" />
+                    Get a Call Back
+                  </p>
+                  <div
+                    class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full hidden md:flex justify-center items-center"
+                  >
+                    <img
+                      src="svgs/top-arrow.svg"
+                      alt=""
+                      class="w-4 h-4 md:w-auto md:h-auto"
+                    />
                   </div>
                 </button>
               </div>
@@ -672,30 +1180,58 @@
 
           <!-- Right Side Container  -->
           <div
-            class="w-[626px] min-h-[281px] border-2 border-[#DFDBDB] flex justify-between"
+            class="w-full xl:w-[626px] md:min-h-[281px] border-2 border-[#DFDBDB] flex justify-center items-center flex-row sm:justify-between"
           >
             <!-- Left Side Container  -->
-            <div class="flex flex-col gap-3 pl-6 py-6">
-              <div class="flex flex-col gap-2">
-                <h2 class="font-[700] text-[17px]">Address</h2>
-                <p class="font-[400] text-[16px]">
-                  Lorem Ipsum is simply dummy, <br />
+            <div
+              class="flex flex-col md:gap-3 pl-4 md:pl-6 py-4 md:py-6 w-full md:w-auto"
+            >
+              <div class="flex flex-col md:gap-2">
+                <h2
+                  class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left"
+                >
+                  Address
+                </h2>
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left"
+                >
+                  Lorem Ipsum is simply dummy, <br />
                   Noida Extension, Uttar Pradesh
                 </p>
               </div>
-              <div class="flex flex-col gap-2">
-                <h2 class="font-[700] text-[17px]">Email</h2>
-                <p class="font-[400] text-[16px]">info@fabluxe.com</p>
+              <div class="flex flex-col md:gap-2">
+                <h2
+                  class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left"
+                >
+                  Email
+                </h2>
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left"
+                >
+                  info@fabluxe.com
+                </p>
               </div>
-              <div class="flex flex-col gap-2">
-                <h2 class="font-[700] text-[17px]">Mobile</h2>
-                <p class="font-[400] text-[16px]">+91 99887 76655</p>
+              <div class="flex flex-col md:gap-2">
+                <h2
+                  class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left"
+                >
+                  Mobile
+                </h2>
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left"
+                >
+                  +91 99887 76655
+                </p>
               </div>
             </div>
 
             <!-- Right Side Container  -->
-            <div class="h-full w-[242px]">
-              <img src="images/s5/s5i1.png" alt="" class="w-full h-full" />
+            <div class="h-full w-[242px] hidden sm:block">
+              <img
+                src="images/s5/s5i1.png"
+                alt=""
+                class="w-full h-full object-cover"
+              />
             </div>
           </div>
         </div>
@@ -703,25 +1239,144 @@
     </section>
 
     <footer
-      class="w-full min-h-[487px] bg-[#F7F7F7] flex flex-col justify-center items-center gap-8"
+      class="w-full min-h-[400px] md:min-h-[487px] bg-[#F7F7F7] flex flex-col justify-center items-center gap-6 md:gap-8 px-4 py-8 md:py-0"
     >
-      <img src="images/footer-logo.png" alt="" />
-      <p class="font-[400] text-[18px] text-black w-[688px] text-center">
+      <img
+        src="images/footer-logo.png"
+        alt=""
+        class="w-[200px] md:w-auto h-auto"
+      />
+      <p
+        class="font-[400] text-[14px] md:text-[18px] text-black w-full md:w-[688px] text-center font-open-sans font-regular px-4"
+      >
         Together, they create a home that offers credibility, luxury, wellness
-        and future-ready living in one of NCR’s most promising destinations.
+        and future-ready living in one of NCR's most promising destinations.
       </p>
-      <div class="flex justify-center items-center gap-4">
-        <img src="svgs/insta.svg" alt="" />
-        <img src="svgs/x.svg" alt="" />
-        <img src="svgs/fb.svg" alt="" />
-        <img src="svgs/linkdin.svg" alt="" />
-        <img src="svgs/yt.svg" alt="" />
+      <div class="flex justify-center items-center gap-3 md:gap-4">
+        <img src="svgs/insta.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+        <img src="svgs/x.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+        <img src="svgs/fb.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+        <img
+          src="svgs/linkdin.svg"
+          alt=""
+          class="w-6 h-6 md:w-auto md:h-auto"
+        />
+        <img src="svgs/yt.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
       </div>
-      <p class="font-[400] text-[14px]">
+      <p
+        class="font-[400] text-[12px] md:text-[14px] font-open-sans font-regular text-center px-4"
+      >
         © 2025 <b>FAB LUXE</b>. All rights reserved. Digital media planned by
         <b>Ritz Media World</b>
       </p>
     </footer>
+
+    <!-- Popup Form Modal -->
+    <div id="popup-modal" class="popup-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
+      <div class="popup-content relative w-[90%] max-w-[900px] bg-white rounded-lg overflow-hidden flex flex-col lg:flex-row max-h-[90vh] lg:max-h-[600px]">
+        <!-- Close Button -->
+        <button
+          id="popup-close"
+          class="absolute top-4 right-4 z-50 w-10 h-10 flex items-center justify-center bg-black text-white rounded-full hover:bg-gray-800 transition-colors"
+          aria-label="Close popup"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+
+        <!-- Left Side - Image (Hidden on mobile) -->
+        <div class="hidden lg:block w-[45%] h-full">
+          <img
+            src="images/s2/s2i1.jpg"
+            alt=""
+            class="w-full h-full object-cover"
+          />
+        </div>
+
+        <!-- Right Side - Form -->
+        <div class="w-full lg:w-[55%] flex flex-col gap-4 p-6 md:p-8 overflow-y-auto">
+          <h2
+            class="font-[400] text-[24px] md:text-[29px] text-black font-baskervville font-regular"
+          >
+            Request a Call Back
+          </h2>
+          <form id="popup-form" class="flex flex-col gap-4">
+            <div class="flex flex-col md:flex-row justify-between gap-4">
+              <input
+                type="text"
+                name="name"
+                placeholder="Your Name*"
+                required
+                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Your Email*"
+                required
+                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+              />
+            </div>
+            <div class="flex flex-col md:flex-row justify-between gap-4">
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Your Phone*"
+                required
+                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+              />
+              <input
+                type="text"
+                name="message"
+                placeholder="Your Message*"
+                required
+                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+              />
+            </div>
+            <div class="flex flex-col md:flex-row justify-between gap-4">
+              <div class="w-full md:w-[274px]">
+                <p
+                  class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                >
+                  Explore premium properties with trusted !
+                </p>
+              </div>
+              <button
+                type="submit"
+                class="w-full md:w-[221px] h-[50px] md:h-[58px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 md:gap-6 pr-1 cursor-pointer"
+              >
+                <p
+                  class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
+                >
+                  Enquiry Now
+                </p>
+                <div
+                  class="w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full flex justify-center items-center"
+                >
+                  <img
+                    src="./svgs/top-arrow.svg"
+                    alt=""
+                    class="w-4 h-4 md:w-auto md:h-auto"
+                  />
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
