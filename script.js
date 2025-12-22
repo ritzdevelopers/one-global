@@ -94,7 +94,7 @@ navLinks.forEach((link) => {
         lenis.scrollTo(targetElement, {
           duration: 1.5,
           easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          offset: -80, // Offset for fixed navbar
+          offset: -100, // Offset 100px before section to show whole section
         });
       }
     }
@@ -270,7 +270,7 @@ if (menuToggle && mobileMenu) {
             lenis.scrollTo(targetElement, {
               duration: 1.5,
               easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-              offset: -80, // Offset for fixed navbar
+              offset: -100, // Offset 100px before section to show whole section
             });
           }, 300);
         }
@@ -820,12 +820,12 @@ if (popupForm) {
   });
 }
 
-// Auto-open popup after 5 seconds on page load
+// Auto-open popup after 15 seconds on page load
 window.addEventListener('load', () => {
   if (!isFormSubmitted) {
     popupAutoOpenTimer = setTimeout(() => {
       openPopup();
-    }, 5000); // 5 seconds
+    }, 15000); // 15 seconds
   }
 });
 
