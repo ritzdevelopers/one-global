@@ -1,33 +1,66 @@
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Initialize Lenis Smooth Scroll with mobile optimization
+// Detect iOS devices
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+// Prevent unwanted scroll resets on iOS
+if (isIOS) {
+  // Disable Lenis completely on iOS to prevent conflicts
+  // Use native browser scrolling instead
+  let isScrolling = false;
+  
+  // Prevent multiple scroll events from interfering
+  const handleIOSScroll = () => {
+    if (!isScrolling) {
+      isScrolling = true;
+      requestAnimationFrame(() => {
+        ScrollTrigger.update();
+        isScrolling = false;
+      });
+    }
+  };
+  
+  window.addEventListener('scroll', handleIOSScroll, { passive: true });
+}
+
+// Initialize Lenis Smooth Scroll with iOS-specific handling
 const lenis = new Lenis({
   duration: 1.2,
   easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   orientation: 'vertical',
   gestureOrientation: 'vertical',
-  smoothWheel: true,
+  smoothWheel: !isIOS, // Disable smooth wheel on iOS
   wheelMultiplier: 1,
-  // Disable smooth touch on mobile for better performance
-  smoothTouch: window.innerWidth >= 768,
+  // Disable smooth touch on iOS and mobile for better performance
+  smoothTouch: !isIOS && window.innerWidth >= 768,
   touchMultiplier: 2,
   infinite: false,
 });
 
-// Integrate Lenis with GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
+// Integrate Lenis with GSAP ScrollTrigger (only if not iOS)
+if (!isIOS) {
+  lenis.on('scroll', ScrollTrigger.update);
 
-gsap.ticker.add((time) => {
-  lenis.raf(time * 1000);
-});
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
 
-gsap.ticker.lagSmoothing(0);
+  gsap.ticker.lagSmoothing(0);
+} else {
+  // On iOS, use native scroll with ScrollTrigger
+  ScrollTrigger.addEventListener('scroll', () => {
+    ScrollTrigger.update();
+  });
+}
 
-// Update smoothTouch on resize
-window.addEventListener('resize', () => {
-  lenis.options.smoothTouch = window.innerWidth >= 768;
-});
+// Update smoothTouch on resize (only if not iOS)
+if (!isIOS) {
+  window.addEventListener('resize', () => {
+    lenis.options.smoothTouch = window.innerWidth >= 768;
+  });
+}
 
 // ============================================
 // Navbar Link Active/Hover States
@@ -89,13 +122,23 @@ navLinks.forEach((link) => {
     const targetId = link.getAttribute('data-nav');
     if (targetId) {
       const targetElement = document.getElementById(targetId);
-      if (targetElement && lenis) {
-        // Use Lenis smooth scroll to the target section
-        lenis.scrollTo(targetElement, {
-          duration: 1.5,
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-          offset: -100, // Offset 100px before section to show whole section
-        });
+      if (targetElement) {
+        if (isIOS) {
+          // On iOS, use native smooth scroll
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - 100;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        } else if (lenis) {
+          // Use Lenis smooth scroll for non-iOS devices
+          lenis.scrollTo(targetElement, {
+            duration: 1.5,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            offset: -100, // Offset 100px before section to show whole section
+          });
+        }
       }
     }
   });
@@ -153,10 +196,11 @@ const closeIcon = document.getElementById('close-icon');
 
 let isMenuOpen = false;
 
-// Desktop navbar scroll effect with Lenis
+// Desktop navbar scroll effect
 if (navbar) {
-  lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-    if (scroll > 50) {
+  const handleNavbarScroll = () => {
+    const scrollY = isIOS ? window.pageYOffset : (lenis ? lenis.scroll : window.pageYOffset);
+    if (scrollY > 50) {
       navbar.classList.add('bg-black');
       navbar.classList.remove('bg-transparent');
     } else {
@@ -165,11 +209,20 @@ if (navbar) {
     }
     // Update active link style when navbar background changes
     updateActiveLinkStyle();
-  });
+  };
+
+  if (isIOS) {
+    // On iOS, use native scroll event
+    window.addEventListener('scroll', handleNavbarScroll, { passive: true });
+  } else if (lenis) {
+    // On non-iOS, use Lenis scroll event
+    lenis.on('scroll', handleNavbarScroll);
+  }
 
   // Set initial state on page load
   window.addEventListener('load', () => {
-    if (lenis.scroll === 0) {
+    const scrollY = isIOS ? window.pageYOffset : (lenis ? lenis.scroll : window.pageYOffset);
+    if (scrollY === 0) {
       navbar.classList.add('bg-transparent');
     }
     // Update active link style on load
@@ -177,21 +230,31 @@ if (navbar) {
   });
 }
 
-// Mobile navbar scroll effect with Lenis
+// Mobile navbar scroll effect
 if (mobileNavbar) {
-  lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-    if (scroll > 50) {
+  const handleMobileNavbarScroll = () => {
+    const scrollY = isIOS ? window.pageYOffset : (lenis ? lenis.scroll : window.pageYOffset);
+    if (scrollY > 50) {
       mobileNavbar.classList.add('bg-black');
       mobileNavbar.classList.remove('bg-transparent');
     } else {
       mobileNavbar.classList.remove('bg-black');
       mobileNavbar.classList.add('bg-transparent');
     }
-  });
+  };
+
+  if (isIOS) {
+    // On iOS, use native scroll event
+    window.addEventListener('scroll', handleMobileNavbarScroll, { passive: true });
+  } else if (lenis) {
+    // On non-iOS, use Lenis scroll event
+    lenis.on('scroll', handleMobileNavbarScroll);
+  }
 
   // Set initial state on page load
   window.addEventListener('load', () => {
-    if (lenis.scroll === 0) {
+    const scrollY = isIOS ? window.pageYOffset : (lenis ? lenis.scroll : window.pageYOffset);
+    if (scrollY === 0) {
       mobileNavbar.classList.add('bg-transparent');
     }
   });
@@ -259,7 +322,7 @@ if (menuToggle && mobileMenu) {
         const targetId = href.substring(1); // Remove the #
         const targetElement = document.getElementById(targetId);
         
-        if (targetElement && lenis) {
+        if (targetElement) {
           // Close menu first
           if (isMenuOpen) {
             toggleMenu();
@@ -267,11 +330,22 @@ if (menuToggle && mobileMenu) {
           
           // Small delay to allow menu to close, then scroll
           setTimeout(() => {
-            lenis.scrollTo(targetElement, {
-              duration: 1.5,
-              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-              offset: -100, // Offset 100px before section to show whole section
-            });
+            if (isIOS) {
+              // On iOS, use native smooth scroll
+              const elementPosition = targetElement.getBoundingClientRect().top;
+              const offsetPosition = elementPosition + window.pageYOffset - 100;
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+              });
+            } else if (lenis) {
+              // Use Lenis smooth scroll for non-iOS devices
+              lenis.scrollTo(targetElement, {
+                duration: 1.5,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                offset: -100, // Offset 100px before section to show whole section
+              });
+            }
           }, 300);
         }
       } else if (isMenuOpen) {
@@ -697,6 +771,20 @@ window.addEventListener('load', () => {
       ScrollTrigger.refresh();
     }, 250);
   });
+
+  // On iOS, use native scroll for ScrollTrigger
+  if (isIOS) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          ScrollTrigger.update();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
 });
 
 // ============================================
