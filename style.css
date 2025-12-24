@@ -169,9 +169,9 @@ img {
   }
 }
 
-@media (min-width: 1445px) {
+@media (min-width: 1545px) {
   section:not(:first-of-type) {
-    width: 90% !important;
+    width: 80% !important;
     margin: 0 auto !important;
   }
 }
