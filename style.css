@@ -459,9 +459,10 @@ button:hover .callback-hover-icon {
   opacity: 1;
 }
 
-/* Specific hover for Get a Call Back buttons - change button bg to white */
+/* Specific hover for Get a Call Back buttons - use water fill effect like other buttons */
+/* The water fill effect is already applied via the general button styles */
+/* Just ensure text color changes on hover */
 button:has(.callback-icon-container):hover {
-  background-color: #ffffff !important;
   color: #000000 !important;
 }
 
