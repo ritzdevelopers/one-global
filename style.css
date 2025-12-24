@@ -171,7 +171,7 @@ img {
 
 @media (min-width: 1445px) {
   section:not(:first-of-type) {
-    width: 80% !important;
+    width: 90% !important;
     margin: 0 auto !important;
   }
 }

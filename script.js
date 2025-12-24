@@ -829,12 +829,30 @@ function closePopup() {
       clearTimeout(popupReopenTimer);
     }
     
-    // If form not submitted, set timer to reopen after 10 seconds
+    // If form not submitted, set timer to reopen after 1 minute
     if (!isFormSubmitted) {
-      popupReopenTimer = setTimeout(() => {
-        openPopup();
-      }, 10000); // 10 seconds
+      startAutoOpenTimer();
     }
+  }
+}
+
+// Function to start auto-open timer (opens popup every 1 minute)
+function startAutoOpenTimer() {
+  // Clear any existing timer
+  if (popupAutoOpenTimer) {
+    clearTimeout(popupAutoOpenTimer);
+  }
+  
+  // Only start timer if form hasn't been submitted
+  if (!isFormSubmitted) {
+    popupAutoOpenTimer = setTimeout(() => {
+      // Only open if popup is not already visible
+      if (popupModal && popupModal.classList.contains('hidden')) {
+        openPopup();
+      }
+      // Schedule next auto-open after 1 minute
+      startAutoOpenTimer();
+    }, 60000); // 1 minute = 60000 milliseconds
   }
 }
 
@@ -908,5 +926,10 @@ if (popupForm) {
   });
 }
 
-// Auto-open popup removed - popup will only open on button clicks
+// Auto-open popup every 1 minute
+// Start auto-open timer when page loads
+window.addEventListener('load', () => {
+  // Wait 1 minute before first auto-open
+  startAutoOpenTimer();
+});
 
