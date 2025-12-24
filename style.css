@@ -103,6 +103,36 @@ body.menu-open {
   }
 }
 
+/* Navbar Logo Swap on Scroll */
+#navbar .navbar-logo-default {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  position: relative;
+  display: block;
+}
+
+#navbar .navbar-logo-scrolled {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+#navbar.bg-black .navbar-logo-default {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+#navbar.bg-black .navbar-logo-scrolled {
+  opacity: 1;
+  position: relative;
+}
+
 /* Additional Responsive Styles */
 @media (max-width: 1279px) {
   /* Ensure images scale properly */
