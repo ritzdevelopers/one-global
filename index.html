@@ -817,7 +817,7 @@
               class="w-full lg:w-auto h-[200px] sm:h-[250px] hidden lg:block lg:h-[328px] border-[1px] border-[#E6E6E6] mx-auto lg:mx-0"
             >
               <img
-                src="images/s2/s2i2.png"
+                src="images/fabluxe-01-01.jpg"
                 alt=""
                 class="w-full h-full object-cover"
               />
@@ -898,42 +898,42 @@
         >
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
-              src="images/s3/g1.png"
+              src="images/fabluxe-01-02.jpg"
               alt=""
               class="w-full h-full object-cover gallery-image"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
-              src="images/s3/g2.png"
+              src="images/fabluxe-01-03.jpg"
               alt=""
               class="w-full h-full object-cover gallery-image"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
-              src="images/s3/g3.png"
+              src="images/fabluxe-01-04.jpg"
               alt=""
               class="w-full h-full object-cover gallery-image"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
-              src="images/s3/g4.png"
+              src="images/fabluxe-01-05.jpg"
               alt=""
               class="w-full h-full object-cover gallery-image"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
-              src="images/s3/g5.png"
+                src="images/fabluxe-01-06.jpg"
               alt=""
               class="w-full h-full object-cover gallery-image"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
-              src="images/s3/g6.png"
+              src="images/fabluxe-01-07.jpg"
               alt=""
               class="w-full h-full object-cover gallery-image"
             />
@@ -1031,7 +1031,7 @@
               <!-- Image Div  -->
               <div class="w-full sm:w-[280px] md:w-[365px] h-[250px] sm:h-[300px] md:h-[382px]">
                 <img
-                  src="images/s4/s4i2.png"
+                  src="images/365by-382.png"
                   alt=""
                   class="w-full h-full object-cover"
                 />
@@ -1050,7 +1050,7 @@
               <!-- Image Div  -->
               <div class="w-full sm:w-[250px] md:w-[328px] min-h-[180px] sm:min-h-[200px] md:h-[252px] bg-[#D9D9D9]">
                 <img
-                  src="images/s4/s4i3.png"
+                  src="images/328-by-252.jpg"
                   alt=""
                   class="w-full h-full object-cover"
                 />
@@ -1322,7 +1322,7 @@
             <!-- Right Side Container  -->
             <div class="h-full w-[242px] hidden sm:block">
               <img
-                src="images/s5/s5i1.png"
+                src="images/242-by-281.jpg"
                 alt=""
                 class="w-full h-full object-cover"
               />
@@ -1367,7 +1367,7 @@
 
     <!-- Popup Form Modal -->
     <div id="popup-modal" class="popup-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div class="popup-content relative w-[90%] max-w-[900px] bg-white rounded-lg overflow-hidden flex flex-col lg:flex-row max-h-[90vh] lg:max-h-[600px]">
+      <div class="popup-content relative w-[90%] max-w-[1000px] bg-white rounded-lg overflow-hidden flex flex-col lg:flex-row">
         <!-- Close Button -->
         <button
           id="popup-close"
@@ -1391,65 +1391,72 @@
         </button>
 
         <!-- Left Side - Image (Hidden on mobile) -->
-        <div class="hidden lg:block w-[45%] h-full">
+        <div class="popup-image-container hidden lg:block w-[45%] ">
           <img
-            src="images/s2/s2i1.jpg"
+            src="https://i.pinimg.com/736x/ab/08/f7/ab08f7df42682e2454b824670a6b0eaf.jpg"
             alt=""
             class="w-full h-full object-cover"
           />
         </div>
 
         <!-- Right Side - Form -->
-        <div class="w-full lg:w-[55%] flex flex-col gap-4 p-6 md:p-8 overflow-y-auto">
-          <h2
-            class="font-[400] text-[24px] md:text-[29px] text-black font-baskervville font-regular"
-          >
-            Request a Call Back
-          </h2>
-          <form id="popup-form" class="flex flex-col gap-4">
-            <div class="flex flex-col md:flex-row justify-between gap-4">
+        <div class="popup-form-container w-full lg:w-[55%] flex flex-col justify-center gap-5 md:gap-6 p-6 md:p-8 lg:p-10 overflow-y-auto">
+          <div class="flex flex-col gap-3 md:gap-4 mb-2">
+            <h2
+              class="font-[400] text-[24px] md:text-[29px] lg:text-[32px] text-black font-baskervville font-regular"
+            >
+              Request a Call Back
+            </h2>
+            <p
+              class="font-[400] text-[14px] md:text-[15px] lg:text-[16px] text-[#666666] font-open-sans font-regular leading-relaxed max-w-full lg:max-w-[500px]"
+            >
+              Fill out the form below and our team will get back to you shortly. We're here to help you find your perfect property.
+            </p>
+          </div>
+          <form id="popup-form" class="flex flex-col gap-5 md:gap-6">
+            <div class="flex flex-col md:flex-row justify-between gap-4 md:gap-5">
               <input
                 type="text"
                 name="name"
                 placeholder="Your Name*"
                 required
-                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Your Email*"
                 required
-                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
             </div>
-            <div class="flex flex-col md:flex-row justify-between gap-4">
+            <div class="flex flex-col md:flex-row justify-between gap-4 md:gap-5">
               <input
                 type="tel"
                 name="phone"
                 placeholder="Your Phone*"
                 required
-                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
               <input
                 type="text"
                 name="message"
                 placeholder="Your Message*"
                 required
-                class="w-full md:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
             </div>
-            <div class="flex flex-col md:flex-row justify-between gap-4">
-              <div class="w-full md:w-[274px]">
+            <div class="flex flex-col md:flex-row justify-between gap-4 md:gap-5 items-end mt-2">
+              <div class="w-full md:w-[274px] lg:w-[300px]">
                 <p
-                  class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                  class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular lg:pr-4"
                 >
                   Explore premium properties with trusted !
                 </p>
               </div>
               <button
                 type="submit"
-                class="w-full md:w-[221px] h-[50px] md:h-[58px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4  pr-1 pl-2 cursor-pointer"
+                class="w-full md:w-[221px] lg:w-[240px] h-[50px] md:h-[58px] lg:h-[65px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 pr-1 pl-2 cursor-pointer"
               >
                 <p
                   class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
