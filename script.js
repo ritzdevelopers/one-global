@@ -1158,6 +1158,7 @@ window.addEventListener('load', () => {
 (function() {
   const galleryLightbox = document.getElementById('gallery-lightbox');
   const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
+  const galleryImageContainer = document.getElementById('gallery-image-container');
   const galleryLightboxClose = document.getElementById('gallery-lightbox-close');
   const galleryLightboxPrev = document.getElementById('gallery-lightbox-prev');
   const galleryLightboxNext = document.getElementById('gallery-lightbox-next');
@@ -1176,15 +1177,15 @@ window.addEventListener('load', () => {
 
   // Function to update the displayed image with smooth animation
   function updateLightboxImage(index, direction = 'next') {
-    if (galleryLightboxImage && galleryImageSources.length > 0) {
-      // Remove any existing animation classes
-      galleryLightboxImage.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+    if (galleryLightboxImage && galleryImageContainer && galleryImageSources.length > 0) {
+      // Remove any existing animation classes from container
+      galleryImageContainer.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
       
-      // Add slide out animation based on direction
+      // Add slide out animation based on direction to container
       if (direction === 'next') {
-        galleryLightboxImage.classList.add('slide-out-left');
+        galleryImageContainer.classList.add('slide-out-left');
       } else {
-        galleryLightboxImage.classList.add('slide-out-right');
+        galleryImageContainer.classList.add('slide-out-right');
       }
       
       // Wait for slide out animation, then update image and slide in
@@ -1196,19 +1197,19 @@ window.addEventListener('load', () => {
         newImage.onload = () => {
           galleryLightboxImage.src = galleryImageSources[currentImageIndex];
           
-          // Remove slide out class and add slide in class
-          galleryLightboxImage.classList.remove('slide-out-left', 'slide-out-right');
+          // Remove slide out class and add slide in class to container
+          galleryImageContainer.classList.remove('slide-out-left', 'slide-out-right');
           
-          // Add slide in animation based on direction
+          // Add slide in animation based on direction to container
           if (direction === 'next') {
-            galleryLightboxImage.classList.add('slide-in-right');
+            galleryImageContainer.classList.add('slide-in-right');
           } else {
-            galleryLightboxImage.classList.add('slide-in-left');
+            galleryImageContainer.classList.add('slide-in-left');
           }
           
           // Remove animation class after animation completes
           setTimeout(() => {
-            galleryLightboxImage.classList.remove('slide-in-left', 'slide-in-right');
+            galleryImageContainer.classList.remove('slide-in-left', 'slide-in-right');
           }, 400);
         };
         newImage.src = galleryImageSources[currentImageIndex];
@@ -1223,9 +1224,12 @@ window.addEventListener('load', () => {
       const index = galleryImageSources.indexOf(imageSrc);
       if (index !== -1) {
         currentImageIndex = index;
-        // Set image source immediately without animation on open
+        // Set image source immediately
         galleryLightboxImage.src = galleryImageSources[currentImageIndex];
-        galleryLightboxImage.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+        // Remove all animation classes from container
+        if (galleryImageContainer) {
+          galleryImageContainer.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right', 'open-from-zero');
+        }
       } else {
         // Fallback if image not found in array
         galleryLightboxImage.src = imageSrc;
@@ -1239,6 +1243,26 @@ window.addEventListener('load', () => {
       requestAnimationFrame(() => {
         setTimeout(() => {
           galleryLightbox.classList.add('show');
+          // Add open-from-zero animation to container
+          if (galleryImageContainer) {
+            // Reset container to initial state
+            galleryImageContainer.style.width = '0';
+            galleryImageContainer.style.height = '0';
+            galleryImageContainer.style.minWidth = '0';
+            galleryImageContainer.style.minHeight = '0';
+            // Trigger animation
+            requestAnimationFrame(() => {
+              galleryImageContainer.classList.add('open-from-zero');
+              // Remove animation class and reset styles after it completes
+              setTimeout(() => {
+                galleryImageContainer.classList.remove('open-from-zero');
+                galleryImageContainer.style.width = '';
+                galleryImageContainer.style.height = '';
+                galleryImageContainer.style.minWidth = '';
+                galleryImageContainer.style.minHeight = '';
+              }, 500);
+            });
+          }
         }, 10);
         // Prevent body scroll when lightbox is open
         document.body.classList.add('lightbox-open');
