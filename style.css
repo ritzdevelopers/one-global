@@ -676,11 +676,6 @@ button > img {
   object-fit: cover;
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease;
-}
-
-.popup-image-container:hover img {
-  transform: scale(1.05);
 }
 
 /* Popup Form Container */
