@@ -934,37 +934,127 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
-// Banner Slider - Infinite Loop
+// Banner Slider - Infinite Loop with Manual Navigation
 // ============================================
 (function() {
   // Desktop Slider
   const desktopSlider = document.querySelector('.desktop-slider-container');
   const desktopSlides = document.querySelectorAll('.desktop-slide');
+  const desktopPrevBtn = document.getElementById('desktop-slider-prev');
+  const desktopNextBtn = document.getElementById('desktop-slider-next');
+  const desktopPagination = document.getElementById('desktop-slider-pagination');
   let desktopCurrentIndex = 0;
   let desktopInterval = null;
 
   // Mobile Slider
   const mobileSlider = document.querySelector('.mobile-slider-container');
   const mobileSlides = document.querySelectorAll('.mobile-slide');
+  const mobilePrevBtn = document.getElementById('mobile-slider-prev');
+  const mobileNextBtn = document.getElementById('mobile-slider-next');
+  const mobilePagination = document.getElementById('mobile-slider-pagination');
   let mobileCurrentIndex = 0;
   let mobileInterval = null;
 
-  // Function to move desktop slider
+  // Function to update desktop pagination dots
+  function updateDesktopPagination() {
+    if (!desktopPagination || desktopSlides.length === 0) return;
+    
+    desktopPagination.innerHTML = '';
+    desktopSlides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = `slider-pagination-dot ${index === desktopCurrentIndex ? 'active' : ''}`;
+      dot.addEventListener('click', () => {
+        goToDesktopSlide(index);
+      });
+      desktopPagination.appendChild(dot);
+    });
+  }
+
+  // Function to update mobile pagination dots
+  function updateMobilePagination() {
+    if (!mobilePagination || mobileSlides.length === 0) return;
+    
+    mobilePagination.innerHTML = '';
+    mobileSlides.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.className = `slider-pagination-dot ${index === mobileCurrentIndex ? 'active' : ''}`;
+      dot.addEventListener('click', () => {
+        goToMobileSlide(index);
+      });
+      mobilePagination.appendChild(dot);
+    });
+  }
+
+  // Function to go to specific desktop slide
+  function goToDesktopSlide(index) {
+    if (desktopSlides.length === 0) return;
+    desktopCurrentIndex = index;
+    const translateX = -desktopCurrentIndex * 100;
+    desktopSlider.style.transform = `translateX(${translateX}%)`;
+    updateDesktopPagination();
+    resetDesktopInterval();
+  }
+
+  // Function to go to specific mobile slide
+  function goToMobileSlide(index) {
+    if (mobileSlides.length === 0) return;
+    mobileCurrentIndex = index;
+    const translateX = -mobileCurrentIndex * 100;
+    mobileSlider.style.transform = `translateX(${translateX}%)`;
+    updateMobilePagination();
+    resetMobileInterval();
+  }
+
+  // Function to move desktop slider forward
   function moveDesktopSlider() {
     if (desktopSlides.length === 0) return;
     
     desktopCurrentIndex = (desktopCurrentIndex + 1) % desktopSlides.length;
     const translateX = -desktopCurrentIndex * 100;
     desktopSlider.style.transform = `translateX(${translateX}%)`;
+    updateDesktopPagination();
   }
 
-  // Function to move mobile slider
+  // Function to move desktop slider backward
+  function moveDesktopSliderBackward() {
+    if (desktopSlides.length === 0) return;
+    
+    desktopCurrentIndex = (desktopCurrentIndex - 1 + desktopSlides.length) % desktopSlides.length;
+    const translateX = -desktopCurrentIndex * 100;
+    desktopSlider.style.transform = `translateX(${translateX}%)`;
+    updateDesktopPagination();
+  }
+
+  // Function to move mobile slider forward
   function moveMobileSlider() {
     if (mobileSlides.length === 0) return;
     
     mobileCurrentIndex = (mobileCurrentIndex + 1) % mobileSlides.length;
     const translateX = -mobileCurrentIndex * 100;
     mobileSlider.style.transform = `translateX(${translateX}%)`;
+    updateMobilePagination();
+  }
+
+  // Function to move mobile slider backward
+  function moveMobileSliderBackward() {
+    if (mobileSlides.length === 0) return;
+    
+    mobileCurrentIndex = (mobileCurrentIndex - 1 + mobileSlides.length) % mobileSlides.length;
+    const translateX = -mobileCurrentIndex * 100;
+    mobileSlider.style.transform = `translateX(${translateX}%)`;
+    updateMobilePagination();
+  }
+
+  // Function to reset desktop interval
+  function resetDesktopInterval() {
+    if (desktopInterval) clearInterval(desktopInterval);
+    desktopInterval = setInterval(moveDesktopSlider, 5000);
+  }
+
+  // Function to reset mobile interval
+  function resetMobileInterval() {
+    if (mobileInterval) clearInterval(mobileInterval);
+    mobileInterval = setInterval(moveMobileSlider, 5000);
   }
 
   // Initialize sliders
@@ -972,6 +1062,8 @@ window.addEventListener('load', () => {
     // Set initial positions
     if (desktopSlider && desktopSlides.length > 0) {
       desktopSlider.style.transform = 'translateX(0%)';
+      desktopCurrentIndex = 0;
+      updateDesktopPagination();
       // Clear existing interval
       if (desktopInterval) clearInterval(desktopInterval);
       // Start desktop slider
@@ -980,11 +1072,43 @@ window.addEventListener('load', () => {
 
     if (mobileSlider && mobileSlides.length > 0) {
       mobileSlider.style.transform = 'translateX(0%)';
+      mobileCurrentIndex = 0;
+      updateMobilePagination();
       // Clear existing interval
       if (mobileInterval) clearInterval(mobileInterval);
       // Start mobile slider
       mobileInterval = setInterval(moveMobileSlider, 5000);
     }
+  }
+
+  // Desktop navigation button event listeners
+  if (desktopPrevBtn) {
+    desktopPrevBtn.addEventListener('click', () => {
+      moveDesktopSliderBackward();
+      resetDesktopInterval();
+    });
+  }
+
+  if (desktopNextBtn) {
+    desktopNextBtn.addEventListener('click', () => {
+      moveDesktopSlider();
+      resetDesktopInterval();
+    });
+  }
+
+  // Mobile navigation button event listeners
+  if (mobilePrevBtn) {
+    mobilePrevBtn.addEventListener('click', () => {
+      moveMobileSliderBackward();
+      resetMobileInterval();
+    });
+  }
+
+  if (mobileNextBtn) {
+    mobileNextBtn.addEventListener('click', () => {
+      moveMobileSlider();
+      resetMobileInterval();
+    });
   }
 
   // Initialize on page load
@@ -1002,6 +1126,8 @@ window.addEventListener('load', () => {
       mobileCurrentIndex = 0;
       if (desktopSlider) desktopSlider.style.transform = 'translateX(0%)';
       if (mobileSlider) mobileSlider.style.transform = 'translateX(0%)';
+      updateDesktopPagination();
+      updateMobilePagination();
       initSliders();
     }, 250);
   });
@@ -1012,7 +1138,7 @@ window.addEventListener('load', () => {
       if (desktopInterval) clearInterval(desktopInterval);
     });
     desktopSlider.parentElement.addEventListener('mouseleave', () => {
-      desktopInterval = setInterval(moveDesktopSlider, 5000);
+      resetDesktopInterval();
     });
   }
 
@@ -1021,7 +1147,80 @@ window.addEventListener('load', () => {
       if (mobileInterval) clearInterval(mobileInterval);
     });
     mobileSlider.parentElement.addEventListener('touchend', () => {
-      mobileInterval = setInterval(moveMobileSlider, 5000);
+      resetMobileInterval();
     });
   }
+})();
+
+// ============================================
+// Gallery Lightbox Functionality
+// ============================================
+(function() {
+  const galleryLightbox = document.getElementById('gallery-lightbox');
+  const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
+  const galleryLightboxClose = document.getElementById('gallery-lightbox-close');
+  const galleryImages = document.querySelectorAll('.gallery-image[data-gallery-src]');
+
+  // Function to open lightbox
+  function openLightbox(imageSrc) {
+    if (galleryLightbox && galleryLightboxImage) {
+      galleryLightboxImage.src = imageSrc;
+      galleryLightbox.classList.remove('hidden');
+      // Use requestAnimationFrame to ensure display change happens before animation
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          galleryLightbox.classList.add('show');
+        }, 10);
+        // Prevent body scroll when lightbox is open
+        document.body.classList.add('lightbox-open');
+      });
+    }
+  }
+
+  // Function to close lightbox
+  function closeLightbox() {
+    if (galleryLightbox) {
+      galleryLightbox.classList.remove('show');
+      // Wait for animation to complete before hiding
+      setTimeout(() => {
+        galleryLightbox.classList.add('hidden');
+        // Restore body scroll
+        document.body.classList.remove('lightbox-open');
+      }, 300);
+    }
+  }
+
+  // Add click event listeners to gallery images
+  galleryImages.forEach((image) => {
+    image.addEventListener('click', () => {
+      const imageSrc = image.getAttribute('data-gallery-src') || image.getAttribute('src');
+      if (imageSrc) {
+        openLightbox(imageSrc);
+      }
+    });
+  });
+
+  // Close lightbox on close button click
+  if (galleryLightboxClose) {
+    galleryLightboxClose.addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeLightbox();
+    });
+  }
+
+  // Close lightbox when clicking outside the image (on backdrop)
+  if (galleryLightbox) {
+    galleryLightbox.addEventListener('click', (e) => {
+      if (e.target === galleryLightbox) {
+        closeLightbox();
+      }
+    });
+  }
+
+  // Close lightbox on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && galleryLightbox && galleryLightbox.classList.contains('show')) {
+      closeLightbox();
+    }
+  });
 })();

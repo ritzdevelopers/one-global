@@ -234,6 +234,53 @@
             alt=""
           />
         </div>
+        <!-- Desktop Navigation Buttons -->
+        <button
+          id="desktop-slider-prev"
+          class="slider-nav-btn absolute left-4 top-1/2 z-30 w-10 h-10 md:w-12 md:h-12 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+          aria-label="Previous slide"
+        >
+          <svg
+            class="w-5 h-5 md:w-6 md:h-6 text-black"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button
+          id="desktop-slider-next"
+          class="slider-nav-btn absolute top-1/2 right-4 z-30 w-10 h-10 md:w-12 md:h-12 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+          aria-label="Next slide"
+        >
+          <svg
+            class="w-5 h-5 md:w-6 md:h-6 text-black"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+        <!-- Desktop Pagination Dots -->
+        <div
+          id="desktop-slider-pagination"
+          class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-2 items-center"
+        >
+        </div>
       </div>
 
       <!-- Mobile Banner Slider -->
@@ -255,10 +302,57 @@
             alt=""
           />
         </div>
+        <!-- Mobile Navigation Buttons -->
+        <button
+          id="mobile-slider-prev"
+          class="slider-nav-btn absolute top-1/2 left-2 z-30 w-8 h-8 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+          aria-label="Previous slide"
+        >
+          <svg
+            class="w-4 h-4 text-black"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+        <button
+          id="mobile-slider-next"
+          class="slider-nav-btn absolute top-1/2 right-2 z-30 w-8 h-8 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+          aria-label="Next slide"
+        >
+          <svg
+            class="w-4 h-4 text-black"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+        <!-- Mobile Pagination Dots -->
+        <div
+          id="mobile-slider-pagination"
+          class="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center"
+        >
+        </div>
       </div>
       <!-- Absolute Position Content -->
       <div
-        class="w-[400px] lg:w-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 md:px-0"
+        class="min-w-[300px] md:w-[400px] lg:w-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 md:px-0 xl:top-[22rem]"
       >
         <div
           class="w-full h-full relative flex flex-col justify-center items-center"
@@ -394,7 +488,7 @@
                   />
                 </div>
                 <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
-                  <div class="w-full sm:w-[48%] lg:w-[274px]">
+                  <div class="w-[45%] sm:w-[48%] lg:w-[274px]">
                     <p
                       class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular"
                     >
@@ -402,7 +496,7 @@
                     </p>
                   </div>
                   <button
-                    class="w-full w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex justify-end items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1"
+                    class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex lg:justify-end justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1"
                   >
                     <p
                       class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold"
@@ -411,7 +505,7 @@
                     </p>
                     <!-- The Bg Will Change When User Will Hover On Btn It Will conver into black bg color  -->
                     <div
-                      class="callback-icon-container w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full flex items-center justify-center relative transition-colors duration-300"
+                      class="callback-icon-container w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full hidden lg:flex items-center justify-center relative transition-colors duration-300"
                     >
                       <!-- Icon Wrapper - Fixed size container -->
                       <span class="relative inline-block">
@@ -900,42 +994,48 @@
             <img
               src="images/fabluxe-01-02.jpg"
               alt=""
-              class="w-full h-full object-cover gallery-image"
+              class="w-full h-full object-cover gallery-image cursor-pointer"
+              data-gallery-src="images/fabluxe-01-02.jpg"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
               src="images/fabluxe-01-03.jpg"
               alt=""
-              class="w-full h-full object-cover gallery-image"
+              class="w-full h-full object-cover gallery-image cursor-pointer"
+              data-gallery-src="images/fabluxe-01-03.jpg"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
               src="images/fabluxe-01-04.jpg"
               alt=""
-              class="w-full h-full object-cover gallery-image"
+              class="w-full h-full object-cover gallery-image cursor-pointer"
+              data-gallery-src="images/fabluxe-01-04.jpg"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
               src="images/fabluxe-01-05.jpg"
               alt=""
-              class="w-full h-full object-cover gallery-image"
+              class="w-full h-full object-cover gallery-image cursor-pointer"
+              data-gallery-src="images/fabluxe-01-05.jpg"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
                 src="images/fabluxe-01-06.jpg"
               alt=""
-              class="w-full h-full object-cover gallery-image"
+              class="w-full h-full object-cover gallery-image cursor-pointer"
+              data-gallery-src="images/fabluxe-01-06.jpg"
             />
           </div>
           <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
             <img
               src="images/fabluxe-01-07.jpg"
               alt=""
-              class="w-full h-full object-cover gallery-image"
+              class="w-full h-full object-cover gallery-image cursor-pointer"
+              data-gallery-src="images/fabluxe-01-07.jpg"
             />
           </div>
         </div>
@@ -1420,14 +1520,14 @@
                 name="name"
                 placeholder="Your Name*"
                 required
-                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px]  bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
               <input
                 type="email"
                 name="email"
                 placeholder="Your Email*"
                 required
-                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px]  bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
             </div>
             <div class="flex flex-col md:flex-row justify-between gap-4 md:gap-5">
@@ -1436,14 +1536,14 @@
                 name="phone"
                 placeholder="Your Phone*"
                 required
-                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px]  bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
               <input
                 type="text"
                 name="message"
                 placeholder="Your Message*"
                 required
-                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px] lg:h-[65px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
+                class="w-full md:w-[274px] lg:w-[300px] h-[50px] md:h-[60px]  bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
               />
             </div>
             <div class="flex flex-col md:flex-row justify-between gap-4 md:gap-5 items-end mt-2">
@@ -1456,7 +1556,7 @@
               </div>
               <button
                 type="submit"
-                class="w-full md:w-[221px] lg:w-[240px] h-[50px] md:h-[58px] lg:h-[65px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 pr-1 pl-2 cursor-pointer"
+                class="w-full md:w-[221px] lg:w-[240px] h-[50px] md:h-[58px]  flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 pr-1 pl-2 cursor-pointer"
               >
                 <p
                   class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
@@ -1476,6 +1576,41 @@
             </div>
           </form>
         </div>
+      </div>
+    </div>
+
+    <!-- Gallery Lightbox Modal -->
+    <div
+      id="gallery-lightbox"
+      class="gallery-lightbox hidden fixed inset-0 z-[9999] bg-black bg-opacity-95 flex items-center justify-center p-4"
+    >
+      <button
+        id="gallery-lightbox-close"
+        class="absolute top-4 right-4 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition-colors"
+        aria-label="Close gallery image"
+      >
+        <svg
+          class="w-6 h-6 md:w-7 md:h-7"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
+      <div class="gallery-lightbox-content relative w-full h-full flex items-center justify-center max-w-[95vw] max-h-[95vh]">
+        <img
+          id="gallery-lightbox-image"
+          src=""
+          alt="Gallery Image"
+          class="max-w-full max-h-full object-contain"
+        />
       </div>
     </div>
 
