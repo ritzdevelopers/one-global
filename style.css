@@ -638,14 +638,14 @@ button > img {
 }
 
 /* ============================================
-   Popup Modal Styles
+   Popup Modal Styles - Modern Real Estate Design
    ============================================ */
 
 .popup-modal {
   display: flex;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s ease;
 }
 
 .popup-modal.show {
@@ -654,105 +654,235 @@ button > img {
 }
 
 .popup-content {
-  transform: scale(0.9) translateY(20px);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(0.95) translateY(30px);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  opacity: 0;
 }
 
 .popup-modal.show .popup-content {
   transform: scale(1) translateY(0);
+  opacity: 1;
 }
 
-/* Popup form inputs match existing form styling */
-#popup-form input {
-  border: none;
-  outline: none;
-}
-
-#popup-form input:focus {
-  outline: 2px solid #000000;
-  outline-offset: 2px;
-}
-
-/* Popup image container */
+/* Popup Image Container */
 .popup-image-container {
   display: flex;
   align-items: stretch;
+  position: relative;
+  min-height: 400px;
 }
 
 .popup-image-container img {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  transition: transform 0.5s ease;
 }
 
-/* Popup form container - ensure proper spacing and centering */
+.popup-image-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Popup Form Container */
 .popup-form-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background: #FFFFFF;
 }
 
-/* Popup heading and description container */
-.popup-form-container > div:first-child {
-  flex-shrink: 0;
+/* Popup Form Inputs - Modern Styling */
+.popup-input {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Popup form styling */
-#popup-form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.popup-input:hover {
+  background-color: #F5F5F5;
+  border-color: #D0D0D0;
 }
 
-/* Responsive popup */
-@media (max-width: 1023px) {
+.popup-input:focus {
+  background-color: #FFFFFF;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.popup-input::placeholder {
+  color: #9CA3AF;
+  transition: color 0.3s ease;
+}
+
+.popup-input:focus::placeholder {
+  color: #D1D5DB;
+}
+
+/* Popup Submit Button */
+.popup-submit-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.popup-submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Popup Submit Button Icon Swap Effect */
+.popup-submit-btn .popup-submit-default-icon {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-submit-btn .popup-submit-hover-icon {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.popup-submit-btn:hover .popup-submit-default-icon {
+  opacity: 0;
+}
+
+.popup-submit-btn:hover .popup-submit-hover-icon {
+  opacity: 1;
+}
+
+/* Responsive Popup Styles */
+@media (max-width: 640px) {
+  .popup-content {
+    max-height: 95vh;
+    border-radius: 1rem;
+  }
+  
+  .popup-form-container {
+    padding: 1.5rem;
+    max-height: 95vh;
+    overflow-y: auto;
+  }
+  
+  .popup-form-container > div:first-child {
+    margin-bottom: 1.5rem;
+  }
+  
+  .popup-form-container > div:first-child h2 {
+    font-size: 24px;
+  }
+  
+  .popup-form-container > div:first-child p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  
+  #popup-form {
+    gap: 1.25rem;
+  }
+  
+  .popup-input {
+    height: 52px;
+    font-size: 14px;
+  }
+  
+  .popup-submit-btn {
+    width: 100%;
+    min-width: auto;
+    height: 52px;
+  }
+  
+  #popup-close {
+    width: 2.5rem;
+    height: 2.5rem;
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 767px) {
+  .popup-content {
+    max-height: 92vh;
+  }
+  
+  .popup-form-container {
+    padding: 2rem;
+  }
+  
+  .popup-form-container > div:first-child h2 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
   .popup-content {
     max-height: 90vh;
   }
   
+  .popup-form-container {
+    padding: 2.5rem;
+  }
+  
   .popup-image-container {
-    min-height: auto;
-  }
-  
-  .popup-form-container {
-    min-height: auto;
-    padding: 1.5rem;
-  }
-  
-  .popup-form-container > div:first-child p {
-    line-height: 1.6;
+    min-height: 500px;
   }
 }
 
-/* Tablet adjustments */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .popup-form-container {
-    padding: 2rem;
-  }
-}
-
-/* Large screens - ensure paragraph fills space */
 @media (min-width: 1024px) {
-  .popup-form-container > div:first-child p {
-    line-height: 1.7;
-    padding-right: 1rem;
-  }
-}
-
-/* Extra large screens */
-@media (min-width: 1280px) {
-  .popup-form-container > div:first-child p {
-    line-height: 1.8;
-    font-size: 17px;
-  }
-}
-
-/* Extra large screens */
-@media (min-width: 1280px) {
   .popup-content {
     max-width: 1100px;
   }
+  
+  .popup-form-container {
+    padding: 3rem;
+  }
+  
+  .popup-image-container {
+    min-height: 600px;
+  }
+  
+  .popup-form-container > div:first-child h2 {
+    font-size: 36px;
+  }
+  
+  .popup-form-container > div:first-child p {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+}
+
+@media (min-width: 1280px) {
+  .popup-content {
+    max-width: 1200px;
+  }
+  
+  .popup-form-container {
+    padding: 3.5rem;
+  }
+  
+  .popup-form-container > div:first-child p {
+    font-size: 17px;
+    line-height: 1.8;
+  }
+}
+
+/* Smooth scrollbar for form container */
+.popup-form-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.popup-form-container::-webkit-scrollbar-track {
+  background: #F5F5F5;
+}
+
+.popup-form-container::-webkit-scrollbar-thumb {
+  background: #D1D5DB;
+  border-radius: 3px;
+}
+
+.popup-form-container::-webkit-scrollbar-thumb:hover {
+  background: #9CA3AF;
 }
 
 
@@ -1468,4 +1598,5 @@ body.lightbox-open {
     min-width: 570px;
     min-height: 570px;
   }
+}
 }
