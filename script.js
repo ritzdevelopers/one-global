@@ -1153,19 +1153,88 @@ window.addEventListener('load', () => {
 })();
 
 // ============================================
-// Gallery Lightbox Functionality
+// Gallery Lightbox Functionality with Navigation
 // ============================================
 (function() {
   const galleryLightbox = document.getElementById('gallery-lightbox');
   const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
   const galleryLightboxClose = document.getElementById('gallery-lightbox-close');
+  const galleryLightboxPrev = document.getElementById('gallery-lightbox-prev');
+  const galleryLightboxNext = document.getElementById('gallery-lightbox-next');
   const galleryImages = document.querySelectorAll('.gallery-image[data-gallery-src]');
+  
+  // Create array of all gallery image sources
+  const galleryImageSources = [];
+  galleryImages.forEach((image) => {
+    const imageSrc = image.getAttribute('data-gallery-src') || image.getAttribute('src');
+    if (imageSrc) {
+      galleryImageSources.push(imageSrc);
+    }
+  });
+  
+  let currentImageIndex = 0;
+
+  // Function to update the displayed image with smooth animation
+  function updateLightboxImage(index, direction = 'next') {
+    if (galleryLightboxImage && galleryImageSources.length > 0) {
+      // Remove any existing animation classes
+      galleryLightboxImage.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+      
+      // Add slide out animation based on direction
+      if (direction === 'next') {
+        galleryLightboxImage.classList.add('slide-out-left');
+      } else {
+        galleryLightboxImage.classList.add('slide-out-right');
+      }
+      
+      // Wait for slide out animation, then update image and slide in
+      setTimeout(() => {
+        currentImageIndex = index;
+        
+        // Preload the new image before displaying
+        const newImage = new Image();
+        newImage.onload = () => {
+          galleryLightboxImage.src = galleryImageSources[currentImageIndex];
+          
+          // Remove slide out class and add slide in class
+          galleryLightboxImage.classList.remove('slide-out-left', 'slide-out-right');
+          
+          // Add slide in animation based on direction
+          if (direction === 'next') {
+            galleryLightboxImage.classList.add('slide-in-right');
+          } else {
+            galleryLightboxImage.classList.add('slide-in-left');
+          }
+          
+          // Remove animation class after animation completes
+          setTimeout(() => {
+            galleryLightboxImage.classList.remove('slide-in-left', 'slide-in-right');
+          }, 400);
+        };
+        newImage.src = galleryImageSources[currentImageIndex];
+      }, 150);
+    }
+  }
 
   // Function to open lightbox
   function openLightbox(imageSrc) {
-    if (galleryLightbox && galleryLightboxImage) {
-      galleryLightboxImage.src = imageSrc;
-      galleryLightbox.classList.remove('hidden');
+    if (galleryLightbox && galleryLightboxImage && galleryImageSources.length > 0) {
+      // Find the index of the clicked image
+      const index = galleryImageSources.indexOf(imageSrc);
+      if (index !== -1) {
+        currentImageIndex = index;
+        // Set image source immediately without animation on open
+        galleryLightboxImage.src = galleryImageSources[currentImageIndex];
+        galleryLightboxImage.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
+      } else {
+        // Fallback if image not found in array
+        galleryLightboxImage.src = imageSrc;
+        currentImageIndex = 0;
+      }
+      
+      // Remove closing class if present
+      galleryLightbox.classList.remove('closing', 'hidden');
+      
       // Use requestAnimationFrame to ensure display change happens before animation
       requestAnimationFrame(() => {
         setTimeout(() => {
@@ -1180,13 +1249,33 @@ window.addEventListener('load', () => {
   // Function to close lightbox
   function closeLightbox() {
     if (galleryLightbox) {
+      // Add closing class for close animation
+      galleryLightbox.classList.add('closing');
       galleryLightbox.classList.remove('show');
+      
       // Wait for animation to complete before hiding
       setTimeout(() => {
+        galleryLightbox.classList.remove('closing');
         galleryLightbox.classList.add('hidden');
         // Restore body scroll
         document.body.classList.remove('lightbox-open');
       }, 300);
+    }
+  }
+
+  // Function to show previous image
+  function showPreviousImage() {
+    if (galleryImageSources.length > 0) {
+      const newIndex = (currentImageIndex - 1 + galleryImageSources.length) % galleryImageSources.length;
+      updateLightboxImage(newIndex, 'prev');
+    }
+  }
+
+  // Function to show next image
+  function showNextImage() {
+    if (galleryImageSources.length > 0) {
+      const newIndex = (currentImageIndex + 1) % galleryImageSources.length;
+      updateLightboxImage(newIndex, 'next');
     }
   }
 
@@ -1208,6 +1297,22 @@ window.addEventListener('load', () => {
     });
   }
 
+  // Previous button click handler
+  if (galleryLightboxPrev) {
+    galleryLightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPreviousImage();
+    });
+  }
+
+  // Next button click handler
+  if (galleryLightboxNext) {
+    galleryLightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showNextImage();
+    });
+  }
+
   // Close lightbox when clicking outside the image (on backdrop)
   if (galleryLightbox) {
     galleryLightbox.addEventListener('click', (e) => {
@@ -1217,10 +1322,16 @@ window.addEventListener('load', () => {
     });
   }
 
-  // Close lightbox on Escape key
+  // Keyboard navigation
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && galleryLightbox && galleryLightbox.classList.contains('show')) {
-      closeLightbox();
+    if (galleryLightbox && galleryLightbox.classList.contains('show')) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      } else if (e.key === 'ArrowLeft') {
+        showPreviousImage();
+      } else if (e.key === 'ArrowRight') {
+        showNextImage();
+      }
     }
   });
 })();

@@ -1582,8 +1582,9 @@
     <!-- Gallery Lightbox Modal -->
     <div
       id="gallery-lightbox"
-      class="gallery-lightbox hidden fixed inset-0 z-[9999] bg-black bg-opacity-95 flex items-center justify-center p-4"
+      class="gallery-lightbox hidden fixed inset-0 z-[9999] bg-black bg-opacity-75 flex items-center justify-center p-4"
     >
+      <!-- Close Button -->
       <button
         id="gallery-lightbox-close"
         class="absolute top-4 right-4 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition-colors"
@@ -1604,12 +1605,58 @@
           />
         </svg>
       </button>
-      <div class="gallery-lightbox-content relative w-full h-full flex items-center justify-center max-w-[95vw] max-h-[95vh]">
+      
+      <!-- Left Navigation Button -->
+      <button
+        id="gallery-lightbox-prev"
+        class="gallery-nav-btn absolute left-4 top-1/2 -translate-y-1/2 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-80 hover:bg-opacity-100 text-black rounded-full transition-all duration-300 shadow-lg"
+        aria-label="Previous image"
+      >
+        <svg
+          class="w-5 h-5 md:w-6 md:h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"
+          />
+        </svg>
+      </button>
+      
+      <!-- Right Navigation Button -->
+      <button
+        id="gallery-lightbox-next"
+        class="gallery-nav-btn absolute right-4 top-1/2 -translate-y-1/2 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-80 hover:bg-opacity-100 text-black rounded-full transition-all duration-300 shadow-lg"
+        aria-label="Next image"
+      >
+        <svg
+          class="w-5 h-5 md:w-6 md:h-6"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M9 5l7 7-7 7"
+          />
+        </svg>
+      </button>
+      
+      <!-- Image Container -->
+      <div class="gallery-lightbox-content relative w-full h-full flex items-center justify-center">
         <img
           id="gallery-lightbox-image"
           src=""
           alt="Gallery Image"
-          class="max-w-full max-h-full object-contain"
+          class="gallery-lightbox-img max-w-[90vw] max-h-[90vh] w-auto h-auto object-contain"
         />
       </div>
     </div>
