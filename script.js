@@ -1359,3 +1359,11 @@ window.addEventListener('load', () => {
     }
   });
 })();
+
+// Ritz Media World Link Handler
+const rmwLink = document.getElementById('rmwLink');
+if (rmwLink) {
+  rmwLink.addEventListener('click', () => {
+    window.open('https://ritzmediaworld.com/', '_blank');
+  });
+}
