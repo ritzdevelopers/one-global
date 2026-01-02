@@ -97,12 +97,19 @@
         <img src="images/forbus-logo3.png" alt="" class="w-[174px] w-[116px]" />
       </div>
 
-      <!-- Menu Icon Button -->
-      <button
-        id="menu-toggle"
-        class="z-50 p-2 cursor-pointer"
-        aria-label="Toggle menu"
-      >
+      <!-- Logo 2 and Menu Icon Container -->
+      <div class="flex items-center gap-3">
+        <!-- Logo 2 -->
+        <div class="xl:hidden">
+          <img src="images/logo2.png" alt="" class="h-auto w-auto max-w-[100px] sm:max-w-[140px]" />
+        </div>
+        
+        <!-- Menu Icon Button -->
+        <button
+          id="menu-toggle"
+          class="z-50 p-2 cursor-pointer"
+          aria-label="Toggle menu"
+        >
         <svg
           id="menu-icon"
           class="w-8 h-8 text-white"
@@ -134,6 +141,7 @@
           ></path>
         </svg>
       </button>
+      </div>
     </nav>
 
     <!-- Mobile Menu Overlay -->
@@ -416,7 +424,7 @@
     </section>
 
     <!-- Section 2 -->
-    <section id="overview" class="w-full relative flex justify-center bg-white">
+    <section id="overview" class="w-full bgContainer relative flex justify-center bg-white">
       <!-- Highlights anchor for smooth scrolling -->
       <div id="highlights" style="position: absolute; top: 0; pointer-events: none;"></div>
       <!-- Absolute Position Image  -->
@@ -534,7 +542,7 @@
             class="w-full flex flex-col sm:flex-row justify-between px-4 sm:px-6 md:px-10 gap-3 sm:gap-4"
           >
             <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[80px] bg-[#F2F2F2] rounded-[2px] flex lg:flex-row flex-col lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center gap-2"
+              class="w-full sm:w-[48%] md:w-[301px] lg:h-[80px] bg-[#F2F2F2] rounded-[2px] flex flex-row lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center lg:gap-5 gap-3"
             >
               <img
                 src="/svgs/building.svg"
@@ -545,17 +553,17 @@
               <div
                 class="flex flex-col gap-2 justify-center items-end text-end"
               >
-                <p class="font-[400] text-[14px] md:text-[16px] text-black text-end">
+                <p class="font-[400] text-[13px] lg:text-[16px] text-black text-end leading-relaxed">
                   Apartments
                 </p>
-                <p class="font-[700] text-[14px] md:text-[16px] text-black text-end"
+                <p class="font-[700] text-[13px] lg:text-[16px] text-black text-end leading-relaxed"
                   >4 & 5 BHK</p
                 >
               </div>
             </div>
 
             <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-col lg:flex-row gap-2"
+              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3"
             >
               <img
                 src="/svgs/location.svg"
@@ -567,19 +575,19 @@
                 class="flex flex-col gap-2 justify-center items-end text-end"
               >
                 <p
-                  class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular text-end"
+                  class="font-[400] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-regular text-end leading-relaxed"
                 >
                   Location
                 </p>
                   <p
-                  class="font-[700] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-bold text-end"
+                  class="font-[700] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-bold text-end leading-relaxed"
                   >Noida</p
                 >
               </div>
             </div>
 
             <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-col lg:flex-row gap-2"
+              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3"
             >
               <img
                 src="/svgs/container.svg"
@@ -591,19 +599,19 @@
                 class="flex flex-col gap-2 justify-center items-end text-end"
               >
                 <p
-                  class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular text-end"
+                  class="font-[400] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-regular text-end leading-relaxed"
                 >
                   Size
                 </p>
                 <p
-                  class="font-[700] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-bold text-end"
+                  class="font-[700] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-bold text-end leading-relaxed"
                   >2690-3307 sq ft</p
                 >
               </div>
             </div>
 
             <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-col lg:flex-row gap-2"
+              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3"
             >
               <img
                 src="/svgs/rupee.svg"
@@ -615,12 +623,12 @@
                 class="flex flex-col gap-2 justify-center items-end text-end"
               >
                 <p
-                  class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
+                  class="font-[400] text-[13px] lg:text-[16px] text-black font-open-sans font-regular leading-relaxed"
                 >
                   Price
                 </p>
                   <p
-                  class="font-[700] text-[14px] md:text-[16px] text-black font-open-sans font-bold"
+                  class="font-[700] text-[13px] lg:text-[16px] text-black font-open-sans font-bold leading-relaxed"
                   >On Request</p
                 >
               </div>
@@ -965,7 +973,7 @@
     </section>
 
     <!-- Section 3 -->
-    <section id="gallery" class="w-full min-h-screen flex justify-center items-center">
+    <section id="gallery" class="w-full bgContainer min-h-screen flex justify-center items-center">
       <!-- Centered Align Container   -->
       <div
         class="w-[95%] h-full relative z-10 flex flex-col gap-6 md:gap-6 py-10 md:py-20"
@@ -1072,7 +1080,7 @@
     <section id="features" class="w-full flex justify-center border-b-[1px] border-[#DBDADA]">
       <!-- Centered Align Container   -->
       <div
-        class="w-[95%] max-w-[1440px] h-full relative z-10 flex flex-col lg:flex-row justify-between pb-10 md:pb-20 gap-8"
+        class="w-[95%] max-w-[1440px] bgContainer h-full relative z-10 flex flex-col lg:flex-row justify-between pb-10 md:pb-20 gap-8"
       >
         <!-- Left Side Container  -->
         <div class="w-full lg:w-[512px] flex flex-col gap-4 md:gap-6">
@@ -1177,7 +1185,7 @@
     </section>
 
     <!-- Section 5 -->
-    <section id="location" class="w-full flex justify-center min-h-screen py-10 md:py-20">
+    <section id="location" class="w-full bgContainer flex justify-center min-h-screen pt-[70px] pb-[70px]">
       <!-- Centered Align Container   -->
       <div class="w-[95%] h-full relative z-10 flex flex-col gap-8 md:gap-12">
         <!-- Row 1  -->
@@ -1436,9 +1444,9 @@
       class="w-full min-h-[400px] md:min-h-[487px] bg-[#F7F7F7] flex flex-col justify-center items-center gap-6 md:gap-8 px-4 py-8 md:py-0"
     >
       <img
-        src="images/footer-logo.png"
+        src="images/new/forbus2.png"
         alt=""
-        class="w-[200px] md:w-auto h-auto"
+        class="w-[188px] h-[126px]"
       />
       <p
         class="font-[400] text-[14px] md:text-[18px] text-black w-full md:w-[688px] text-center font-open-sans font-regular px-4"
@@ -1467,7 +1475,7 @@
 
     <!-- Popup Form Modal -->
     <div id="popup-modal" class="popup-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-60 backdrop-blur-md p-4">
-      <div class="popup-content relative w-full max-w-[1100px] bg-white rounded-2xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+      <div class="popup-content relative w-[60%] h-[45vh] bg-white rounded-2xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
         <!-- Close Button -->
         <button
           id="popup-close"
@@ -1501,7 +1509,7 @@
         </div>
 
         <!-- Right Side - Form -->
-        <div class="popup-form-container w-full lg:w-[52%] flex flex-col justify-center p-8 md:p-10 lg:p-12 overflow-y-auto md:max-h-[80vh]">
+        <div class="popup-form-container w-full lg:w-[52%] flex flex-col justify-center p-8 md:p-10 lg:p-12 overflow-y-auto h-full">
           <!-- Header Section -->
           <div class="flex flex-col gap-4 mb-8">
             <div class="flex items-center gap-3 mb-2">
@@ -1512,11 +1520,6 @@
                 Request a Call Back
               </h2>
             </div>
-            <p
-              class="font-[400] text-[15px] md:text-[16px] text-[#555555] font-open-sans font-regular leading-relaxed pl-4 hidden md:block"
-            >
-              Fill out the form below and our expert team will get back to you shortly. We're here to help you find your perfect property.
-            </p>
           </div>
 
           <!-- Form Section -->
@@ -1530,7 +1533,7 @@
                 <input
                   type="text"
                   name="name"
-                  placeholder="Enter your full name"
+                  placeholder="Full Name*"
                   required
                   class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                 />
@@ -1542,7 +1545,7 @@
                 <input
                   type="email"
                   name="email"
-                  placeholder="Enter your email address"
+                  placeholder="Email Address*"
                   required
                   class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                 />
@@ -1558,7 +1561,7 @@
                 <input
                   type="tel"
                   name="phone"
-                  placeholder="Enter your phone number"
+                  placeholder="Phone Number*"
                   required
                   class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                 />
@@ -1570,7 +1573,7 @@
                 <input
                   type="text"
                   name="message"
-                  placeholder="Tell us about your requirements"
+                  placeholder="Message*"
                   required
                   class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
                 />
@@ -1585,33 +1588,14 @@
                 Explore premium properties with trusted expertise
               </p>
               <button
-              class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex lg:justify-end justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1"
+              class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1"
             >
               <p
                 class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold"
               >
                 Get a Call Back
               </p>
-              <!-- The Bg Will Change When User Will Hover On Btn It Will conver into black bg color  -->
-              <div
-                class="callback-icon-container w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full hidden lg:flex items-center justify-center relative transition-colors duration-300"
-              >
-                <!-- Icon Wrapper - Fixed size container -->
-                <span class="relative inline-block">
-                  <!-- This is Default Icon  -->
-                  <img
-                    src="./svgs/top-arrow.svg"
-                    alt=""
-                    class="w-4 h-4 md:w-auto md:h-auto callback-default-icon"
-                  />
-                  <!-- This Is Hovered Icon  -->
-                  <img
-                    src="svgs/top-white-arr.svg"
-                    alt=""
-                    class="w-4 h-4 md:w-auto md:h-auto callback-hover-icon"
-                  />
-                </span>
-              </div>
+             
             </button>
             </div>
           </form>

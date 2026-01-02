@@ -657,6 +657,9 @@ button > img {
   transform: scale(0.95) translateY(30px);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
   opacity: 0;
+  width: 60% !important;
+  height: 65vh !important;
+  max-width: none !important;
 }
 
 .popup-modal.show .popup-content {
@@ -750,13 +753,17 @@ button > img {
 /* Responsive Popup Styles */
 @media (max-width: 640px) {
   .popup-content {
-    max-height: 95vh;
+    width: 97% !important;
+    height: 95vh !important;
+    max-width: none !important;
     border-radius: 1rem;
+    overflow: hidden !important;
   }
-  
+  .popup-content::webkit-scrollbar {
+    display: none !important;
+  }
   .popup-form-container {
     padding: 1.5rem;
-    max-height: 95vh;
     overflow-y: auto;
   }
   
@@ -766,11 +773,6 @@ button > img {
   
   .popup-form-container > div:first-child h2 {
     font-size: 24px;
-  }
-  
-  .popup-form-container > div:first-child p {
-    font-size: 14px;
-    line-height: 1.6;
   }
   
   #popup-form {
@@ -794,11 +796,16 @@ button > img {
     top: 0.75rem;
     right: 0.75rem;
   }
+  .popup-image-container {
+    display: none;
+  }
 }
 
 @media (min-width: 641px) and (max-width: 767px) {
   .popup-content {
-    max-height: 92vh;
+    width: 60% !important;
+    height: 65vh !important;
+    max-width: none !important;
   }
   
   .popup-form-container {
@@ -812,7 +819,9 @@ button > img {
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .popup-content {
-    max-height: 90vh;
+    width: 90% !important;
+    height: 65vh !important;
+    max-width: none !important;
   }
   
   .popup-form-container {
@@ -824,9 +833,11 @@ button > img {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1023px) {
   .popup-content {
-    max-width: 1100px;
+    width: 90% !important;
+    height: 75vh !important;
+    max-width: none !important;
   }
   
   .popup-form-container {
@@ -840,25 +851,17 @@ button > img {
   .popup-form-container > div:first-child h2 {
     font-size: 36px;
   }
-  
-  .popup-form-container > div:first-child p {
-    font-size: 16px;
-    line-height: 1.7;
-  }
 }
 
 @media (min-width: 1280px) {
   .popup-content {
-    max-width: 1200px;
+    width: 70% !important;
+    height: 75vh !important;
+    max-width: none !important;
   }
   
   .popup-form-container {
     padding: 3.5rem;
-  }
-  
-  .popup-form-container > div:first-child p {
-    font-size: 17px;
-    line-height: 1.8;
   }
 }
 
@@ -1594,4 +1597,11 @@ body.lightbox-open {
     min-height: 570px;
   }
 }
+
+
+@media (min-width: 1400px) { 
+  .bgContainer {
+    width: 85% !important;
+    margin: 0 auto !important;
+  }
 }
