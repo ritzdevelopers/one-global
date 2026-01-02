@@ -310,17 +310,17 @@
               class="font-[400] text-[22px] sm:text-[24px] md:text-[27px] lg:text-[29px] text-black font-baskervville font-regular">
               Request a Call Back
             </h2>
-            <form class="flex flex-col gap-3 sm:gap-4">
+            <form id="overview-form" class="flex flex-col gap-3 sm:gap-4">
               <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
-                <input type="text" placeholder="Your Name*"
+                <input type="text" name="name" placeholder="Your Name*" required
                   class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
-                <input type="text" placeholder="Your Email*"
+                <input type="email" name="email" placeholder="Your Email*" required
                   class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
               </div>
               <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
-                <input type="text" placeholder="Your Phone*"
+                <input type="tel" name="phone" placeholder="Your Phone*" required
                   class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
-                <input type="text" placeholder="Your Message*"
+                <input type="text" name="message" placeholder="Your Message*" required
                   class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
               </div>
               <div class="flex flex-row justify-between gap-3 sm:gap-4">
@@ -330,7 +330,7 @@
                     Explore premium properties with trusted !
                   </p>
                 </div>
-                <button
+                <button type="submit"
                   class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex lg:justify-end justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1">
                   <p class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold">
                     Get a Call Back
@@ -600,7 +600,7 @@
 
           <div
             class="w-full lg:w-auto h-[200px] sm:h-[250px] hidden lg:block lg:h-[328px] border-[1px] border-[#E6E6E6] mx-auto lg:mx-0">
-            <img src="images/fabluxe-01-01.jpg" alt="" class="w-full h-full object-cover" />
+            <img src="images/new/fp-nimg.jpg" alt="" class="w-full h-full object-cover" />
           </div>
         </div>
 
@@ -791,7 +791,7 @@
       <div class="w-full flex flex-col-reverse xl:flex-row gap-8 lg:gap-12">
         <!-- Left Side Container   -->
         <div class="w-full xl:w-[620px] h-[250px] md:h-[411px]">
-          <img src="images/s5/map.png" alt="" class="w-full h-full object-cover" />
+          <img src="images/new/map-img.jpg" alt="" class="w-full h-full object-cover" />
         </div>
 
         <!-- Right Side Container  -->
@@ -894,17 +894,17 @@
           <h2 class="font-[400] text-[24px] md:text-[30px] text-black font-baskervville font-regular">
             Request a Call Back
           </h2>
-          <form class="flex flex-col gap-4">
+          <form id="contact-form" class="flex flex-col gap-4">
             <div class="flex flex-col md:flex-row gap-4">
-              <input type="text" placeholder="Your Name*"
+              <input type="text" name="name" placeholder="Your Name*" required
                 class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
-              <input type="text" placeholder="Your Email*"
+              <input type="email" name="email" placeholder="Your Email*" required
                 class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
             </div>
             <div class="flex flex-col md:flex-row gap-4">
-              <input type="text" placeholder="Your Phone*"
+              <input type="tel" name="phone" placeholder="Your Phone*" required
                 class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
-              <input type="text" placeholder="Your Message*"
+              <input type="text" name="message" placeholder="Your Message*" required
                 class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
             </div>
             <div class="flex flex-row justify-between gap-4">
@@ -914,7 +914,7 @@
                 </p>
               </div>
 
-              <button
+              <button type="submit"
                 class="w-full md:w-[221px] h-[50px] md:h-[58px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 md:gap-6 pr-1 cursor-pointer">
                 <p class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold">
                   Get a Call Back
@@ -969,7 +969,7 @@
 
           <!-- Right Side Container  -->
           <div class="h-full w-full block">  <!-- w-[242px] -->
-            <img src="images/ui-images4.png" alt="" class="w-full h-full object-cover" />
+            <img src="images/new/frm-side-img.jpg" alt="" class="w-full h-full object-cover" />
           </div>
         </div>
       </div>
@@ -984,13 +984,32 @@
       Together, they create a home that offers credibility, luxury, wellness
       and future-ready living in one of NCR's most promising destinations.
     </p>
-    <div class="flex justify-center items-center gap-3 md:gap-4">
-      <img src="images/new/hr-insta.png" alt="" class="w-[29px] h-[29px]" />
-      <img src="images/new/hr-x.png" alt="" class="w-[29px] h-[29px]" />
-      <img src="images/new/hr-fb.png" alt="" class="w-[29px] h-[29px]" />
-      <img src="images/new/hr-linkd.png" alt="" class="w-[29px] h-[29px]" />
-      <img src="images/new/hr-yt.png" alt="" class="w-[29px] h-[29px]" />
-    </div>
+      <div class="flex justify-center items-center gap-3 md:gap-4">
+      <!-- Instagram  -->
+      <a href="https://www.instagram.com/oneglobaldevelopers/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram page">
+        <img src="images/new/hr-insta.png" alt="Instagram" class="w-[29px] h-[29px] hover:opacity-80 transition-opacity duration-300 cursor-pointer" />
+      </a>
+
+      <!-- X (Twitter)  -->
+      <a href="https://x.com/OneGlobaldvlper" target="_blank" rel="noopener noreferrer" aria-label="Visit our X (Twitter) page">
+        <img src="images/new/hr-x.png" alt="X (Twitter)" class="w-[29px] h-[29px] hover:opacity-80 transition-opacity duration-300 cursor-pointer" />
+      </a>
+
+      <!-- Facebook  -->
+      <a href="https://www.facebook.com/people/One-Global-Developers/61583051291842/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook page">
+        <img src="images/new/hr-fb.png" alt="Facebook" class="w-[29px] h-[29px] hover:opacity-80 transition-opacity duration-300 cursor-pointer" />
+      </a>
+
+      <!-- LinkedIn  -->
+      <a href="https://www.linkedin.com/company/oneglobaldevelopers/" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn page">
+        <img src="images/new/hr-linkd.png" alt="LinkedIn" class="w-[29px] h-[29px] hover:opacity-80 transition-opacity duration-300 cursor-pointer" />
+      </a>
+
+      <!-- YouTube  -->
+      <a href="https://www.youtube.com/@OneGlobalDevelopers" target="_blank" rel="noopener noreferrer" aria-label="Visit our YouTube channel">
+        <img src="images/new/hr-yt.png" alt="YouTube" class="w-[29px] h-[29px] hover:opacity-80 transition-opacity duration-300 cursor-pointer" />
+      </a>
+      </div>
     <p class="font-[400] text-[12px] md:text-[14px] font-open-sans font-regular text-center px-4">
       © 2025 <b>FAB LUXE</b>. All rights reserved. Digital media planned by
       <b id="rmwLink" class="cursor-pointer">Ritz Media World</b>
@@ -1042,37 +1061,37 @@
         <h2 class="font-[400] text-[24px] lg:text-[29px] font-baskervville">Request a Call Back</h2>
         <form id="popup-form" class="flex flex-col gap-2 w-full lg:w-auto">
           <div class="w-full lg:w-[376px] h-[50px] rounded-[50px] overflow-hidden mx-auto">
-            <input type="text" name="name" placeholder="Your Name *"
+            <input type="text" name="name" placeholder="Your Name *" required
               class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:outline-none focus:border-none focus:border-transparent transition-all duration-300">
           </div>
 
           <div class="w-full lg:w-[376px] h-[50px] rounded-[50px] overflow-hidden mx-auto">
-            <input type="email" name="email" placeholder="Your Email *"
+            <input type="email" name="email" placeholder="Your Email *" required
               class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:outline-none focus:border-none focus:border-transparent transition-all duration-300">
           </div>
 
           <div class="w-full lg:w-[376px] h-[50px] rounded-[50px] overflow-hidden mx-auto">
-            <input type="tel" name="phone" placeholder="Your Phone *"
+            <input type="tel" name="phone" placeholder="Your Phone *" required
               class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:outline-none focus:border-none focus:border-transparent transition-all duration-300">
           </div>
 
           <div class="w-full lg:w-[376px] h-[77px] rounded-[50px] overflow-hidden mx-auto">
-            <textarea name="message" placeholder="Message *"
+            <textarea name="message" placeholder="Message *" required
               class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:outline-none focus:border-none focus:border-transparent transition-all duration-300 resize-none pt-4"></textarea>
           </div>
-        </form>
 
-        <div>
-          <p class="font-[400] text-[14px] font-open-sans">Explore premium properties with trusted !</p>
-        </div>
-
-        <button
-          class="w-full lg:w-[376px] h-[50px] bg-black rounded-full text-white font-[500] text-[14px] font-open-sans flex justify-between items-center pl-6 pr-1 mx-auto">
-          <p>Get a Call Back</p>
-          <div class="w-[40px] h-[40px] rounded-full bg-white flex justify-center items-center">
-            <img src="svgs/top-arrow.svg" alt="" class="w-auto h-auto">
+          <div>
+            <p class="font-[400] text-[14px] font-open-sans">Explore premium properties with trusted !</p>
           </div>
-        </button>
+
+          <button type="submit"
+            class="w-full lg:w-[376px] h-[50px] bg-black rounded-full text-white font-[500] text-[14px] font-open-sans flex justify-between items-center pl-6 pr-1 mx-auto">
+            <p>Get a Call Back</p>
+            <div class="w-[40px] h-[40px] rounded-full bg-white flex justify-center items-center">
+              <img src="svgs/top-arrow.svg" alt="" class="w-auto h-auto">
+            </div>
+          </button>
+        </form>
       </div>
     </div>
   </div>

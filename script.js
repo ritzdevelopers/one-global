@@ -2,7 +2,7 @@
 gsap.registerPlugin(ScrollTrigger);
 
 // Detect iOS devices
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
   (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
 // Prevent unwanted scroll resets on iOS
@@ -10,7 +10,7 @@ if (isIOS) {
   // Disable Lenis completely on iOS to prevent conflicts
   // Use native browser scrolling instead
   let isScrolling = false;
-  
+
   // Prevent multiple scroll events from interfering
   const handleIOSScroll = () => {
     if (!isScrolling) {
@@ -21,7 +21,7 @@ if (isIOS) {
       });
     }
   };
-  
+
   window.addEventListener('scroll', handleIOSScroll, { passive: true });
 }
 
@@ -81,12 +81,12 @@ function isNavbarBlack() {
 // Function to update active nav link based on navbar state
 function updateActiveLinkStyle() {
   if (!activeNavLink) return;
-  
+
   const navbarIsBlack = isNavbarBlack();
-  
+
   // Remove all background and text color classes
   activeNavLink.classList.remove('bg-black', 'bg-white', 'text-black', 'text-white');
-  
+
   if (navbarIsBlack) {
     // Navbar is black: active link should have white bg and black text
     activeNavLink.classList.add('bg-white', 'text-black');
@@ -107,7 +107,7 @@ function setActiveNavLink(link) {
 
   // Set the new active link
   activeNavLink = link;
-  
+
   // Update active link style based on navbar state
   updateActiveLinkStyle();
 }
@@ -117,7 +117,7 @@ navLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     setActiveNavLink(link);
-    
+
     // Get the target section ID from data-nav attribute
     const targetId = link.getAttribute('data-nav');
     if (targetId) {
@@ -315,19 +315,19 @@ if (menuToggle && mobileMenu) {
   menuLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      
+
       // Get target section from href
       const href = link.getAttribute('href');
       if (href && href.startsWith('#')) {
         const targetId = href.substring(1); // Remove the #
         const targetElement = document.getElementById(targetId);
-        
+
         if (targetElement) {
           // Close menu first
           if (isMenuOpen) {
             toggleMenu();
           }
-          
+
           // Small delay to allow menu to close, then scroll
           setTimeout(() => {
             if (isIOS) {
@@ -823,12 +823,12 @@ function closePopup() {
       popupModal.classList.add('hidden');
       document.body.style.overflow = '';
     }, 300);
-    
+
     // Clear any existing reopen timer
     if (popupReopenTimer) {
       clearTimeout(popupReopenTimer);
     }
-    
+
     // If form not submitted, set timer to reopen after 1 minute
     if (!isFormSubmitted) {
       startAutoOpenTimer();
@@ -842,7 +842,7 @@ function startAutoOpenTimer() {
   if (popupAutoOpenTimer) {
     clearTimeout(popupAutoOpenTimer);
   }
-  
+
   // Only start timer if form hasn't been submitted
   if (!isFormSubmitted) {
     popupAutoOpenTimer = setTimeout(() => {
@@ -887,44 +887,8 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Handle form submission
-if (popupForm) {
-  popupForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(popupForm);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-      message: formData.get('message'),
-    };
-    
-    // Here you can add your form submission logic (API call, etc.)
-    console.log('Form submitted:', data);
-    
-    // Mark form as submitted
-    isFormSubmitted = true;
-    
-    // Clear all timers
-    if (popupAutoOpenTimer) {
-      clearTimeout(popupAutoOpenTimer);
-    }
-    if (popupReopenTimer) {
-      clearTimeout(popupReopenTimer);
-    }
-    
-    // Show success message (optional)
-    alert('Thank you! We will contact you soon.');
-    
-    // Close popup
-    closePopup();
-    
-    // Reset form
-    popupForm.reset();
-  });
-}
+// Old popup form handler removed - now using unified form handler in initializeFormHandlers()
+// All forms (including popup) now use the same sendDataToGoogleSheet function
 
 // Auto-open popup every 1 minute
 // Start auto-open timer when page loads
@@ -936,7 +900,7 @@ window.addEventListener('load', () => {
 // ============================================
 // Banner Slider - Infinite Loop with Manual Navigation
 // ============================================
-(function() {
+(function () {
   // Desktop Slider
   const desktopSlider = document.querySelector('.desktop-slider-container');
   const desktopSlides = document.querySelectorAll('.desktop-slide');
@@ -958,7 +922,7 @@ window.addEventListener('load', () => {
   // Function to update desktop pagination dots
   function updateDesktopPagination() {
     if (!desktopPagination || desktopSlides.length === 0) return;
-    
+
     desktopPagination.innerHTML = '';
     desktopSlides.forEach((_, index) => {
       const dot = document.createElement('div');
@@ -973,7 +937,7 @@ window.addEventListener('load', () => {
   // Function to update mobile pagination dots
   function updateMobilePagination() {
     if (!mobilePagination || mobileSlides.length === 0) return;
-    
+
     mobilePagination.innerHTML = '';
     mobileSlides.forEach((_, index) => {
       const dot = document.createElement('div');
@@ -1008,7 +972,7 @@ window.addEventListener('load', () => {
   // Function to move desktop slider forward
   function moveDesktopSlider() {
     if (desktopSlides.length === 0) return;
-    
+
     desktopCurrentIndex = (desktopCurrentIndex + 1) % desktopSlides.length;
     const translateX = -desktopCurrentIndex * 100;
     desktopSlider.style.transform = `translateX(${translateX}%)`;
@@ -1018,7 +982,7 @@ window.addEventListener('load', () => {
   // Function to move desktop slider backward
   function moveDesktopSliderBackward() {
     if (desktopSlides.length === 0) return;
-    
+
     desktopCurrentIndex = (desktopCurrentIndex - 1 + desktopSlides.length) % desktopSlides.length;
     const translateX = -desktopCurrentIndex * 100;
     desktopSlider.style.transform = `translateX(${translateX}%)`;
@@ -1028,7 +992,7 @@ window.addEventListener('load', () => {
   // Function to move mobile slider forward
   function moveMobileSlider() {
     if (mobileSlides.length === 0) return;
-    
+
     mobileCurrentIndex = (mobileCurrentIndex + 1) % mobileSlides.length;
     const translateX = -mobileCurrentIndex * 100;
     mobileSlider.style.transform = `translateX(${translateX}%)`;
@@ -1038,7 +1002,7 @@ window.addEventListener('load', () => {
   // Function to move mobile slider backward
   function moveMobileSliderBackward() {
     if (mobileSlides.length === 0) return;
-    
+
     mobileCurrentIndex = (mobileCurrentIndex - 1 + mobileSlides.length) % mobileSlides.length;
     const translateX = -mobileCurrentIndex * 100;
     mobileSlider.style.transform = `translateX(${translateX}%)`;
@@ -1155,7 +1119,7 @@ window.addEventListener('load', () => {
 // ============================================
 // Gallery Lightbox Functionality with Navigation
 // ============================================
-(function() {
+(function () {
   const galleryLightbox = document.getElementById('gallery-lightbox');
   const galleryLightboxImage = document.getElementById('gallery-lightbox-image');
   const galleryImageContainer = document.getElementById('gallery-image-container');
@@ -1163,7 +1127,7 @@ window.addEventListener('load', () => {
   const galleryLightboxPrev = document.getElementById('gallery-lightbox-prev');
   const galleryLightboxNext = document.getElementById('gallery-lightbox-next');
   const galleryImages = document.querySelectorAll('.gallery-image[data-gallery-src]');
-  
+
   // Create array of all gallery image sources
   const galleryImageSources = [];
   galleryImages.forEach((image) => {
@@ -1172,7 +1136,7 @@ window.addEventListener('load', () => {
       galleryImageSources.push(imageSrc);
     }
   });
-  
+
   let currentImageIndex = 0;
 
   // Function to update the displayed image with smooth animation
@@ -1180,33 +1144,33 @@ window.addEventListener('load', () => {
     if (galleryLightboxImage && galleryImageContainer && galleryImageSources.length > 0) {
       // Remove any existing animation classes from container
       galleryImageContainer.classList.remove('slide-in-left', 'slide-in-right', 'slide-out-left', 'slide-out-right');
-      
+
       // Add slide out animation based on direction to container
       if (direction === 'next') {
         galleryImageContainer.classList.add('slide-out-left');
       } else {
         galleryImageContainer.classList.add('slide-out-right');
       }
-      
+
       // Wait for slide out animation, then update image and slide in
       setTimeout(() => {
         currentImageIndex = index;
-        
+
         // Preload the new image before displaying
         const newImage = new Image();
         newImage.onload = () => {
           galleryLightboxImage.src = galleryImageSources[currentImageIndex];
-          
+
           // Remove slide out class and add slide in class to container
           galleryImageContainer.classList.remove('slide-out-left', 'slide-out-right');
-          
+
           // Add slide in animation based on direction to container
           if (direction === 'next') {
             galleryImageContainer.classList.add('slide-in-right');
           } else {
             galleryImageContainer.classList.add('slide-in-left');
           }
-          
+
           // Remove animation class after animation completes
           setTimeout(() => {
             galleryImageContainer.classList.remove('slide-in-left', 'slide-in-right');
@@ -1235,10 +1199,10 @@ window.addEventListener('load', () => {
         galleryLightboxImage.src = imageSrc;
         currentImageIndex = 0;
       }
-      
+
       // Remove closing class if present
       galleryLightbox.classList.remove('closing', 'hidden');
-      
+
       // Use requestAnimationFrame to ensure display change happens before animation
       requestAnimationFrame(() => {
         setTimeout(() => {
@@ -1276,7 +1240,7 @@ window.addEventListener('load', () => {
       // Add closing class for close animation
       galleryLightbox.classList.add('closing');
       galleryLightbox.classList.remove('show');
-      
+
       // Wait for animation to complete before hiding
       setTimeout(() => {
         galleryLightbox.classList.remove('closing');
@@ -1366,4 +1330,370 @@ if (rmwLink) {
   rmwLink.addEventListener('click', () => {
     window.open('https://ritzmediaworld.com/', '_blank');
   });
+}
+
+
+
+// ============================================
+// Custom Notification Popup
+// ============================================
+function createNotificationPopup() {
+  // Remove existing notification if any
+  const existing = document.getElementById('custom-notification');
+  if (existing) existing.remove();
+
+  const notification = document.createElement('div');
+  notification.id = 'custom-notification';
+  notification.className = 'fixed top-4 right-4 z-[9999] transform translate-x-full transition-transform duration-300';
+  notification.innerHTML = `
+    <div class="bg-white rounded-lg shadow-2xl p-6 min-w-[300px] max-w-[400px] border-l-4">
+      <div class="flex items-start gap-4">
+        <div class="notification-icon flex-shrink-0"></div>
+        <div class="flex-1">
+          <h3 class="font-semibold text-lg mb-1 notification-title"></h3>
+          <p class="text-sm text-gray-600 notification-message"></p>
+        </div>
+        <button class="notification-close text-gray-400 hover:text-gray-600 transition-colors" aria-label="Close">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(notification);
+  return notification;
+}
+
+function showNotification(type, title, message) {
+  const notification = createNotificationPopup();
+  const iconDiv = notification.querySelector('.notification-icon');
+  const titleEl = notification.querySelector('.notification-title');
+  const messageEl = notification.querySelector('.notification-message');
+  const borderEl = notification.querySelector('.border-l-4');
+  const closeBtn = notification.querySelector('.notification-close');
+
+  // Set content
+  titleEl.textContent = title;
+  messageEl.textContent = message;
+
+  // Set styles based on type
+  if (type === 'success') {
+    borderEl.classList.add('border-green-500');
+    iconDiv.innerHTML = '<svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+  } else if (type === 'error') {
+    borderEl.classList.add('border-red-500');
+    iconDiv.innerHTML = '<svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+  } else {
+    borderEl.classList.add('border-blue-500');
+    iconDiv.innerHTML = '<svg class="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+  }
+
+  // Show notification
+  setTimeout(() => {
+    notification.classList.remove('translate-x-full');
+  }, 100);
+
+  // Auto hide after 5 seconds
+  const autoHide = setTimeout(() => {
+    hideNotification(notification);
+  }, 5000);
+
+  // Close button handler
+  closeBtn.addEventListener('click', () => {
+    clearTimeout(autoHide);
+    hideNotification(notification);
+  });
+}
+
+function hideNotification(notification) {
+  notification.classList.add('translate-x-full');
+  setTimeout(() => {
+    if (notification.parentNode) {
+      notification.parentNode.removeChild(notification);
+    }
+  }, 300);
+}
+
+// ============================================
+// Loading Popup Modal
+// ============================================
+function createLoadingPopup() {
+  // Remove existing loading popup if any
+  const existing = document.getElementById('loading-popup');
+  if (existing) existing.remove();
+
+  const loadingPopup = document.createElement('div');
+  loadingPopup.id = 'loading-popup';
+  loadingPopup.className = 'fixed inset-0 z-[9999] bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center';
+  loadingPopup.innerHTML = `
+    <div class="bg-white rounded-2xl shadow-2xl p-8 md:p-12 max-w-[400px] w-[90%] mx-4 flex flex-col items-center justify-center gap-6">
+      <div class="relative">
+        <svg class="animate-spin h-16 w-16 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </div>
+      <div class="text-center">
+        <h3 class="font-semibold text-xl md:text-2xl text-gray-800 mb-2 font-open-sans">Submitting...</h3>
+        <p class="text-sm md:text-base text-gray-600 font-open-sans">Please wait while we process your request</p>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(loadingPopup);
+  
+  // Prevent body scroll when loading popup is open
+  document.body.style.overflow = 'hidden';
+  
+  return loadingPopup;
+}
+
+function showLoadingPopup() {
+  return createLoadingPopup();
+}
+
+function hideLoadingPopup() {
+  const loadingPopup = document.getElementById('loading-popup');
+  if (loadingPopup) {
+    // Fade out animation
+    loadingPopup.style.opacity = '0';
+    loadingPopup.style.transition = 'opacity 0.3s ease-out';
+    
+    setTimeout(() => {
+      if (loadingPopup.parentNode) {
+        loadingPopup.parentNode.removeChild(loadingPopup);
+      }
+      // Restore body scroll
+      document.body.style.overflow = '';
+    }, 300);
+  }
+}
+
+// ============================================
+// Form Validation
+// ============================================
+function validateForm(form) {
+  const errors = [];
+  if (!form) {
+    return { isValid: false, errors: ['Form not found'] };
+  }
+  
+  const inputs = form.querySelectorAll('input[required], textarea[required]');
+
+  inputs.forEach(input => {
+    // Remove previous error styling
+    input.classList.remove('border-red-500', 'ring-2', 'ring-red-500');
+    
+    // Force read the current value directly from DOM element
+    // Use getAttribute and value to ensure we get the latest value
+    let rawValue = '';
+    if (input.tagName === 'TEXTAREA') {
+      rawValue = input.value || '';
+    } else {
+      rawValue = input.value || '';
+    }
+    
+    const value = String(rawValue).trim();
+    const type = input.type || 'text';
+    const nameAttr = input.name || '';
+    const placeholder = input.placeholder || '';
+    
+    // Get field label from placeholder (remove * and extra spaces)
+    let fieldLabel = placeholder.replace(/\*/g, '').trim();
+    if (!fieldLabel) {
+      // Fallback to name attribute with proper formatting
+      if (nameAttr === 'name') fieldLabel = 'Your Name';
+      else if (nameAttr === 'email') fieldLabel = 'Your Email';
+      else if (nameAttr === 'phone') fieldLabel = 'Your Phone';
+      else if (nameAttr === 'message') fieldLabel = 'Message';
+      else fieldLabel = 'This field';
+    }
+
+    // Check if empty - only if required attribute exists
+    if (input.hasAttribute('required')) {
+      if (!value || value.length === 0) {
+        errors.push(`${fieldLabel} is required`);
+        input.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+        return; // Skip further validation for this field
+      }
+    }
+
+    // Email validation
+    if (type === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        errors.push('Please enter a valid email address');
+        input.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+      }
+    }
+
+    // Phone validation
+    if (type === 'tel' || nameAttr === 'phone') {
+      const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
+      if (!phoneRegex.test(value.replace(/\s/g, ''))) {
+        errors.push('Please enter a valid phone number');
+        input.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+      }
+    }
+
+    // Name validation (minimum 2 characters)
+    if (nameAttr === 'name' && value.length < 2) {
+      errors.push('Name must be at least 2 characters long');
+      input.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+    }
+
+    // Message validation (minimum 10 characters)
+    if (nameAttr === 'message' && value.length < 10) {
+      errors.push('Message must be at least 10 characters long');
+      input.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+    }
+  });
+
+  return {
+    isValid: errors.length === 0,
+    errors: errors
+  };
+}
+
+// ============================================
+// Google Sheets Integration (No-CORS Mode)
+// ============================================
+async function sendDataToGoogleSheet(form, button) {
+  const url = "https://script.google.com/macros/s/AKfycbzrQtVX_bykE60rKkinchfNbh0ADAcvGf0OO89-vmW-qNsAaBfHN72GgJh1n0KfMVrIgg/exec";
+
+  // Get form data
+  const nameInput = form.querySelector('input[name="name"], input[placeholder*="Name"]');
+  const emailInput = form.querySelector('input[type="email"], input[name="email"], input[placeholder*="Email"]');
+  const phoneInput = form.querySelector('input[type="tel"], input[name="phone"], input[placeholder*="Phone"]');
+  const messageInput = form.querySelector('textarea[name="message"], input[name="message"], textarea[placeholder*="Message"], input[placeholder*="Message"]');
+
+  const payload = {
+    sheetName: "Sheet1",
+    name: nameInput ? nameInput.value.trim() : '',
+    email: emailInput ? emailInput.value.trim() : '',
+    phone: phoneInput ? phoneInput.value.trim() : '',
+    message: messageInput ? messageInput.value.trim() : '',
+    time: new Date().toLocaleTimeString(),
+    date: new Date().toLocaleDateString(),
+    leadLocation: "Website"
+  };
+
+  // Disable button during submission
+  if (button) {
+    button.disabled = true;
+  }
+
+  // Show loading popup
+  showLoadingPopup();
+
+  try {
+    // Use no-cors mode - this prevents CORS issues but we can't get response
+    await fetch(url, {
+      method: "POST",
+      mode: "no-cors", // ⭐ IMPORTANT: no-cors mode
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    // Hide loading popup after a short delay to ensure request is sent
+    setTimeout(() => {
+      hideLoadingPopup();
+      
+      // Re-enable button
+      if (button) {
+        button.disabled = false;
+      }
+      
+      // Since no-cors doesn't return response, we assume success
+      // Show success notification
+      showNotification('success', 'Success!', 'Thank you! We will get back to you shortly.');
+      
+      // Reset form
+      form.reset();
+      
+      // Remove error styling
+      form.querySelectorAll('.border-red-500').forEach(el => {
+        el.classList.remove('border-red-500', 'ring-2', 'ring-red-500');
+      });
+
+      // Close popup if it's the popup form
+      if (form.id === 'popup-form') {
+        setTimeout(() => {
+          closePopup();
+        }, 1500);
+      }
+    }, 800); // Delay to ensure request is sent and show loading state
+
+  } catch (error) {
+    console.error("Request Failed:", error);
+    hideLoadingPopup();
+    
+    // Re-enable button
+    if (button) {
+      button.disabled = false;
+    }
+    
+    showNotification('error', 'Error', 'Something went wrong! Please check your connection and try again.');
+  }
+}
+
+// ============================================
+// Form Submission Handlers
+// ============================================
+function initializeFormHandlers() {
+  // Get all forms
+  const forms = document.querySelectorAll('form');
+  
+  forms.forEach(form => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Find submit button
+      const submitButton = form.querySelector('button[type="submit"]');
+      
+      // Validate form - read values directly from DOM
+      const validation = validateForm(form);
+      
+      if (!validation.isValid) {
+        showNotification('error', 'Validation Error', validation.errors[0]);
+        return;
+      }
+
+      // Submit form
+      await sendDataToGoogleSheet(form, submitButton);
+    });
+  });
+
+  // Also handle button clicks for forms without submit type
+  document.querySelectorAll('form button').forEach(button => {
+    if (button.type !== 'submit') {
+      button.addEventListener('click', async (e) => {
+        const form = button.closest('form');
+        if (!form) return;
+        
+        e.preventDefault();
+        
+        // Validate form
+        const validation = validateForm(form);
+        
+        if (!validation.isValid) {
+          showNotification('error', 'Validation Error', validation.errors[0]);
+          return;
+        }
+
+        // Submit form
+        await sendDataToGoogleSheet(form, button);
+      });
+    }
+  });
+}
+
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeFormHandlers);
+} else {
+  initializeFormHandlers();
 }

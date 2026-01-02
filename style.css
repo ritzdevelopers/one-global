@@ -1627,3 +1627,94 @@ body.lightbox-open {
     height: auto !important;
   }
 }
+
+/* ============================================
+   Custom Notification Popup Styles
+   ============================================ */
+
+#custom-notification {
+  animation: slideInRight 0.3s ease-out;
+}
+
+#custom-notification .notification-close {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+#custom-notification .notification-close:hover {
+  transform: scale(1.1);
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Form validation error styles */
+input.border-red-500,
+textarea.border-red-500 {
+  border-color: #ef4444 !important;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2) !important;
+}
+
+/* Loading button styles */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  transform: none;
+}
+
+/* ============================================
+   Loading Popup Modal Styles
+   ============================================ */
+
+#loading-popup {
+  animation: fadeIn 0.3s ease-out;
+}
+
+#loading-popup > div {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure loading spinner is visible */
+#loading-popup svg.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
