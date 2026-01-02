@@ -556,11 +556,11 @@
             </div>
           </div>
 
-          <div
-            class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-4 sm:py-6 lg:py-0 
+          <div class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-4 sm:py-6 lg:py-0 
             p-[10px] lg:p-0
-            " >
-            <div class="flex flex-col lg:gap-4 lg:pl-6 w-full justify-center items-center lg:items-start lg:justify-start">
+            ">
+            <div
+              class="flex flex-col lg:gap-4 lg:pl-6 w-full justify-center items-center lg:items-start lg:justify-start">
               <p class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black font-open-sans font-regular">
                 Type
               </p>
@@ -873,18 +873,18 @@
               </div>
             </li>
           </ul>
-            <div class="flex items-center lg:items-center gap-2 md:gap-6
+          <div class="flex items-center lg:items-center gap-2 md:gap-6
               flex-col lg:flex-row 
               justify-center lg:justify-start 
               text-center lg:text-left
                lg:hidden
               ">
-                <img src="svgs/home.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
-                <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
-                  Strong appreciation potential driven by Western Noida's
-                  rising demand and <b>NRI/HNI</b> interest
-                </p>
-              </div>
+            <img src="svgs/home.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
+            <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
+              Strong appreciation potential driven by Western Noida's
+              rising demand and <b>NRI/HNI</b> interest
+            </p>
+          </div>
         </div>
       </div>
       <!-- Row 3  -->
@@ -945,7 +945,7 @@
                 Address
               </h2>
               <p class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left">
-                Lorem Ipsum is simply dummy, <br class="hidden md:block"/>
+                Lorem Ipsum is simply dummy, <br class="hidden md:block" />
                 Noida Extension, Uttar Pradesh
               </p>
             </div>
@@ -1000,92 +1000,79 @@
   <!-- Popup Form Modal -->
   <div id="popup-modal"
     class="popup-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-60 backdrop-blur-md p-4">
-    <div
-      class="popup-content relative w-[60%] h-[45vh] bg-white rounded-2xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
-      <!-- Close Button -->
-      <button id="popup-close"
-        class="absolute top-5 right-5 z-50 w-11 h-11 flex items-center justify-center bg-white hover:bg-gray-100 text-gray-700 hover:text-black rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
-        aria-label="Close popup">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
+    <!-- Centered Align Container  -->
+    <div class="w-full max-w-[930px] h-auto min-h-[480px] lg:h-[480px] bg-white relative flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-10 p-6 lg:p-0 rounded-lg lg:rounded-none overflow-y-auto lg:overflow-visible">
+
+      <!-- Cross Icon SVG  -->
+      <button id="popup-close" class="absolute top-4 right-4 lg:top-6 lg:right-6 cursor-pointer z-10" aria-label="Close popup">
+        <img src="svgs/cross-icn.svg" alt="" class="w-6 crsSVG h-6 lg:w-auto lg:h-auto">
       </button>
 
-      <!-- Left Side - Image (Hidden on mobile) -->
-      <div class="popup-image-container hidden lg:block w-[48%] relative overflow-hidden">
-        <img src="images/website-images-5902-2.png" alt="Premium Property"
-          class="w-full h-full object-cover no-hover-scale" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-      </div>
+      <!-- Col 1 - Hidden on small screens, visible on desktop -->
+      <div class="hidden lg:flex flex-col gap-4 justify-center items-center text-center">
+        <!-- Logo Container  -->
+        <div>
+          <img src="images/new/forbus2.png" alt="" class="w-[188px] h-[126px]">
+        </div>
 
-      <!-- Right Side - Form -->
-      <div
-        class="popup-form-container w-full lg:w-[52%] flex flex-col justify-center p-8 md:p-10 lg:p-12 overflow-y-auto h-full">
-        <!-- Header Section -->
-        <div class="flex flex-col gap-4 mb-8">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-1 h-12 bg-black rounded-full"></div>
-            <h2
-              class="font-[400] text-[28px] md:text-[32px] lg:text-[36px] text-black font-baskervville font-regular leading-tight">
-              Request a Call Back
-            </h2>
+        <!-- Second Container  -->
+        <div>
+          <div>
+            <div class="flex gap-1 justify-center items-center">
+              <img src="svgs/loca-icn.svg" alt="" class="w-auto h-auto">
+              <p class="font-[500] text-[12px] text-black font-montserrat">
+                At Greater Noida (West)
+              </p>
+            </div>
+            <p class="font-[800] text-[16px] font-montserrat">3 & 4 BHK + Study</p>
           </div>
         </div>
 
-        <!-- Form Section -->
-        <form id="popup-form" class="flex flex-col gap-6">
-          <!-- Name and Email Row -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div class="flex flex-col gap-2">
-              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                Your Name <span class="text-red-500">*</span>
-              </label>
-              <input type="text" name="name" placeholder="Full Name*" required
-                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
-            </div>
-            <div class="flex flex-col gap-2">
-              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                Your Email <span class="text-red-500">*</span>
-              </label>
-              <input type="email" name="email" placeholder="Email Address*" required
-                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
-            </div>
+        <button class="w-[153px] h-[35px] bg-black text-white font-[500] text-[12px] font-montserrat ">Price: On
+          Request</button>
+      </div>
+
+      <!-- Col 2 - Hidden on small screens, visible on desktop -->
+      <div class="hidden lg:block w-[239px] h-[420px]">
+        <img src="images/new/sl5.png" alt="" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Col 3 - Form (Always visible, full width on mobile) -->
+      <div class="flex flex-col gap-4 text-center w-full lg:w-auto">
+        <h2 class="font-[400] text-[24px] lg:text-[29px] font-baskervville">Request a Call Back</h2>
+        <form id="popup-form" class="flex flex-col gap-2 w-full lg:w-auto">
+          <div class="w-full lg:w-[376px] h-[50px] rounded-[50px] overflow-hidden mx-auto">
+            <input type="text" name="name" placeholder="Your Name *"
+              class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300">
           </div>
 
-          <!-- Phone and Message Row -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div class="flex flex-col gap-2">
-              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                Your Phone <span class="text-red-500">*</span>
-              </label>
-              <input type="tel" name="phone" placeholder="Phone Number*" required
-                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
-            </div>
-            <div class="flex flex-col gap-2">
-              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                Your Message <span class="text-red-500">*</span>
-              </label>
-              <input type="text" name="message" placeholder="Message*" required
-                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
-            </div>
+          <div class="w-full lg:w-[376px] h-[50px] rounded-[50px] overflow-hidden mx-auto">
+            <input type="email" name="email" placeholder="Your Email *"
+              class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300">
           </div>
 
-          <!-- Submit Button Section -->
-          <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-4 pt-6 border-t border-gray-200">
-            <p
-              class="font-[400] text-[14px] md:text-[15px] text-gray-600 font-open-sans font-regular text-center md:text-left hidden md:block">
-              Explore premium properties with trusted expertise
-            </p>
-            <button
-              class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1">
-              <p class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold">
-                Get a Call Back
-              </p>
+          <div class="w-full lg:w-[376px] h-[50px] rounded-[50px] overflow-hidden mx-auto">
+            <input type="tel" name="phone" placeholder="Your Phone *"
+              class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300">
+          </div>
 
-            </button>
+          <div class="w-full lg:w-[376px] h-[77px] rounded-[50px] overflow-hidden mx-auto">
+            <textarea name="message" placeholder="Message *"
+              class="w-full h-full bg-[#F2F2F2] rounded-[50px] px-5 font-open-sans font-regular text-[14px] text-black placeholder:text-[#000000] focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300 resize-none pt-4"></textarea>
           </div>
         </form>
+
+        <div>
+          <p class="font-[400] text-[14px] font-open-sans">Explore premium properties with trusted !</p>
+        </div>
+
+        <button
+          class="w-full lg:w-[376px] h-[50px] bg-black rounded-full text-white font-[500] text-[14px] font-open-sans flex justify-between items-center pl-6 pr-1 mx-auto">
+          <p>Get a Call Back</p>
+          <div class="w-[40px] h-[40px] rounded-full bg-white flex justify-center items-center">
+            <img src="svgs/top-arrow.svg" alt="" class="w-auto h-auto">
+          </div>
+        </button>
       </div>
     </div>
   </div>
@@ -1130,6 +1117,7 @@
       </div>
     </div>
   </div>
+
 
   <script src="script.js"></script>
 </body>
