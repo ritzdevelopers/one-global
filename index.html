@@ -1,1692 +1,1137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Baskervville:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Header Desktop -->
-    <nav
-      id="navbar"
-      class="hidden xl:flex w-full fixed top-0 z-50 justify-between items-center px-6 md:px-12 py-1 transition-all duration-300"
-    >
-      <!-- Logo 1  -->
-      <div class="relative">
-        <img src="images/logo1.png" alt="" class="h-auto w-[186px] navbar-logo-default transition-opacity duration-300" />
-        <img src="images/forbus-logo3.png" alt="" class="h-auto w-[186px] navbar-logo-scrolled absolute top-0 left-0 opacity-0 transition-opacity duration-300" />
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=Baskervville:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header Desktop -->
+  <nav id="navbar"
+    class="hidden xl:flex w-full fixed top-0 z-50 justify-between items-center px-6 md:px-12 py-1 transition-all duration-300">
+    <!-- Logo 1  -->
+    <div class="relative">
+      <img src="images/logo1.png" alt="" class="h-auto w-[186px] navbar-logo-default transition-opacity duration-300" />
+      <img src="images/forbus-logo3.png" alt=""
+        class="h-auto w-[186px] navbar-logo-scrolled absolute top-0 left-0 opacity-0 transition-opacity duration-300" />
+    </div>
+
+    <!-- Links List  -->
+    <div class="flex justify-between gap-8 lg:gap-12">
+      <ul class="flex justify-between gap-2 lg:gap-4 h-[69px] items-center font-libre-baskerville font-bold">
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer bg-black text-white rounded-[4px] transition-all duration-300"
+          data-nav="home">
+          Home
+        </li>
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+          data-nav="overview">
+          Overview
+        </li>
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+          data-nav="features">
+          Features
+        </li>
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+          data-nav="amenities">
+          Amenities
+        </li>
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+          data-nav="floor-price">
+          Floor Price
+        </li>
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+          data-nav="location">
+          Location
+        </li>
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+          data-nav="gallery">
+          Gallery
+        </li>
+        <li
+          class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
+          data-nav="contact">
+          Contact Us
+        </li>
+      </ul>
+
+      <div class="hidden xl:block"><img src="images/logo2.png" alt="" /></div>
+    </div>
+  </nav>
+
+  <!-- Header Mobile -->
+  <nav id="mobile-navbar"
+    class="xl:hidden w-full fixed top-0 z-50 flex justify-between items-center px-4 py-4 transition-all duration-300">
+    <!-- Logo 1  -->
+    <div>
+      <img src="images/forbus-logo3.png" alt="" class="w-[174px] w-[116px]" />
+    </div>
+
+    <!-- Logo 2 and Menu Icon Container -->
+    <div class="flex items-center">
+      <!-- Logo 2 -->
+      <div class="xl:hidden">
+        <img src="images/logo2.png" alt="" class="h-auto w-auto max-w-[100px] sm:max-w-[140px]" />
       </div>
 
-      <!-- Links List  -->
-      <div class="flex justify-between gap-8 lg:gap-12">
-        <ul
-          class="flex justify-between gap-2 lg:gap-4 h-[69px] items-center font-libre-baskerville font-bold"
-        >
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer bg-black text-white rounded-[4px] transition-all duration-300"
-            data-nav="home"
-          >
-            Home
-          </li>
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
-            data-nav="overview"
-          >
-            Overview
-          </li>
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
-            data-nav="features"
-          >
-            Features
-          </li>
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
-            data-nav="amenities"
-          >
-            Amenities
-          </li>
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
-            data-nav="floor-price"
-          >
-            Floor Price
-          </li>
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
-            data-nav="location"
-          >
-            Location
-          </li>
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
-            data-nav="gallery"
-          >
-            Gallery
-          </li>
-          <li
-            class="nav-link w-[91px] h-[40px] flex justify-center items-center font-[700] text-[15px] text-black cursor-pointer text-white rounded-[4px] transition-all duration-300"
-            data-nav="contact"
-          >
-            Contact Us
-          </li>
-        </ul>
-
-        <div class="hidden xl:block"><img src="images/logo2.png" alt="" /></div>
-      </div>
-    </nav>
-
-    <!-- Header Mobile -->
-    <nav
-      id="mobile-navbar"
-      class="xl:hidden w-full fixed top-0 z-50 flex justify-between items-center px-4 py-4 transition-all duration-300"
-    >
-      <!-- Logo 1  -->
-      <div>
-        <img src="images/forbus-logo3.png" alt="" class="w-[174px] w-[116px]" />
-      </div>
-
-      <!-- Logo 2 and Menu Icon Container -->
-      <div class="flex items-center gap-3">
-        <!-- Logo 2 -->
-        <div class="xl:hidden">
-          <img src="images/logo2.png" alt="" class="h-auto w-auto max-w-[100px] sm:max-w-[140px]" />
-        </div>
-        
-        <!-- Menu Icon Button -->
-        <button
-          id="menu-toggle"
-          class="z-50 p-2 cursor-pointer"
-          aria-label="Toggle menu"
-        >
-        <svg
-          id="menu-icon"
-          class="w-8 h-8 text-white"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"
-          ></path>
+      <!-- Menu Icon Button -->
+      <button id="menu-toggle" class="z-50 p-2 cursor-pointer" aria-label="Toggle menu">
+        <svg id="menu-icon" class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
-        <svg
-          id="close-icon"
-          class="w-8 h-8 text-white hidden"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          ></path>
+        <svg id="close-icon" class="w-8 h-8 text-white hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu Overlay -->
+  <div id="mobile-menu" class="xl:hidden fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full">
+    <div class="w-full h-full flex flex-col items-center justify-center px-6">
+      <!-- Logo 2 in Mobile Menu -->
+      <div class="mb-12">
+        <img src="images/logo2.png" alt="" class="h-auto w-auto mx-auto md:block hidden" />
       </div>
-    </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div
-      id="mobile-menu"
-      class="xl:hidden fixed top-0 left-0 w-full h-screen bg-black z-40 transform -translate-y-full"
-    >
-      <div class="w-full h-full flex flex-col items-center justify-center px-6">
-        <!-- Logo 2 in Mobile Menu -->
-        <div class="mb-12">
-          <img src="images/logo2.png" alt="" class="h-auto w-auto mx-auto md:block hidden" />
-        </div>
+      <!-- Mobile Menu Links -->
+      <ul class="flex flex-col gap-8 items-center font-libre-baskerville font-bold">
+        <li class="w-full text-center">
+          <a href="#home"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Home</a>
+        </li>
+        <li class="w-full text-center">
+          <a href="#overview"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Overview</a>
+        </li>
+        <li class="w-full text-center">
+          <a href="#features"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Features</a>
+        </li>
+        <li class="w-full text-center">
+          <a href="#floor-price"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Floor
+            Price</a>
+        </li>
+        <li class="w-full text-center">
+          <a href="#amenities"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Amenities</a>
+        </li>
+        <li class="w-full text-center">
+          <a href="#location"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Location</a>
+        </li>
+        <li class="w-full text-center">
+          <a href="#gallery"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Gallery</a>
+        </li>
+        <li class="w-full text-center">
+          <a href="#contact"
+            class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20">Contact
+            Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-        <!-- Mobile Menu Links -->
-        <ul
-          class="flex flex-col gap-8 items-center font-libre-baskerville font-bold"
-        >
-          <li class="w-full text-center">
-            <a
-              href="#home"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Home</a
-            >
-          </li>
-          <li class="w-full text-center">
-            <a
-              href="#overview"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Overview</a
-            >
-          </li>
-          <li class="w-full text-center">
-            <a
-              href="#features"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Features</a
-            >
-          </li>
-          <li class="w-full text-center">
-            <a
-              href="#floor-price"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Floor Price</a
-            >
-          </li>
-          <li class="w-full text-center">
-            <a
-              href="#amenities"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Amenities</a
-            >
-          </li>
-          <li class="w-full text-center">
-            <a
-              href="#location"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Location</a
-            >
-          </li>
-          <li class="w-full text-center">
-            <a
-              href="#gallery"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Gallery</a
-            >
-          </li>
-          <li class="w-full text-center">
-            <a
-              href="#contact"
-              class="block w-full py-4 text-white text-[20px] font-[700] cursor-pointer border-b border-white/20"
-              >Contact Us</a
-            >
-          </li>
-        </ul>
+  <!-- Section 1 -->
+  <section id="home" class="s1 w-full  relative">
+    <!-- Banner Image Slider -->
+
+    <!-- Desktop Banner Slider -->
+    <div class="desktop-slider hidden md:block w-full h-full relative overflow-hidden">
+      <div class="desktop-slider-container flex w-full h-full">
+        <img src="/images/s1/s1-banner.png" class="desktop-slide w-full h-full object-cover flex-shrink-0" alt="" />
+        <img src="images/sl2.jpg" class="desktop-slide w-full h-full object-cover flex-shrink-0" alt="" />
+        <img src="images/sl3.jpg" class="desktop-slide w-full h-full object-cover flex-shrink-0" alt="" />
+      </div>
+      <!-- Desktop Navigation Buttons -->
+      <button id="desktop-slider-prev"
+        class="slider-nav-btn absolute left-4 top-1/2 z-30 w-10 h-10 md:w-12 md:h-12 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+        aria-label="Previous slide">
+        <svg class="w-5 h-5 md:w-6 md:h-6 text-black" fill="none" stroke="currentColor" stroke-width="2.5"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button id="desktop-slider-next"
+        class="slider-nav-btn absolute top-1/2 right-4 z-30 w-10 h-10 md:w-12 md:h-12 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+        aria-label="Next slide">
+        <svg class="w-5 h-5 md:w-6 md:h-6 text-black" fill="none" stroke="currentColor" stroke-width="2.5"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+      <!-- Desktop Pagination Dots -->
+      <div id="desktop-slider-pagination"
+        class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-2 items-center">
       </div>
     </div>
 
-    <!-- Section 1 -->
-    <section id="home" class="s1 w-full  relative">
-      <!-- Banner Image Slider -->
-
-      <!-- Desktop Banner Slider -->
-      <div class="desktop-slider hidden md:block w-full h-full relative overflow-hidden">
-        <div class="desktop-slider-container flex w-full h-full">
-          <img
-            src="/images/s1/s1-banner.png"
-            class="desktop-slide w-full h-full object-cover flex-shrink-0"
-            alt=""
-          />
-          <img 
-            src="images/sl2.jpg"  
-            class="desktop-slide w-full h-full object-cover flex-shrink-0" 
-            alt=""
-          />
-          <img 
-            src="images/sl3.jpg"  
-            class="desktop-slide w-full h-full object-cover flex-shrink-0" 
-            alt=""
-          />
-        </div>
-        <!-- Desktop Navigation Buttons -->
-        <button
-          id="desktop-slider-prev"
-          class="slider-nav-btn absolute left-4 top-1/2 z-30 w-10 h-10 md:w-12 md:h-12 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
-          aria-label="Previous slide"
-        >
-          <svg
-            class="w-5 h-5 md:w-6 md:h-6 text-black"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-        <button
-          id="desktop-slider-next"
-          class="slider-nav-btn absolute top-1/2 right-4 z-30 w-10 h-10 md:w-12 md:h-12 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
-          aria-label="Next slide"
-        >
-          <svg
-            class="w-5 h-5 md:w-6 md:h-6 text-black"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-        <!-- Desktop Pagination Dots -->
-        <div
-          id="desktop-slider-pagination"
-          class="absolute bottom-4 left-1/2 -translate-x-1/2 z-30 flex gap-2 items-center"
-        >
-        </div>
+    <!-- Mobile Banner Slider -->
+    <div class="mobile-slider block md:hidden w-full relative overflow-hidden">
+      <div class="mobile-slider-container flex w-full">
+        <img src="/images/s1/mobilebanner.png" class="mobile-slide w-full h-auto object-cover flex-shrink-0" alt="" />
+        <img src="/images/mobile-sl2.png" class="mobile-slide w-full h-auto object-cover flex-shrink-0" alt="" />
+        <img src="/images/mobile-sl2.png" class="mobile-slide w-full h-auto object-cover flex-shrink-0" alt="" />
       </div>
-
-      <!-- Mobile Banner Slider -->
-      <div class="mobile-slider block md:hidden w-full relative overflow-hidden">
-        <div class="mobile-slider-container flex w-full">
-          <img
-            src="/images/s1/mobilebanner.png"
-            class="mobile-slide w-full h-auto object-cover flex-shrink-0"
-            alt=""
-          />
-          <img
-            src="/images/mobile-sl2.png"
-            class="mobile-slide w-full h-auto object-cover flex-shrink-0"
-            alt=""
-          />
-          <img
-            src="/images/mobile-sl2.png"
-            class="mobile-slide w-full h-auto object-cover flex-shrink-0"
-            alt=""
-          />
-        </div>
-        <!-- Mobile Navigation Buttons -->
-        <button
-          id="mobile-slider-prev"
-          class="slider-nav-btn absolute top-1/2 left-2 z-30 w-8 h-8 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
-          aria-label="Previous slide"
-        >
-          <svg
-            class="w-4 h-4 text-black"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-        <button
-          id="mobile-slider-next"
-          class="slider-nav-btn absolute top-1/2 right-2 z-30 w-8 h-8 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
-          aria-label="Next slide"
-        >
-          <svg
-            class="w-4 h-4 text-black"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
-        <!-- Mobile Pagination Dots -->
-        <div
-          id="mobile-slider-pagination"
-          class="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center"
-        >
-        </div>
-      </div>
-      <!-- Absolute Position Content -->
-      <div
-        class="min-w-[300px] md:w-[400px] lg:w-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 md:px-0 xl:top-[23rem]"
-      >
-        <div
-          class="w-full h-full relative flex flex-col justify-center items-center"
-        >
-          <!-- Top Container  -->
-          <div
-            class="w-[90%] lg:w-[448px] min-h-[120px] lg:min-h-[159px] flex justify-center items-center bg-black relative z-10 -mb-8 px-4 md:px-0 blDv"
-          >
-            <p
-              class="font-[400] text-[16px] lg:text-[25px] text-white text-center font-libre-baskerville font-regular"
-            >
-              Fab Luxe Residences by Forbes Global Properties exhibited by One
-              Global Developers
-            </p>
-          </div>
-
-          <!-- Bottom Container  -->
-          <div
-            class="w-full h-[180px] lg:h-[209px] border-2 border-white flex flex-col justify-end items-center gap-2 md:gap-3 relative z-0 pb-4"
-          >
-            <p
-              class="font-[400] text-[14px] lg:text-[16px] text-white font-montserrat font-medium"
-            >
-              At Greater Noida (West)
-            </p>
-            <h2
-              class="font-[800] text-[24px] lg:text-[30px] text-white font-montserrat font-bold text-center px-2"
-            >
-              3 & 4 BHK + Study
-            </h2>
-            <button
-              class="popup-trigger w-[160px] md:w-[193px] h-[40px] md:h-[48px] bg-black text-white font-[500] text-[12px] lg:text-[14px] cursor-pointer font-montserrat font-medium uppercase"
-            >
-              Price: On Request
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Absolute Position Button  -->
-      <button
-        class="popup-trigger hidden lg:flex w-[302px] h-[58px] bg-black rounded-tl-[50px] rounded-bl-[50px] text-white items-center gap-2 font-[600] text-[17px] cursor-pointer absolute bottom-28 right-0 pl-8 font-open-sans font-semibold"
-      >
-        <span class="relative inline-block">
-          <img src="./svgs/excelIcon.svg" alt="" class="enquire-default-icon" />
-          <img src="/svgs/info2.svg" alt="" class="enquire-hover-icon" />
-        </span>
-        Enquire Now
-        <span class="relative inline-block">
-          <img src="./svgs/rightArr.svg" alt="" class="enquire-default-icon" />
-          <img src="./svgs/bl-arr.svg" alt="" class="enquire-hover-icon" />
-        </span>
+      <!-- Mobile Navigation Buttons -->
+      <button id="mobile-slider-prev"
+        class="slider-nav-btn absolute top-1/2 left-2 z-30 w-8 h-8 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+        aria-label="Previous slide">
+        <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
       </button>
-
-      <button
-        class="popup-trigger lg:hidden fixed bottom-4 right-4 w-[140px] h-[48px] bg-black rounded-full text-white flex items-center justify-center gap-2 font-[600] text-[14px] cursor-pointer font-open-sans font-semibold z-40"
-      >
-        <img src="./svgs/excelIcon.svg" alt="" class="w-4 h-4" />
-        Enquire
+      <button id="mobile-slider-next"
+        class="slider-nav-btn absolute top-1/2 right-2 z-30 w-8 h-8 bg-white bg-opacity-80 hover:bg-opacity-100 rounded-full flex items-center justify-center transition-all duration-300 shadow-lg"
+        aria-label="Next slide">
+        <svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
       </button>
-    </section>
-
-    <!-- Section 2 -->
-    <section id="overview" class="w-full bgContainer relative flex justify-center bg-white">
-      <!-- Highlights anchor for smooth scrolling -->
-      <div id="highlights" style="position: absolute; top: 0; pointer-events: none;"></div>
-      <!-- Absolute Position Image  -->
-      <div class="hidden md:block w-auto h-auto absolute top-0 right-0 z-0">
-        <img src="/images/new-build.png" class="w-full h-full" alt="" />
+      <!-- Mobile Pagination Dots -->
+      <div id="mobile-slider-pagination"
+        class="absolute bottom-2 left-1/2 -translate-x-1/2 z-30 flex gap-1.5 items-center">
       </div>
-
-      <!-- Centered Align Container  -->
-      <div
-        class="w-[90%] sm:w-[90%] md:w-[95%] h-full relative z-10 flex flex-col gap-6 sm:gap-8 md:gap-12 border-b-[1px] border-[#E6E6E6] py-8 sm:py-10 md:py-20"
-      >
-        <!-- Row 1 -->
-        <div class="w-full flex flex-col gap-6 sm:gap-8 md:gap-12">
-          <!-- Top Container  -->
-          <div
-            class="w-full flex flex-col-reverse xl:flex-row justify-between gap-6 sm:gap-8 lg:gap-10 xl:gap-0"
-          >
-            <!-- Left Side Container  -->
-            <div class="w-full xl:w-[49%] px-4 sm:px-6 md:px-10 flex flex-col gap-4">
-              <p
-                class="font-[400] text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-left text-center lg:text-left text-black font-libre-baskerville font-regular leading-relaxed"
-              >
-                <strong>
-                  One Global Developers leads the creation of FAB-LUXE by
-                  bringing together two powerful pillars:</strong
-                >
-                the century-old
-                <span class="text-[#BF4927] font-baskervville font-regular ">Forbes</span> legacy of luxury and
-                aspiration, and NBCC's reputation as India's most trusted
-                Government PSU developer. 
-               <p  class="font-[400] text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-left text-center lg:text-left text-black font-libre-baskerville font-regular leading-relaxed"> This partnership sets a new benchmark for residential living in
-                Greater Noida (West), blending brand value, lifestyle
-                credibility and construction certainty in one address.</p>
-              </p>
-            </div>
-
-            <!-- Right Side Container  -->
-            <div
-              class="w-full xl:w-[49%] px-4 sm:px-6 md:px-10 flex flex-col gap-4 border-t-2 lg:border-t-0 lg:border-l-2 border-[#D9D9D9] pt-6 lg:pt-0"
-            >
-              <h2
-                class="font-[400] text-[22px] sm:text-[24px] md:text-[27px] lg:text-[29px] text-black font-baskervville font-regular"
-              >
-                Request a Call Back
-              </h2>
-              <form class="flex flex-col gap-3 sm:gap-4">
-                <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
-                  <input
-                    type="text"
-                    placeholder="Your Name*"
-                    class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Your Email*"
-                    class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base"
-                  />
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
-                  <input
-                    type="text"
-                    placeholder="Your Phone*"
-                    class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Your Message*"
-                    class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base"
-                  />
-                </div>
-                <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
-                  <div class="w-[45%] sm:w-[48%] lg:w-[274px]">
-                    <p
-                      class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-                    >
-                      Explore premium properties with trusted !
-                    </p>
-                  </div>
-                  <button
-                    class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex lg:justify-end justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1"
-                  >
-                    <p
-                      class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold"
-                    >
-                      Get a Call Back
-                    </p>
-                    <!-- The Bg Will Change When User Will Hover On Btn It Will conver into black bg color  -->
-                    <div
-                      class="callback-icon-container w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full hidden lg:flex items-center justify-center relative transition-colors duration-300"
-                    >
-                      <!-- Icon Wrapper - Fixed size container -->
-                      <span class="relative inline-block">
-                        <!-- This is Default Icon  -->
-                        <img
-                          src="./svgs/top-arrow.svg"
-                          alt=""
-                          class="w-4 h-4 md:w-auto md:h-auto callback-default-icon"
-                        />
-                        <!-- This Is Hovered Icon  -->
-                        <img
-                          src="svgs/top-white-arr.svg"
-                          alt=""
-                          class="w-4 h-4 md:w-auto md:h-auto callback-hover-icon"
-                        />
-                      </span>
-                    </div>
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-
-          <!-- Bottom Container  -->
-          <div
-            class="w-full flex flex-col sm:flex-row justify-between px-4 sm:px-6 md:px-10 gap-3 sm:gap-4"
-          >
-            <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[80px] bg-[#F2F2F2] rounded-[2px] flex flex-row lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center lg:gap-5 gap-3"
-            >
-              <img
-                src="/svgs/building.svg"
-                alt=""
-                class="w-8 h-8 md:w-auto md:h-auto"
-              />
-
-              <div
-                class="flex flex-col gap-2 justify-center items-end text-end"
-              >
-                <p class="font-[400] text-[13px] lg:text-[16px] text-black text-end leading-relaxed">
-                  Apartments
-                </p>
-                <p class="font-[700] text-[13px] lg:text-[16px] text-black text-end leading-relaxed"
-                  >4 & 5 BHK</p
-                >
-              </div>
-            </div>
-
-            <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3"
-            >
-              <img
-                src="/svgs/location.svg"
-                alt=""
-                class="w-8 h-8 md:w-auto md:h-auto"
-              />
-
-              <div
-                class="flex flex-col gap-2 justify-center items-end text-end"
-              >
-                <p
-                  class="font-[400] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-regular text-end leading-relaxed"
-                >
-                  Location
-                </p>
-                  <p
-                  class="font-[700] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-bold text-end leading-relaxed"
-                  >Noida</p
-                >
-              </div>
-            </div>
-
-            <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3"
-            >
-              <img
-                src="/svgs/container.svg"
-                alt=""
-                class="w-8 h-8 md:w-auto md:h-auto"
-              />
-
-              <div
-                class="flex flex-col gap-2 justify-center items-end text-end"
-              >
-                <p
-                  class="font-[400] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-regular text-end leading-relaxed"
-                >
-                  Size
-                </p>
-                <p
-                  class="font-[700] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-bold text-end leading-relaxed"
-                  >2690-3307 sq ft</p
-                >
-              </div>
-            </div>
-
-            <div
-              class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3"
-            >
-              <img
-                src="/svgs/rupee.svg"
-                alt=""
-                class="w-8 h-8 md:w-auto md:h-auto"
-              />
-
-              <div
-                class="flex flex-col gap-2 justify-center items-end text-end"
-              >
-                <p
-                  class="font-[400] text-[13px] lg:text-[16px] text-black font-open-sans font-regular leading-relaxed"
-                >
-                  Price
-                </p>
-                  <p
-                  class="font-[700] text-[13px] lg:text-[16px] text-black font-open-sans font-bold leading-relaxed"
-                  >On Request</p
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 2  -->
-        <div
-          class="w-full flex flex-col-reverse lg:flex-row lg:justify-end lg:items-end relative mt-6 sm:mt-8 md:mt-0 justify-center items-center gap-4 sm:gap-6 lg:mt-[50px]"
-        >
-          <!-- Left Side Container  -->
-          <div class="w-full lg:w-auto lg:absolute lg:-top-4 lg:-left-[18rem] z-0 flex justify-center lg:justify-start">
-            <img src="images/s2/s2i1.jpg" alt="" class="w-full w-auto h-auto no-hover-scale" />
-          </div>
-
-          <!-- Right Side Container   -->
-          <div
-            id="amenities"
-            class="w-full md:w-auto flex flex-col gap-4 sm:gap-6 md:gap-8 z-10 bg-white whCt px-4 sm:px-0 lg:pr-[30px]"
-          >
-            <!-- 1st Row  -->
-            <div
-              class="flex flex-col justify-center lg:justify-end items-center lg:items-end gap-2"
-            >
-              <h2
-                class="font-[400] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] text-black font-baskervville font-regular"
-              >
-                Amenities
-              </h2>
-              <p
-                class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular text-center lg:text-right"
-              >
-                Where Everyday Living Feels Like a Dream
-              </p>
-            </div>
-
-            <!-- 2nd Row  -->
-            <div
-              class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-2 gap-2 sm:gap-3 lg:gap-4 w-full md:w-auto"
-            >
-              <div
-                class="w-full lg:w-[277px] h-[90px] sm:h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-1 sm:gap-2 p-2"
-              >
-                <img
-                  src="svgs/basket.svg"
-                  alt=""
-                  class="w-5 h-5 sm:w-6 sm:h-6 md:w-auto md:h-auto"
-                />
-                <p
-                  class="font-[400] text-[11px] sm:text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
-                >
-                  Indoor Games
-                </p>
-              </div>
-              <div
-                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
-              >
-                <img
-                  src="svgs/women.svg"
-                  alt=""
-                  class="w-6 h-6 md:w-auto md:h-auto"
-                />
-                <p
-                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
-                >
-                  Yoga Center
-                </p>
-              </div>
-              <div
-                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
-              >
-                <img
-                  src="svgs/hall.svg"
-                  alt=""
-                  class="w-6 h-6 md:w-auto md:h-auto"
-                />
-                <p
-                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
-                >
-                  Multi-Purpose Hall
-                </p>
-              </div>
-              <div
-                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
-              >
-                <img
-                  src="svgs/hall.svg"
-                  alt=""
-                  class="w-6 h-6 md:w-auto md:h-auto"
-                />
-                <p
-                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
-                >
-                  Spa & Salon
-                </p>
-              </div>
-              <div
-                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
-              >
-                <img
-                  src="svgs/park.svg"
-                  alt=""
-                  class="w-6 h-6 md:w-auto md:h-auto"
-                />
-                <p
-                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
-                >
-                  Kids Play Area
-                </p>
-              </div>
-              <div
-                class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2"
-              >
-                <img
-                  src="svgs/lift.svg"
-                  alt=""
-                  class="w-6 h-6 md:w-auto md:h-auto"
-                />
-                <p
-                  class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center"
-                >
-                  Double Height Entrance Lobby
-                </p>
-              </div>
-            </div>
-
-            <!-- Row 3  -->
-            <div class="flex w-full justify-center md:justify-end items-end">
-              <button
-                class="w-[140px] popup-trigger md:w-[168px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
-              >
-                <p
-                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular"
-                >
-                  Know more
-                </p>
-                <!-- Icon Container - Both icons positioned absolutely to overlap -->
-                <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
-                  <!-- This is Default Icon  -->
-                  <img
-                    src="/images/white.png"
-                    alt=""
-                    class="w-4 h-4 md:w-auto md:h-auto default-icon"
-                  />
-                  <!-- This is Hover Icon  -->
-                  <img
-                    src="images/black.png"
-                    alt=""
-                    class="w-4 h-4 md:w-auto md:h-auto hover-icon"
-                  />
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Row 3  -->
-        <div class="w-full flex flex-col gap-4 sm:gap-6 md:gap-8 px-4 sm:px-0" id="floor-price">
-          <!-- 1st Container  -->
-          <div class="flex justify-center items-center">
-            <h2
-              class="font-[400] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] text-black font-baskervville font-regular"
-            >
-              Floor Price
-            </h2>
-          </div>
-
-          <!-- 2nd Container  -->
-          <div
-            class="flex flex-col lg:flex-row justify-center w-full gap-4 sm:gap-6"
-          >
-            <div
-              class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-4 sm:py-6 lg:py-0"
-            >
-              <div class="flex flex-col gap-3 sm:gap-4 pl-3 sm:pl-4 md:pl-6 w-full">
-                <p
-                  class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black font-open-sans font-regular"
-                >
-                  Type
-                </p>
-
-                <div class="relative">
-                  <div
-                    class="w-[240px] sm:w-[280px] md:w-[324px] h-[50px] sm:h-[56px] md:h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-3 sm:pl-4 md:pl-6 absolute top-0 -left-3 sm:-left-4 md:-left-6"
-                  >
-                    <h2
-                      class="font-[700] text-[18px] sm:text-[20px] md:text-[26px] text-black font-montserrat font-bold"
-                    >
-                      3 BHK + Study
-                    </h2>
-                  </div>
-                </div>
-                <p
-                  class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black mt-10 sm:mt-12 md:mt-14 font-open-sans font-regular"
-                >
-                  Area
-                </p>
-                <p
-                  class="font-[700] text-[18px] sm:text-[20px] md:text-[23px] text-black font-montserrat font-bold"
-                >
-                  2690–2718 sq ft
-                </p>
-
-                <button
-                  class="popup-trigger w-full sm:w-[180px] md:w-[216px] h-[38px] sm:h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer mt-2"
-                >
-                  <p
-                    class="font-[600] text-[13px] sm:text-[14px] md:text-[16px] font-open-sans font-semibold"
-                  >
-                    Price: on Request
-                  </p>
-                  <!-- Icon Container - Both icons positioned absolutely to overlap -->
-                  <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
-                    <img
-                      src="/images/white.png"
-                      alt=""
-                      class="w-4 h-4 md:w-auto md:h-auto default-icon"
-                    />
-                    <img
-                      src="images/black.png"
-                      alt=""
-                      class="w-4 h-4 md:w-auto md:h-auto hover-icon"
-                    />
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            <div
-              class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-4 sm:py-6 lg:py-0"
-            >
-              <div class="flex flex-col gap-3 sm:gap-4 pl-3 sm:pl-4 md:pl-6 w-full">
-                <p
-                  class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black font-open-sans font-regular"
-                >
-                  Type
-                </p>
-
-                <div class="relative">
-                  <div
-                    class="w-[240px] sm:w-[280px] md:w-[324px] h-[50px] sm:h-[56px] md:h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px] flex items-center pl-3 sm:pl-4 md:pl-6 absolute top-0 -left-3 sm:-left-4 md:-left-6"
-                  >
-                    <h2
-                      class="font-[700] text-[18px] sm:text-[20px] md:text-[26px] text-black font-montserrat font-bold"
-                    >
-                      4 BHK + Study
-                    </h2>
-                  </div>
-                </div>
-                <p
-                  class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black mt-10 sm:mt-12 md:mt-14 font-open-sans font-regular"
-                >
-                  Area
-                </p>
-                <p
-                  class="font-[700] text-[18px] sm:text-[20px] md:text-[23px] text-black font-montserrat font-bold"
-                >
-                  3307 sq ft
-                </p>
-
-                <button
-                  class="popup-trigger w-full sm:w-[180px] md:w-[216px] h-[38px] sm:h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer mt-2"
-                >
-                  <p
-                    class="font-[600] text-[13px] sm:text-[14px] md:text-[16px] font-open-sans font-semibold"
-                  >
-                    Price: on Request
-                  </p>
-                  <!-- Icon Container - Both icons positioned absolutely to overlap -->
-                  <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
-                    <img
-                      src="/images/white.png"
-                      alt=""
-                      class="w-4 h-4 md:w-auto md:h-auto default-icon"
-                    />
-                    <img
-                      src="images/black.png"
-                      alt=""
-                      class="w-4 h-4 md:w-auto md:h-auto hover-icon"
-                    />
-                  </span>
-                </button>
-              </div>
-            </div>
-
-            <div
-              class="w-full lg:w-auto h-[200px] sm:h-[250px] hidden lg:block lg:h-[328px] border-[1px] border-[#E6E6E6] mx-auto lg:mx-0"
-            >
-              <img
-                src="images/fabluxe-01-01.jpg"
-                alt=""
-                class="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          <!-- 3rd Container  -->
-          <div
-            class="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap justify-around items-center mt-4 sm:mt-6 md:mt-10 gap-3 sm:gap-4  px-4 sm:px-0"
-          >
-            <div
-              class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4"
-            >
-              <p
-                class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-              >
-                11 ft ceiling heights
-              </p>
-            </div>
-            <div
-              class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4 md:px-2"
-            >
-              <p
-                class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-              >
-                Wide balconies for natural light and ventilation
-              </p>
-            </div>
-            <div
-              class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4"
-            >
-              <p
-                class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-              >
-                G+35 towers with only four residences per floor
-              </p>
-            </div>
-            <div
-              class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4"
-            >
-              <p
-                class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-              >
-                Possession from <br>
-                <b> 2027 onwards</b>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 3 -->
-    <section id="gallery" class="w-full bgContainer min-h-screen flex justify-center items-center">
-      <!-- Centered Align Container   -->
-      <div
-        class="w-[95%] h-full relative z-10 flex flex-col gap-6 md:gap-6 py-10 md:py-20"
-      >
+    </div>
+    <!-- Absolute Position Content -->
+    <div
+      class="min-w-[300px] md:w-[400px] lg:w-[506px] absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 px-4 md:px-0 xl:top-[23rem]">
+      <div class="w-full h-full relative flex flex-col justify-center items-center">
         <!-- Top Container  -->
         <div
-          class="w-full flex justify-center items-center text-center flex-col"
-        >
-          <h2
-            class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular"
-          >
-            Gallery
-          </h2>
-          <p
-            class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-          >
-            Moments That Define Your Dream Home
+          class="w-[90%] lg:w-[448px] min-h-[120px] lg:min-h-[159px] flex justify-center items-center bg-black relative z-10 -mb-8 px-4 md:px-0 blDv">
+          <p class="font-[400] text-[16px] lg:text-[25px] text-white text-center font-libre-baskerville font-regular">
+            Fab Luxe Residences by Forbes Global Properties exhibited by One
+            Global Developers
           </p>
-        </div>
-
-        <!-- Main Container  -->
-        <div
-          class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
-        >
-          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
-            <img
-              src="images/fabluxe-01-02.jpg"
-              alt=""
-              class="w-full h-full object-cover gallery-image cursor-pointer"
-              data-gallery-src="images/fabluxe-01-02.jpg"
-            />
-          </div>
-          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
-            <img
-              src="images/fabluxe-01-03.jpg"
-              alt=""
-              class="w-full h-full object-cover gallery-image cursor-pointer"
-              data-gallery-src="images/fabluxe-01-03.jpg"
-            />
-          </div>
-          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
-            <img
-              src="images/fabluxe-01-04.jpg"
-              alt=""
-              class="w-full h-full object-cover gallery-image cursor-pointer"
-              data-gallery-src="images/fabluxe-01-04.jpg"
-            />
-          </div>
-          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
-            <img
-              src="images/fabluxe-01-05.jpg"
-              alt=""
-              class="w-full h-full object-cover gallery-image cursor-pointer"
-              data-gallery-src="images/fabluxe-01-05.jpg"
-            />
-          </div>
-          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
-            <img
-                src="images/fabluxe-01-06.jpg"
-              alt=""
-              class="w-full h-full object-cover gallery-image cursor-pointer"
-              data-gallery-src="images/fabluxe-01-06.jpg"
-            />
-          </div>
-          <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
-            <img
-              src="images/fabluxe-01-07.jpg"
-              alt=""
-              class="w-full h-full object-cover gallery-image cursor-pointer"
-              data-gallery-src="images/fabluxe-01-07.jpg"
-            />
-          </div>
         </div>
 
         <!-- Bottom Container  -->
-        <div class="w-full flex justify-center items-center">
+        <div
+          class="w-full h-[180px] lg:h-[209px] border-2 border-white flex flex-col justify-end items-center gap-2 md:gap-3 relative z-0 pb-4">
+          <p class="font-[400] text-[14px] lg:text-[16px] text-white font-montserrat font-medium">
+            At Greater Noida (West)
+          </p>
+          <h2 class="font-[800] text-[24px] lg:text-[30px] text-white font-montserrat font-bold text-center px-2">
+            3 & 4 BHK + Study
+          </h2>
           <button
-            class="w-[140px] popup-trigger md:w-[168px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer"
-          >
-            <p
-              class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
-            >
-              View more
-            </p>
-            <!-- Icon Container - Both icons positioned absolutely to overlap -->
-            <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
-              <img
-                src="/images/white.png"
-                alt=""
-                class="w-4 h-4 md:w-auto md:h-auto default-icon"
-              />
-              <img
-                src="images/black.png"
-                alt=""
-                class="w-4 h-4 md:w-auto md:h-auto hover-icon"
-              />
-            </span>
+            class="popup-trigger w-[160px] md:w-[193px] h-[40px] md:h-[48px] bg-black text-white font-[500] text-[12px] lg:text-[14px] cursor-pointer font-montserrat font-medium uppercase">
+            Price: On Request
           </button>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- Section 4 -->
-    <section id="features" class="w-full flex justify-center border-b-[1px] border-[#DBDADA]">
-      <!-- Centered Align Container   -->
-      <div
-        class="w-[95%] max-w-[1440px] bgContainer h-full relative z-10 flex flex-col lg:flex-row justify-between pb-10 md:pb-20 gap-8"
-      >
-        <!-- Left Side Container  -->
-        <div class="w-full lg:w-[512px] flex flex-col gap-4 md:gap-6">
-          <!-- Top Container  -->
-          <div class="flex flex-col gap-2 px-4 md:px-0">
+    <!-- Absolute Position Button  -->
+    <button
+      class="popup-trigger hidden lg:flex w-[302px] h-[58px] bg-black rounded-tl-[50px] rounded-bl-[50px] text-white items-center gap-2 font-[600] text-[17px] cursor-pointer absolute bottom-28 right-0 pl-8 font-open-sans font-semibold">
+      <span class="relative inline-block">
+        <img src="./svgs/excelIcon.svg" alt="" class="enquire-default-icon" />
+        <img src="/svgs/info2.svg" alt="" class="enquire-hover-icon" />
+      </span>
+      Enquire Now
+      <span class="relative inline-block">
+        <img src="./svgs/rightArr.svg" alt="" class="enquire-default-icon" />
+        <img src="./svgs/bl-arr.svg" alt="" class="enquire-hover-icon" />
+      </span>
+    </button>
+
+    <button
+      class="popup-trigger lg:hidden fixed bottom-4 right-4 w-[140px] h-[48px] bg-black rounded-full text-white flex items-center justify-center gap-2 font-[600] text-[14px] cursor-pointer font-open-sans font-semibold z-40">
+      <img src="./svgs/excelIcon.svg" alt="" class="w-4 h-4" />
+      Enquire
+    </button>
+  </section>
+
+  <!-- Section 2 -->
+  <section id="overview" class="w-full bgContainer relative flex justify-center bg-white">
+    <!-- Highlights anchor for smooth scrolling -->
+    <div id="highlights" style="position: absolute; top: 0; pointer-events: none;"></div>
+    <!-- Absolute Position Image  -->
+    <div class="hidden md:block w-auto h-auto absolute top-0 right-0 z-0">
+      <img src="/images/new-build.png" class="w-full h-full" alt="" />
+    </div>
+
+    <!-- Centered Align Container  -->
+    <div
+      class="w-[90%] sm:w-[90%] md:w-[95%] h-full relative z-10 flex flex-col gap-6 sm:gap-8 md:gap-12 border-b-[1px] border-[#E6E6E6] py-8 sm:py-10 md:py-20">
+      <!-- Row 1 -->
+      <div class="w-full flex flex-col gap-6 sm:gap-8 md:gap-12">
+        <!-- Top Container  -->
+        <div class="w-full flex flex-col-reverse xl:flex-row justify-between gap-6 sm:gap-8 lg:gap-10 xl:gap-0">
+          <!-- Left Side Container  -->
+          <div class="w-full xl:w-[49%] px-4 sm:px-6 md:px-10 flex flex-col gap-4">
             <p
-              class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-            >
-              Features
-            </p>
-            <h2
-              class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] text-black font-baskervville font-regular leading-tight"
-            >
-              India's First AQI-Controlled Luxury Community
-            </h2>
+              class="font-[400] text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-left text-center lg:text-left text-black font-libre-baskerville font-regular leading-relaxed">
+              <strong>
+                One Global Developers leads the creation of FAB-LUXE by
+                bringing together two powerful pillars:</strong>
+              the century-old
+              <span class="text-[#BF4927] font-baskervville font-regular ">Forbes</span> legacy of luxury and
+              aspiration, and NBCC's reputation as India's most trusted
+              Government PSU developer.
             <p
-              class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-            >
-              FAB-LUXE introduces a wellness standard no other residential
-              project in India currently offers.
+              class="font-[400] text-[14px] sm:text-[16px] md:text-[20px] lg:text-[22px] xl:text-left text-center lg:text-left text-black font-libre-baskerville font-regular leading-relaxed">
+              This partnership sets a new benchmark for residential living in
+              Greater Noida (West), blending brand value, lifestyle
+              credibility and construction certainty in one address.</p>
             </p>
-          </div>
-
-          <!-- Bottom Container  -->
-          <div
-            class="w-full lg:w-auto min-h-[200px] sm:min-h-[280px] md:min-h-[306px] flex items-center relative border-2 border-[#E6E6E6] overflow-hidden"
-          >
-            <p
-              class="font-[500] text-[14px] sm:text-[16px] md:text-[19px] text-black w-[200px] sm:w-[280px] md:w-[274px] font-baskervville font-regular z-10 absolute top-1/2 transform -translate-y-1/2 left-4 md:left-6 px-2 md:px-0"
-            >
-              Indoor AQI maintained significantly lower than the city's severe
-              levels
-            </p>
-
-            <!-- Absolute Position Image  -->
-            <div class="w-full h-full min-h-[200px] sm:min-h-[280px] md:min-h-[306px]">
-              <img
-                src="images/ui-images3.png"
-                alt=""
-                class="w-full h-full object-cover no-hover-scale"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- Right Side Container  -->
-        <div class="flex flex-col justify-between gap-6 md:gap-4 w-full lg:w-[512px] xl:w-auto">
-          <!-- Top Container  -->
-          <div
-            class="flex flex-col sm:flex-row justify-between gap-6 md:gap-4 items-start"
-          >
-            <!-- Left Side Card  -->
-            <div
-              class="flex flex-col justify-center items-center gap-3 md:gap-4 w-full sm:w-auto"
-            >
-              <!-- Image Div  -->
-              <div class="w-full sm:w-[280px] md:w-[365px] h-[250px] sm:h-[300px] md:h-[382px]">
-                <img
-                  src="images/365by-382.png"
-                  alt=""
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <p
-                class="font-[500] text-[14px] sm:text-[16px] md:text-[19px] text-black text-center font-baskervville font-regular px-2"
-              >
-                Outdoor purification towers
-              </p>
-            </div>
-
-            <!-- Right Side Card  -->
-            <div
-              class="flex flex-col justify-center items-center gap-3 md:gap-4 w-full sm:w-auto"
-            >
-              <!-- Image Div  -->
-              <div class="w-full sm:w-[250px] md:w-[328px] min-h-[180px] sm:min-h-[200px] md:h-[252px] bg-[#D9D9D9]">
-                <img
-                  src="images/ui-images2.png"
-                  alt=""
-                  class="w-full h-full "
-                />
-              </div>
-              <p
-                class="font-[500] text-[14px] sm:text-[16px] md:text-[19px] text-black text-center font-baskervville font-regular px-2"
-              >
-                Medical-grade HEPA air systems
-              </p>
-            </div>
-          </div>
-
-          <!-- Bottom Container  -->
-          <div class="w-full flex justify-center md:justify-end items-end px-4 md:px-0">
-            <p
-              class="w-full sm:w-[90%] md:w-[410px] font-[400] text-[14px] md:text-[16px] text-center md:text-end font-open-sans font-regular"
-            >
-              Designed for families who prioritise long-term health, this
-              community brings wellness into everyday living.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Section 5 -->
-    <section id="location" class="w-full bgContainer flex justify-center min-h-screen pt-[70px] pb-[70px]">
-      <!-- Centered Align Container   -->
-      <div class="w-[95%] h-full relative z-10 flex flex-col gap-8 md:gap-12">
-        <!-- Row 1  -->
-        <div class="w-full flex flex-col justify-center items-center gap-4">
-          <h2
-            class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular"
-          >
-            Location
-          </h2>
-          <p
-            class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular text-center"
-          >
-            A Location Shaping the Future of Western Noida
-          </p>
-        </div>
-
-        <!-- Row 2  -->
-        <div class="w-full flex flex-col-reverse xl:flex-row gap-8 lg:gap-12">
-          <!-- Left Side Container   -->
-          <div class="w-full xl:w-[620px] h-[250px] md:h-[411px]">
-            <img
-              src="images/s5/map.png"
-              alt=""
-              class="w-full h-full object-cover"
-            />
           </div>
 
           <!-- Right Side Container  -->
-          <div class="flex flex-col gap-4 w-full lg:w-auto">
+          <div
+            class="w-full xl:w-[49%] px-4 sm:px-6 md:px-10 flex flex-col gap-4 border-t-2 lg:border-t-0 lg:border-l-2 border-[#D9D9D9] pt-6 lg:pt-0 text-center lg:text-left">
             <h2
-              class="font-[400] text-[24px] md:text-[30px] text-color font-baskervville font-regular"
-            >
-              Advantages
-            </h2>
-            <ul class="flex flex-col gap-4 md:gap-6 w-full xl:w-[507px]">
-              <li>
-                <div class="flex items-start md:items-center gap-4 md:gap-6">
-                  <img
-                    src="svgs/delhi.svg"
-                    alt=""
-                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
-                  />
-                  <p
-                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
-                  >
-                    40 minutes to <b>Delhi CBD</b> via new expressways
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div class="flex items-start md:items-center gap-4 md:gap-6">
-                  <img
-                    src="svgs/airplane.svg"
-                    alt=""
-                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
-                  />
-                  <p
-                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
-                  >
-                    60 minutes to Noida International <b>Airport</b> (Jewar)
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div class="flex items-start md:items-center gap-4 md:gap-6">
-                  <img
-                    src="svgs/mall.svg"
-                    alt=""
-                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
-                  />
-                  <p
-                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
-                  >
-                    Close to <b>Gaur City Mall</b>, global F&B brands,
-                    entertainment hubs and top schools
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div class="flex items-start md:items-center gap-4 md:gap-6">
-                  <img
-                    src="svgs/building2.svg"
-                    alt=""
-                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
-                  />
-                  <p
-                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
-                  >
-                    Surrounded by <b>business parks</b>, IT clusters and
-                    upcoming infrastructure
-                  </p>
-                </div>
-              </li>
-
-              <li>
-                <div class="flex items-start md:items-center gap-4 md:gap-6">
-                  <img
-                    src="svgs/home.svg"
-                    alt=""
-                    class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0"
-                  />
-                  <p
-                    class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular"
-                  >
-                    Strong appreciation potential driven by Western Noida's
-                    rising demand and <b>NRI/HNI</b> interest
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <!-- Row 3  -->
-        <div
-          id="contact"
-          class="w-full flex flex-col xl:flex-row justify-between gap-8 "
-        >
-          <!-- Left Side Container   -->
-          <div class="flex flex-col gap-4 w-full lg:w-auto">
-            <h2
-              class="font-[400] text-[24px] md:text-[30px] text-black font-baskervville font-regular"
-            >
+              class="font-[400] text-[22px] sm:text-[24px] md:text-[27px] lg:text-[29px] text-black font-baskervville font-regular">
               Request a Call Back
             </h2>
-            <form class="flex flex-col gap-4">
-              <div class="flex flex-col md:flex-row gap-4">
-                <input
-                  type="text"
-                  placeholder="Your Name*"
-                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
-                />
-                <input
-                  type="text"
-                  placeholder="Your Email*"
-                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
-                />
+            <form class="flex flex-col gap-3 sm:gap-4">
+              <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
+                <input type="text" placeholder="Your Name*"
+                  class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
+                <input type="text" placeholder="Your Email*"
+                  class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
               </div>
-              <div class="flex flex-col md:flex-row gap-4">
-                <input
-                  type="text"
-                  placeholder="Your Phone*"
-                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
-                />
-                <input
-                  type="text"
-                  placeholder="Your Message*"
-                  class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base"
-                />
+              <div class="flex flex-col sm:flex-row justify-between gap-3 sm:gap-4">
+                <input type="text" placeholder="Your Phone*"
+                  class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
+                <input type="text" placeholder="Your Message*"
+                  class="w-full sm:w-[48%] xl:w-[274px] h-[48px] sm:h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-4 sm:pl-6 font-open-sans font-regular text-[13px] sm:text-[14px] md:text-base" />
               </div>
-              <div class="flex flex-col md:flex-row justify-between gap-4">
-                <div class="w-full md:w-[274px]">
+              <div class="flex flex-row justify-between gap-3 sm:gap-4">
+                <div class="w-[45%] sm:w-[48%] lg:w-[274px] text-left">
                   <p
-                    class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular"
-                  >
+                    class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular">
                     Explore premium properties with trusted !
                   </p>
                 </div>
-
                 <button
-                  class="w-full md:w-[221px] h-[50px] md:h-[58px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 md:gap-6 pr-1 cursor-pointer"
-                >
-                  <p
-                    class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold"
-                  >
+                  class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex lg:justify-end justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1">
+                  <p class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold">
                     Get a Call Back
                   </p>
                   <!-- The Bg Will Change When User Will Hover On Btn It Will conver into black bg color  -->
                   <div
-                    class="callback-icon-container w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full hidden md:flex items-center justify-center relative transition-colors duration-300"
-                  >
+                    class="callback-icon-container w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full hidden lg:flex items-center justify-center relative transition-colors duration-300">
                     <!-- Icon Wrapper - Fixed size container -->
                     <span class="relative inline-block">
                       <!-- This is Default Icon  -->
-                      <img
-                        src="svgs/top-arrow.svg"
-                        alt=""
-                        class="w-4 h-4 md:w-auto md:h-auto callback-default-icon"
-                      />
+                      <img src="./svgs/top-arrow.svg" alt=""
+                        class="w-4 h-4 md:w-auto md:h-auto callback-default-icon" />
                       <!-- This Is Hovered Icon  -->
-                      <img
-                        src="svgs/top-white-arr.svg"
-                        alt=""
-                        class="w-4 h-4 md:w-auto md:h-auto callback-hover-icon"
-                      />
+                      <img src="svgs/top-white-arr.svg" alt=""
+                        class="w-4 h-4 md:w-auto md:h-auto callback-hover-icon" />
                     </span>
                   </div>
                 </button>
               </div>
             </form>
           </div>
+        </div>
 
-          <!-- Right Side Container  -->
+        <!-- Bottom Container  -->
+        <div class="w-full grid grid-cols-2 md:flex md:flex-row justify-between px-4 sm:px-6 md:px-10 gap-3 sm:gap-4">
           <div
-            class="w-full xl:w-[626px] md:min-h-[281px] border-2 border-[#DFDBDB] flex justify-center items-center flex-row sm:justify-between"
-          >
-            <!-- Left Side Container  -->
+            class="w-full sm:w-[48%] md:w-[301px] lg:h-[80px] bg-[#F2F2F2] rounded-[2px] flex flex-row lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center lg:gap-5 gap-3">
+            <img src="/svgs/building.svg" alt="" class="w-8 h-8 md:w-auto md:h-auto" />
+
+            <div class="flex flex-col gap-2 justify-center items-end text-end">
+              <p class="font-[400] text-[13px] lg:text-[16px] text-black text-end leading-relaxed">
+                Apartments
+              </p>
+              <p class="font-[700] text-[13px] lg:text-[16px] text-black text-end leading-relaxed">4 & 5 BHK</p>
+            </div>
+          </div>
+
+          <div
+            class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3">
+            <img src="/svgs/location.svg" alt="" class="w-8 h-8 md:w-auto md:h-auto" />
+
+            <div class="flex flex-col gap-2 justify-center items-end text-end">
+              <p
+                class="font-[400] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-regular text-end leading-relaxed">
+                Location
+              </p>
+              <p
+                class="font-[700] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-bold text-end leading-relaxed">
+                Noida</p>
+            </div>
+          </div>
+
+          <div
+            class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3">
+            <img src="/svgs/container.svg" alt="" class="w-8 h-8 md:w-auto md:h-auto" />
+
+            <div class="flex flex-col gap-2 justify-center items-end text-end">
+              <p
+                class="font-[400] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-regular text-end leading-relaxed">
+                Size
+              </p>
+              <p
+                class="font-[700] text-[13px] sm:text-[13px] lg:text-[16px] text-black font-open-sans font-bold text-end leading-relaxed">
+                2690-3307 sq ft</p>
+            </div>
+          </div>
+
+          <div
+            class="w-full sm:w-[48%] md:w-[301px] lg:h-[94px] bg-[#F2F2F2] rounded-[2px] flex lg:justify-between items-center px-4 xl:px-6 min-h-[94px] py-2 justify-center flex-row lg:gap-5 gap-3">
+            <img src="/svgs/rupee.svg" alt="" class="w-8 h-8 md:w-auto md:h-auto" />
+
+            <div class="flex flex-col gap-2 justify-center items-end text-end">
+              <p class="font-[400] text-[13px] lg:text-[16px] text-black font-open-sans font-regular leading-relaxed">
+                Price
+              </p>
+              <p class="font-[700] text-[13px] lg:text-[16px] text-black font-open-sans font-bold leading-relaxed">On
+                Request</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2  -->
+      <div
+        class="w-full flex flex-col-reverse lg:flex-row lg:justify-end lg:items-end relative mt-6 sm:mt-8 md:mt-0 justify-center items-center gap-4 sm:gap-6 lg:mt-[50px]">
+        <!-- Left Side Container  -->
+        <div class="w-full lg:w-auto lg:absolute lg:-top-4 lg:-left-[18rem] z-0 flex justify-center lg:justify-start">
+          <img src="images/s2/s2i1.jpg" alt="" class="w-full w-auto h-auto no-hover-scale" />
+        </div>
+
+        <!-- Right Side Container   -->
+        <div id="amenities"
+          class="w-full md:w-auto flex flex-col gap-4 sm:gap-6 md:gap-8 z-10 bg-white whCt px-4 sm:px-0 lg:pr-[30px]">
+          <!-- 1st Row  -->
+          <div class="flex flex-col justify-center lg:justify-end items-center lg:items-end gap-2">
+            <h2
+              class="font-[400] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] text-black font-baskervville font-regular">
+              Amenities
+            </h2>
+            <p
+              class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular text-center lg:text-right">
+              Where Everyday Living Feels Like a Dream
+            </p>
+          </div>
+
+          <!-- 2nd Row  -->
+          <div
+            class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-2 gap-2 sm:gap-3 lg:gap-4 w-full md:w-auto">
             <div
-              class="flex flex-col md:gap-3 pl-4 md:pl-6 py-4 md:py-6 w-full md:w-auto"
-            >
-              <div class="flex flex-col md:gap-2">
-                <h2
-                  class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left"
-                >
-                  Address
-                </h2>
-                <p
-                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left"
-                >
-                  Lorem Ipsum is simply dummy, <br />
-                  Noida Extension, Uttar Pradesh
-                </p>
-              </div>
-              <div class="flex flex-col md:gap-2">
-                <h2
-                  class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left"
-                >
-                  Email
-                </h2>
-                <p
-                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left"
-                >
-                  info@fabluxe.com
-                </p>
-              </div>
-              <div class="flex flex-col md:gap-2">
-                <h2
-                  class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left"
-                >
-                  Mobile
-                </h2>
-                <p
-                  class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left"
-                >
-                  +91 99887 76655
-                </p>
-              </div>
+              class="w-full lg:w-[277px] h-[90px] sm:h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-1 sm:gap-2 p-2">
+              <img src="svgs/basket.svg" alt="" class="w-5 h-5 sm:w-6 sm:h-6 md:w-auto md:h-auto" />
+              <p
+                class="font-[400] text-[11px] sm:text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center">
+                Indoor Games
+              </p>
             </div>
-
-            <!-- Right Side Container  -->
-            <div class="h-full w-[242px] hidden sm:block">
-              <img
-                src="images/242-by-281.jpg"
-                alt=""
-                class="w-full h-full object-cover"
-              />
+            <div
+              class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2">
+              <img src="svgs/women.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+              <p class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center">
+                Yoga Center
+              </p>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer
-      class="w-full min-h-[400px] md:min-h-[487px] bg-[#F7F7F7] flex flex-col justify-center items-center gap-6 md:gap-8 px-4 py-8 md:py-0"
-    >
-      <img
-        src="images/new/forbus2.png"
-        alt=""
-        class="w-[188px] h-[126px]"
-      />
-      <p
-        class="font-[400] text-[14px] md:text-[18px] text-black w-full md:w-[688px] text-center font-open-sans font-regular px-4"
-      >
-        Together, they create a home that offers credibility, luxury, wellness
-        and future-ready living in one of NCR's most promising destinations.
-      </p>
-      <div class="flex justify-center items-center gap-3 md:gap-4">
-        <img src="svgs/insta.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
-        <img src="svgs/x.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
-        <img src="svgs/fb.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
-        <img
-          src="svgs/linkdin.svg"
-          alt=""
-          class="w-6 h-6 md:w-auto md:h-auto"
-        />
-        <img src="svgs/yt.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
-      </div>
-      <p
-        class="font-[400] text-[12px] md:text-[14px] font-open-sans font-regular text-center px-4"
-      >
-        © 2025 <b>FAB LUXE</b>. All rights reserved. Digital media planned by
-        <b id="rmwLink" class="cursor-pointer">Ritz Media World</b>
-      </p>
-    </footer>
-
-    <!-- Popup Form Modal -->
-    <div id="popup-modal" class="popup-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-60 backdrop-blur-md p-4">
-      <div class="popup-content relative w-[60%] h-[45vh] bg-white rounded-2xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
-        <!-- Close Button -->
-        <button
-          id="popup-close"
-          class="absolute top-5 right-5 z-50 w-11 h-11 flex items-center justify-center bg-white hover:bg-gray-100 text-gray-700 hover:text-black rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
-          aria-label="Close popup"
-        >
-          <svg
-            class="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
-        </button>
-
-        <!-- Left Side - Image (Hidden on mobile) -->
-        <div class="popup-image-container hidden lg:block w-[48%] relative overflow-hidden">
-          <img
-            src="images/website-images-5902-2.png"
-            alt="Premium Property"
-            class="w-full h-full object-cover no-hover-scale"
-          />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
-        </div>
-
-        <!-- Right Side - Form -->
-        <div class="popup-form-container w-full lg:w-[52%] flex flex-col justify-center p-8 md:p-10 lg:p-12 overflow-y-auto h-full">
-          <!-- Header Section -->
-          <div class="flex flex-col gap-4 mb-8">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="w-1 h-12 bg-black rounded-full"></div>
-              <h2
-                class="font-[400] text-[28px] md:text-[32px] lg:text-[36px] text-black font-baskervville font-regular leading-tight"
-              >
-                Request a Call Back
-              </h2>
+            <div
+              class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2">
+              <img src="svgs/hall.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+              <p class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center">
+                Multi-Purpose Hall
+              </p>
+            </div>
+            <div
+              class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2">
+              <img src="svgs/hall.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+              <p class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center">
+                Spa & Salon
+              </p>
+            </div>
+            <div
+              class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2">
+              <img src="svgs/park.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+              <p class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center">
+                Kids Play Area
+              </p>
+            </div>
+            <div
+              class="w-full lg:w-[277px] h-[100px] md:h-[116px] border-2 border-[#D7D7D7] rounded-[2px] flex flex-col justify-center items-center gap-2 p-2">
+              <img src="svgs/lift.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+              <p class="font-[400] text-[12px] md:text-[16px] text-black font-open-sans font-regular text-center">
+                Double Height Entrance Lobby
+              </p>
             </div>
           </div>
 
-          <!-- Form Section -->
-          <form id="popup-form" class="flex flex-col gap-6">
-            <!-- Name and Email Row -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div class="flex flex-col gap-2">
-                <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                  Your Name <span class="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Full Name*"
-                  required
-                  class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
-                />
-              </div>
-              <div class="flex flex-col gap-2">
-                <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                  Your Email <span class="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address*"
-                  required
-                  class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
-                />
-              </div>
-            </div>
-
-            <!-- Phone and Message Row -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div class="flex flex-col gap-2">
-                <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                  Your Phone <span class="text-red-500">*</span>
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number*"
-                  required
-                  class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
-                />
-              </div>
-              <div class="flex flex-col gap-2">
-                <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
-                  Your Message <span class="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="message"
-                  placeholder="Message*"
-                  required
-                  class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300"
-                />
-              </div>
-            </div>
-
-            <!-- Submit Button Section -->
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-4 pt-6 border-t border-gray-200">
-              <p
-                class="font-[400] text-[14px] md:text-[15px] text-gray-600 font-open-sans font-regular text-center md:text-left hidden md:block"
-              >
-                Explore premium properties with trusted expertise
+          <!-- Row 3  -->
+          <div class="flex w-full justify-center md:justify-end items-end">
+            <button
+              class="w-[140px] popup-trigger md:w-[168px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
+              <p class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular">
+                Know more
               </p>
-              <button
-              class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1"
-            >
-              <p
-                class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold"
-              >
-                Get a Call Back
-              </p>
-             
+              <!-- Icon Container - Both icons positioned absolutely to overlap -->
+              <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
+                <!-- This is Default Icon  -->
+                <img src="/images/white.png" alt="" class="w-4 h-4 md:w-auto md:h-auto default-icon" />
+                <!-- This is Hover Icon  -->
+                <img src="images/black.png" alt="" class="w-4 h-4 md:w-auto md:h-auto hover-icon" />
+              </span>
             </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 3  -->
+      <div class="w-full flex flex-col gap-4 sm:gap-6 md:gap-8 px-4 sm:px-0" id="floor-price">
+        <!-- 1st Container  -->
+        <div class="flex justify-center items-center">
+          <h2
+            class="font-[400] text-[24px] sm:text-[28px] md:text-[32px] lg:text-[36px] text-black font-baskervville font-regular">
+            Floor Price
+          </h2>
+        </div>
+
+        <!-- 2nd Container  -->
+        <div class="flex flex-col lg:flex-row justify-center w-full gap-4 sm:gap-6">
+          <div
+            class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-4 sm:py-6 lg:py-0 p-[10px] lg:p-0">
+            <div
+              class="flex flex-col lg:gap-4 lg:pl-6 w-full justify-center items-center lg:items-start lg:justify-start">
+              <p class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black font-open-sans font-regular">
+                Type
+              </p>
+
+              <div class="relative">
+                <div class="w-[240px] sm:w-[280px] md:w-[324px] h-[50px] sm:h-[56px] md:h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px]
+                rounded-tl-[50px] rounded-bl-[50px]
+                lg:rounded-tl-[0px] lg:rounded-bl-[0px]
+                     flex items-center pl-3 sm:pl-4 md:pl-6 justify-center lg:justify-start
+                     lg:absolute top-0  lg:-left-6">
+                  <h2 class="font-[700] text-[18px] sm:text-[20px] md:text-[26px] text-black font-montserrat font-bold">
+                    3 BHK + Study
+                  </h2>
+                </div>
+              </div>
+              <p
+                class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black lg:mt-14 font-open-sans font-regular">
+                Area
+              </p>
+              <p class="font-[700] text-[18px] sm:text-[20px] md:text-[23px] text-black font-montserrat font-bold">
+                2690–2718 sq ft
+              </p>
+
+              <button
+                class="popup-trigger w-full sm:w-[180px] md:w-[216px] h-[38px] sm:h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer mt-2">
+                <p class="font-[600] text-[13px] sm:text-[14px] md:text-[16px] font-open-sans font-semibold">
+                  Price: on Request
+                </p>
+                <!-- Icon Container - Both icons positioned absolutely to overlap -->
+                <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
+                  <img src="/images/white.png" alt="" class="w-4 h-4 md:w-auto md:h-auto default-icon" />
+                  <img src="images/black.png" alt="" class="w-4 h-4 md:w-auto md:h-auto hover-icon" />
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="w-full lg:w-[420px] xl:w-[500px] h-auto lg:h-[328px] border-2 border-[#E6E6E6] flex items-center overflow-hidden py-4 sm:py-6 lg:py-0 
+            p-[10px] lg:p-0
+            " >
+            <div class="flex flex-col lg:gap-4 lg:pl-6 w-full justify-center items-center lg:items-start lg:justify-start">
+              <p class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black font-open-sans font-regular">
+                Type
+              </p>
+
+              <div class="relative">
+                <div
+                  class="w-[240px] sm:w-[280px] md:w-[324px] h-[50px] sm:h-[56px] md:h-[64px] bg-[#F2F2F2] rounded-tr-[50px] rounded-br-[50px]
+                  rounded-tl-[50px] rounded-bl-[50px]
+                  lg:rounded-tl-[0px] lg:rounded-bl-[0px]
+                  flex items-center pl-3 sm:pl-4 md:pl-6 justify-center lg:justify-start lg:absolute top-0  lg:-left-6">
+                  <h2 class="font-[700] text-[18px] sm:text-[20px] md:text-[26px] text-black font-montserrat font-bold">
+                    4 BHK + Study
+                  </h2>
+                </div>
+              </div>
+              <p
+                class="font-[400] text-[14px] sm:text-[16px] md:text-[18px] text-black lg:mt-14 font-open-sans font-regular">
+                Area
+              </p>
+              <p class="font-[700] text-[18px] sm:text-[20px] md:text-[23px] text-black font-montserrat font-bold">
+                3307 sq ft
+              </p>
+
+              <button
+                class="popup-trigger w-full sm:w-[180px] md:w-[216px] h-[38px] sm:h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer mt-2">
+                <p class="font-[600] text-[13px] sm:text-[14px] md:text-[16px] font-open-sans font-semibold">
+                  Price: on Request
+                </p>
+                <!-- Icon Container - Both icons positioned absolutely to overlap -->
+                <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
+                  <img src="/images/white.png" alt="" class="w-4 h-4 md:w-auto md:h-auto default-icon" />
+                  <img src="images/black.png" alt="" class="w-4 h-4 md:w-auto md:h-auto hover-icon" />
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div
+            class="w-full lg:w-auto h-[200px] sm:h-[250px] hidden lg:block lg:h-[328px] border-[1px] border-[#E6E6E6] mx-auto lg:mx-0">
+            <img src="images/fabluxe-01-01.jpg" alt="" class="w-full h-full object-cover" />
+          </div>
+        </div>
+
+        <!-- 3rd Container  -->
+        <div
+          class="flex flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap justify-around items-center mt-4 sm:mt-6 md:mt-10 gap-3 sm:gap-4  px-4 sm:px-0">
+          <div class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4">
+            <p class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular">
+              11 ft ceiling heights
+            </p>
+          </div>
+          <div class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4 md:px-2">
+            <p class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular">
+              Wide balconies for natural light and ventilation
+            </p>
+          </div>
+          <div class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4">
+            <p class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular">
+              G+35 towers with only four residences per floor
+            </p>
+          </div>
+          <div class="w-full sm:w-[48%] lg:w-[218px] flex justify-center items-center text-center px-2 sm:px-4">
+            <p class="font-[400] text-[13px] sm:text-[14px] md:text-[16px] text-black font-open-sans font-regular">
+              Possession from <br>
+              <b> 2027 onwards</b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3 -->
+  <section id="gallery" class="w-full bgContainer min-h-screen flex justify-center items-center">
+    <!-- Centered Align Container   -->
+    <div class="w-[95%] h-full relative z-10 flex flex-col gap-6 md:gap-6 py-10 md:py-20">
+      <!-- Top Container  -->
+      <div class="w-full flex justify-center items-center text-center flex-col">
+        <h2 class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular">
+          Gallery
+        </h2>
+        <p class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular">
+          Moments That Define Your Dream Home
+        </p>
+      </div>
+
+      <!-- Main Container  -->
+      <div class="w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+          <img src="images/fabluxe-01-02.jpg" alt="" class="w-full h-full object-cover gallery-image cursor-pointer"
+            data-gallery-src="images/fabluxe-01-02.jpg" />
+        </div>
+        <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+          <img src="images/fabluxe-01-03.jpg" alt="" class="w-full h-full object-cover gallery-image cursor-pointer"
+            data-gallery-src="images/fabluxe-01-03.jpg" />
+        </div>
+        <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+          <img src="images/fabluxe-01-04.jpg" alt="" class="w-full h-full object-cover gallery-image cursor-pointer"
+            data-gallery-src="images/fabluxe-01-04.jpg" />
+        </div>
+        <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+          <img src="images/fabluxe-01-05.jpg" alt="" class="w-full h-full object-cover gallery-image cursor-pointer"
+            data-gallery-src="images/fabluxe-01-05.jpg" />
+        </div>
+        <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+          <img src="images/fabluxe-01-06.jpg" alt="" class="w-full h-full object-cover gallery-image cursor-pointer"
+            data-gallery-src="images/fabluxe-01-06.jpg" />
+        </div>
+        <div class="w-full h-[250px] md:h-[396px] overflow-hidden">
+          <img src="images/fabluxe-01-07.jpg" alt="" class="w-full h-full object-cover gallery-image cursor-pointer"
+            data-gallery-src="images/fabluxe-01-07.jpg" />
+        </div>
+      </div>
+
+      <!-- Bottom Container  -->
+      <div class="w-full flex justify-center items-center">
+        <button
+          class="w-[140px] popup-trigger md:w-[168px] h-[40px] md:h-[46px] text-white bg-black rounded-full flex justify-center items-center gap-2 md:gap-3 cursor-pointer">
+          <p class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold">
+            View more
+          </p>
+          <!-- Icon Container - Both icons positioned absolutely to overlap -->
+          <span class="relative inline-block w-4 h-4 md:w-6 md:h-6">
+            <img src="/images/white.png" alt="" class="w-4 h-4 md:w-auto md:h-auto default-icon" />
+            <img src="images/black.png" alt="" class="w-4 h-4 md:w-auto md:h-auto hover-icon" />
+          </span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4 -->
+  <section id="features" class="w-full flex justify-center border-b-[1px] border-[#DBDADA]">
+    <!-- Centered Align Container   -->
+    <div
+      class="w-[95%] max-w-[1440px] bgContainer h-full relative z-10 flex flex-col lg:flex-row justify-between pb-10 md:pb-20 gap-[2.5rem]">
+      <!-- Left Side Container  -->
+      <div class="w-full lg:w-[512px] flex flex-col gap-4 md:gap-6
+      text-center lg:text-left
+      ">
+        <!-- Top Container  -->
+        <div class="flex flex-col gap-2 px-4 md:px-0">
+          <p class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular">
+            Features
+          </p>
+          <h2
+            class="font-[400] text-[24px] sm:text-[28px] md:text-[34px] text-black font-baskervville font-regular leading-tight">
+            India's First AQI-Controlled Luxury Community
+          </h2>
+          <p class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular">
+            FAB-LUXE introduces a wellness standard no other residential
+            project in India currently offers.
+          </p>
+        </div>
+
+        <!-- Bottom Container  -->
+        <div
+          class="w-full lg:w-auto min-h-[200px] sm:min-h-[280px] md:min-h-[306px] flex items-center relative border-2 border-[#E6E6E6] overflow-hidden">
+          <p
+            class="font-[500] text-[14px] sm:text-[16px] md:text-[19px] text-black w-[200px] sm:w-[280px] md:w-[274px] font-baskervville font-regular z-10 absolute top-1/2 transform -translate-y-1/2 left-4 md:left-6 px-2 md:px-0">
+            Indoor AQI maintained significantly lower than the city's severe
+            levels
+          </p>
+
+          <!-- Absolute Position Image  -->
+          <div class="w-full h-full min-h-[200px] sm:min-h-[280px] md:min-h-[306px]">
+            <img src="images/ui-images3.png" alt="" class="w-full h-full object-cover no-hover-scale" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side Container  -->
+      <div class="flex flex-col justify-between gap-6 md:gap-4 w-full lg:w-[512px] xl:w-auto">
+        <!-- Top Container  -->
+        <div class="flex flex-col sm:flex-row justify-between gap-[2.5rem] md:gap-4 items-start">
+          <!-- Left Side Card  -->
+          <div class="flex flex-col justify-center items-center gap-3 md:gap-4 w-full sm:w-auto">
+            <!-- Image Div  -->
+            <div class="w-full sm:w-[280px] md:w-[365px] h-[250px] sm:h-[300px] md:h-[382px]">
+              <img src="images/365by-382.png" alt="" class="w-full h-full object-cover" />
+            </div>
+            <p
+              class="font-[500] text-[14px] sm:text-[16px] md:text-[19px] text-black text-center font-baskervville font-regular px-2">
+              Outdoor purification towers
+            </p>
+          </div>
+
+          <!-- Right Side Card  -->
+          <div class="flex flex-col justify-center items-center gap-3 md:gap-4 w-full sm:w-auto">
+            <!-- Image Div  -->
+            <div class="w-full sm:w-[250px] md:w-[328px] min-h-[180px] sm:min-h-[200px] md:h-[252px] bg-[#D9D9D9]">
+              <img src="images/ui-images2.png" alt="" class="w-full h-full " />
+            </div>
+            <p
+              class="font-[500] text-[14px] sm:text-[16px] md:text-[19px] text-black text-center font-baskervville font-regular px-2">
+              Medical-grade HEPA air systems
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom Container  -->
+        <div class="w-full flex justify-center md:justify-end items-end px-4 md:px-0">
+          <p
+            class="w-full sm:w-[90%] md:w-[410px] font-[400] text-[14px] md:text-[16px] text-center md:text-end font-open-sans font-regular">
+            Designed for families who prioritise long-term health, this
+            community brings wellness into everyday living.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5 -->
+  <section id="location" class="w-full bgContainer flex justify-center min-h-screen pt-[70px] pb-[70px]">
+    <!-- Centered Align Container   -->
+    <div class="w-[95%] h-full relative z-10 flex flex-col gap-8 md:gap-12">
+      <!-- Row 1  -->
+      <div class="w-full flex flex-col justify-center items-center gap-4">
+        <h2 class="font-[400] text-[28px] md:text-[36px] text-black font-baskervville font-regular">
+          Location
+        </h2>
+        <p class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular text-center">
+          A Location Shaping the Future of Western Noida
+        </p>
+      </div>
+
+      <!-- Row 2  -->
+      <div class="w-full flex flex-col-reverse xl:flex-row gap-8 lg:gap-12">
+        <!-- Left Side Container   -->
+        <div class="w-full xl:w-[620px] h-[250px] md:h-[411px]">
+          <img src="images/s5/map.png" alt="" class="w-full h-full object-cover" />
+        </div>
+
+        <!-- Right Side Container  -->
+        <div class="flex flex-col gap-4 w-full lg:w-auto">
+          <h2 class="font-[400] text-[24px] md:text-[30px] text-color font-baskervville font-regular
+          text-center lg:text-left
+          ">
+            Advantages
+          </h2>
+          <ul class="lg:flex lg:flex-col gap-6 w-full xl:w-[507px]
+          grid grid-cols-2
+          
+          ">
+            <li>
+              <div class="flex items-center lg:items-center gap-2 md:gap-6
+              flex-col lg:flex-row 
+              justify-center lg:justify-start 
+              text-center lg:text-left
+              ">
+                <img src="svgs/delhi.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
+                <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
+                  40 minutes to <b>Delhi CBD</b> via new expressways
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="flex items-center lg:items-center gap-2 md:gap-6
+              flex-col lg:flex-row 
+              justify-center lg:justify-start 
+              text-center lg:text-left
+              ">
+                <img src="svgs/airplane.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
+                <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
+                  60 minutes to Noida International <b>Airport</b> (Jewar)
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="flex items-center lg:items-center gap-2 md:gap-6
+              flex-col lg:flex-row 
+              justify-center lg:justify-start 
+              text-center lg:text-left
+              ">
+                <img src="svgs/mall.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
+                <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
+                  Close to <b>Gaur City Mall</b>, global F&B brands,
+                  entertainment hubs and top schools
+                </p>
+              </div>
+            </li>
+
+            <li>
+              <div class="flex items-center lg:items-center gap-2 md:gap-6
+              flex-col lg:flex-row 
+              justify-center lg:justify-start 
+              text-center lg:text-left
+              ">
+                <img src="svgs/building2.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
+                <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
+                  Surrounded by <b>business parks</b>, IT clusters and
+                  upcoming infrastructure
+                </p>
+              </div>
+            </li>
+
+            <li class="hidden lg:block">
+              <div class="flex items-center lg:items-center gap-2 md:gap-6
+              flex-col lg:flex-row 
+              justify-center lg:justify-start 
+              text-center lg:text-left
+              ">
+                <img src="svgs/home.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
+                <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
+                  Strong appreciation potential driven by Western Noida's
+                  rising demand and <b>NRI/HNI</b> interest
+                </p>
+              </div>
+            </li>
+          </ul>
+            <div class="flex items-center lg:items-center gap-2 md:gap-6
+              flex-col lg:flex-row 
+              justify-center lg:justify-start 
+              text-center lg:text-left
+               lg:hidden
+              ">
+                <img src="svgs/home.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto flex-shrink-0 mt-1 md:mt-0" />
+                <p class="font-[400] text-[14px] md:text-[17px] text-black font-open-sans font-regular">
+                  Strong appreciation potential driven by Western Noida's
+                  rising demand and <b>NRI/HNI</b> interest
+                </p>
+              </div>
+        </div>
+      </div>
+      <!-- Row 3  -->
+      <div id="contact" class="w-full flex flex-col xl:flex-row justify-between gap-8 ">
+        <!-- Left Side Container   -->
+        <div class="flex flex-col gap-4 w-full lg:w-auto text-center lg:text-left">
+          <h2 class="font-[400] text-[24px] md:text-[30px] text-black font-baskervville font-regular">
+            Request a Call Back
+          </h2>
+          <form class="flex flex-col gap-4">
+            <div class="flex flex-col md:flex-row gap-4">
+              <input type="text" placeholder="Your Name*"
+                class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
+              <input type="text" placeholder="Your Email*"
+                class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
+            </div>
+            <div class="flex flex-col md:flex-row gap-4">
+              <input type="text" placeholder="Your Phone*"
+                class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
+              <input type="text" placeholder="Your Message*"
+                class="w-full xl:w-[274px] h-[50px] md:h-[60px] bg-[#F2F2F2] rounded-[50px] p-2 pl-6 font-open-sans font-regular text-[14px] md:text-base" />
+            </div>
+            <div class="flex flex-row justify-between gap-4">
+              <div class="w-full md:w-[274px]">
+                <p class="font-[400] text-[14px] md:text-[16px] text-black font-open-sans font-regular text-left">
+                  Explore premium properties with trusted !
+                </p>
+              </div>
+
+              <button
+                class="w-full md:w-[221px] h-[50px] md:h-[58px] flex justify-center md:justify-end items-center bg-black text-white rounded-full gap-4 md:gap-6 pr-1 cursor-pointer">
+                <p class="font-[600] text-[14px] md:text-[16px] font-open-sans font-semibold">
+                  Get a Call Back
+                </p>
+                <!-- The Bg Will Change When User Will Hover On Btn It Will conver into black bg color  -->
+                <div
+                  class="callback-icon-container w-[40px] h-[40px] md:w-[50px] md:h-[50px] bg-white rounded-full hidden md:flex items-center justify-center relative transition-colors duration-300">
+                  <!-- Icon Wrapper - Fixed size container -->
+                  <span class="relative inline-block">
+                    <!-- This is Default Icon  -->
+                    <img src="svgs/top-arrow.svg" alt="" class="w-4 h-4 md:w-auto md:h-auto callback-default-icon" />
+                    <!-- This Is Hovered Icon  -->
+                    <img src="svgs/top-white-arr.svg" alt="" class="w-4 h-4 md:w-auto md:h-auto callback-hover-icon" />
+                  </span>
+                </div>
+              </button>
             </div>
           </form>
         </div>
-      </div>
-    </div>
 
-    <!-- Gallery Lightbox Modal -->
-    <div
-      id="gallery-lightbox"
-      class="gallery-lightbox hidden fixed inset-0 z-[9999] bg-black bg-opacity-75 flex items-center justify-center p-4"
-    >
-      <!-- Close Button -->
-      <button
-        id="gallery-lightbox-close"
-        class="absolute top-4 right-4 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition-colors"
-        aria-label="Close gallery image"
-      >
-        <svg
-          class="w-6 h-6 md:w-7 md:h-7"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="3"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      
-      <!-- Left Navigation Button -->
-      <button
-        id="gallery-lightbox-prev"
-        class="gallery-nav-btn absolute left-4 top-1/2 -translate-y-1/2 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-80 hover:bg-opacity-100 text-black rounded-full transition-all duration-300 shadow-lg"
-        aria-label="Previous image"
-      >
-        <svg
-          class="w-5 h-5 md:w-6 md:h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-      </button>
-      
-      <!-- Right Navigation Button -->
-      <button
-        id="gallery-lightbox-next"
-        class="gallery-nav-btn absolute right-4 top-1/2 -translate-y-1/2 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-80 hover:bg-opacity-100 text-black rounded-full transition-all duration-300 shadow-lg"
-        aria-label="Next image"
-      >
-        <svg
-          class="w-5 h-5 md:w-6 md:h-6"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      </button>
-      
-      <!-- Image Container -->
-      <div class="gallery-lightbox-content relative w-full h-full flex items-center justify-center">
-        <div id="gallery-image-container" class="gallery-image-container bg-white p-3 md:p-4 rounded-lg">
-          <img
-            id="gallery-lightbox-image"
-            src=""
-            alt="Gallery Image"
-            class="gallery-lightbox-img rounded-lg"
-          />
+        <!-- Right Side Container  -->
+        <div
+          class="w-full xl:w-[626px] md:min-h-[281px] border-2 border-[#DFDBDB] flex justify-center items-center flex-row sm:justify-between">
+          <!-- Left Side Container  -->
+          <div class="flex flex-col gap-4 md:gap-3 pl-4 md:pl-6 py-4 md:py-6 w-full md:w-auto">
+            <div class="flex flex-col md:gap-2">
+              <h2 class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left">
+                Address
+              </h2>
+              <p class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left">
+                Lorem Ipsum is simply dummy, <br class="hidden md:block"/>
+                Noida Extension, Uttar Pradesh
+              </p>
+            </div>
+            <div class="flex flex-col md:gap-2">
+              <h2 class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left">
+                Email
+              </h2>
+              <p class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left">
+                info@fabluxe.com
+              </p>
+            </div>
+            <div class="flex flex-col md:gap-2">
+              <h2 class="font-[700] text-[15px] md:text-[17px] font-open-sans font-bold text-center sm:text-left">
+                Mobile
+              </h2>
+              <p class="font-[400] text-[14px] md:text-[16px] font-open-sans font-regular text-center sm:text-left">
+                +91 99887 76655
+              </p>
+            </div>
+          </div>
+
+          <!-- Right Side Container  -->
+          <div class="h-full w-[242px] hidden sm:block">
+            <img src="images/242-by-281.jpg" alt="" class="w-full h-full object-cover" />
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <script src="script.js"></script>
-  </body>
+  <footer
+    class="w-full min-h-[400px] md:min-h-[487px] bg-[#F7F7F7] flex flex-col justify-center items-center gap-6 md:gap-8 px-4 py-8 md:py-0">
+    <img src="images/new/forbus2.png" alt="" class="w-[188px] h-[126px]" />
+    <p
+      class="font-[400] text-[14px] md:text-[18px] text-black w-full md:w-[688px] text-center font-open-sans font-regular px-4">
+      Together, they create a home that offers credibility, luxury, wellness
+      and future-ready living in one of NCR's most promising destinations.
+    </p>
+    <div class="flex justify-center items-center gap-3 md:gap-4">
+      <img src="svgs/insta.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+      <img src="svgs/x.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+      <img src="svgs/fb.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+      <img src="svgs/linkdin.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+      <img src="svgs/yt.svg" alt="" class="w-6 h-6 md:w-auto md:h-auto" />
+    </div>
+    <p class="font-[400] text-[12px] md:text-[14px] font-open-sans font-regular text-center px-4">
+      © 2025 <b>FAB LUXE</b>. All rights reserved. Digital media planned by
+      <b id="rmwLink" class="cursor-pointer">Ritz Media World</b>
+    </p>
+  </footer>
+
+  <!-- Popup Form Modal -->
+  <div id="popup-modal"
+    class="popup-modal fixed inset-0 z-[100] hidden items-center justify-center bg-black bg-opacity-60 backdrop-blur-md p-4">
+    <div
+      class="popup-content relative w-[60%] h-[45vh] bg-white rounded-2xl overflow-hidden flex flex-col lg:flex-row shadow-2xl">
+      <!-- Close Button -->
+      <button id="popup-close"
+        class="absolute top-5 right-5 z-50 w-11 h-11 flex items-center justify-center bg-white hover:bg-gray-100 text-gray-700 hover:text-black rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
+        aria-label="Close popup">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Left Side - Image (Hidden on mobile) -->
+      <div class="popup-image-container hidden lg:block w-[48%] relative overflow-hidden">
+        <img src="images/website-images-5902-2.png" alt="Premium Property"
+          class="w-full h-full object-cover no-hover-scale" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+      </div>
+
+      <!-- Right Side - Form -->
+      <div
+        class="popup-form-container w-full lg:w-[52%] flex flex-col justify-center p-8 md:p-10 lg:p-12 overflow-y-auto h-full">
+        <!-- Header Section -->
+        <div class="flex flex-col gap-4 mb-8">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-1 h-12 bg-black rounded-full"></div>
+            <h2
+              class="font-[400] text-[28px] md:text-[32px] lg:text-[36px] text-black font-baskervville font-regular leading-tight">
+              Request a Call Back
+            </h2>
+          </div>
+        </div>
+
+        <!-- Form Section -->
+        <form id="popup-form" class="flex flex-col gap-6">
+          <!-- Name and Email Row -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-2">
+              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
+                Your Name <span class="text-red-500">*</span>
+              </label>
+              <input type="text" name="name" placeholder="Full Name*" required
+                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
+                Your Email <span class="text-red-500">*</span>
+              </label>
+              <input type="email" name="email" placeholder="Email Address*" required
+                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
+            </div>
+          </div>
+
+          <!-- Phone and Message Row -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-2">
+              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
+                Your Phone <span class="text-red-500">*</span>
+              </label>
+              <input type="tel" name="phone" placeholder="Phone Number*" required
+                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-[13px] font-semibold text-gray-700 font-open-sans uppercase tracking-wide pl-1">
+                Your Message <span class="text-red-500">*</span>
+              </label>
+              <input type="text" name="message" placeholder="Message*" required
+                class="popup-input w-full h-[56px] bg-[#F8F8F8] border border-[#E5E5E5] rounded-[50px] px-5 font-open-sans font-regular text-[15px] text-black placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-300" />
+            </div>
+          </div>
+
+          <!-- Submit Button Section -->
+          <div class="flex flex-col md:flex-row justify-between items-center gap-6 mt-4 pt-6 border-t border-gray-200">
+            <p
+              class="font-[400] text-[14px] md:text-[15px] text-gray-600 font-open-sans font-regular text-center md:text-left hidden md:block">
+              Explore premium properties with trusted expertise
+            </p>
+            <button
+              class="w-[45%] w-[200px] lg:w-[221px] h-[48px] sm:h-[50px] md:h-[58px] flex justify-center items-center bg-black text-white rounded-full gap-3 sm:gap-4 md:gap-5 pr-1 cursor-pointer lg:pl-1">
+              <p class="font-[600] text-[14px] md:text-[15px] font-open-sans font-semibold">
+                Get a Call Back
+              </p>
+
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gallery Lightbox Modal -->
+  <div id="gallery-lightbox"
+    class="gallery-lightbox hidden fixed inset-0 z-[9999] bg-black bg-opacity-75 flex items-center justify-center p-4">
+    <!-- Close Button -->
+    <button id="gallery-lightbox-close"
+      class="absolute top-4 right-4 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white text-black rounded-full hover:bg-gray-200 transition-colors"
+      aria-label="Close gallery image">
+      <svg class="w-6 h-6 md:w-7 md:h-7" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+    <!-- Left Navigation Button -->
+    <button id="gallery-lightbox-prev"
+      class="gallery-nav-btn absolute left-4 top-1/2 -translate-y-1/2 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-80 hover:bg-opacity-100 text-black rounded-full transition-all duration-300 shadow-lg"
+      aria-label="Previous image">
+      <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <!-- Right Navigation Button -->
+    <button id="gallery-lightbox-next"
+      class="gallery-nav-btn absolute right-4 top-1/2 -translate-y-1/2 z-[10000] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white bg-opacity-80 hover:bg-opacity-100 text-black rounded-full transition-all duration-300 shadow-lg"
+      aria-label="Next image">
+      <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+
+    <!-- Image Container -->
+    <div class="gallery-lightbox-content relative w-full h-full flex items-center justify-center">
+      <div id="gallery-image-container" class="gallery-image-container bg-white p-3 md:p-4 rounded-lg">
+        <img id="gallery-lightbox-image" src="" alt="Gallery Image" class="gallery-lightbox-img rounded-lg" />
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
