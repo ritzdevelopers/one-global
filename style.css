@@ -47,6 +47,11 @@ input::placeholder {
   color: #000000;
 }
 
+/* Set placeholder color to black for all textarea tags */
+textarea::placeholder {
+  color: #000000;
+}
+
 /* For better browser compatibility */
 input::-webkit-input-placeholder {
   color: #000000;
@@ -58,6 +63,19 @@ input::-moz-placeholder {
 }
 
 input:-ms-input-placeholder {
+  color: #000000;
+}
+
+textarea::-webkit-input-placeholder {
+  color: #000000;
+}
+
+textarea::-moz-placeholder {
+  color: #000000;
+  opacity: 1;
+}
+
+textarea:-ms-input-placeholder {
   color: #000000;
 }
 
@@ -736,12 +754,12 @@ button > img {
 }
 
 .popup-input::placeholder {
-  color: #9CA3AF;
+  color: #000000;
   transition: color 0.3s ease;
 }
 
 .popup-input:focus::placeholder {
-  color: #D1D5DB;
+  color: #000000;
 }
 
 /* Popup Submit Button */
