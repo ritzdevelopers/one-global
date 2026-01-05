@@ -72,7 +72,6 @@ let activeNavLink = document.querySelector('.nav-link[data-nav="home"]');
 
 // Scroll Spy Variables
 let isProgrammaticScroll = false; // Flag to prevent scroll spy during programmatic scrolling (clicking nav links)
-let scrollSpyTimeout = null;
 let manualScrollTimeout = null;
 
 // Function to check if navbar has black background
@@ -189,26 +188,26 @@ if (activeNavLink) {
 
 // Function to find which section is currently in view
 function getCurrentSectionOnScroll() {
-  const sections = ['home', 'overview', 'amenities', 'unite-type', 'gallery', 'features', 'location', 'contact'];
+  const sections = ['home', 'overview', 'amenities', 'unit-type', 'gallery', 'features', 'location', 'contact'];
   const scrollY = isIOS ? window.pageYOffset : (lenis ? lenis.scroll : window.pageYOffset);
-  const offset = 200; // Offset from top to trigger activation
+  const viewportOffset = 150; // Offset from top of viewport to trigger activation (accounts for navbar)
 
   // If at the top, return home
-  if (scrollY < 100) {
+  if (scrollY < 50) {
     return 'home';
   }
 
-  // Check each section from bottom to top
+  // Check each section from bottom to top for immediate activation
   for (let i = sections.length - 1; i >= 0; i--) {
     const sectionId = sections[i];
     const section = document.getElementById(sectionId);
     
     if (section) {
       const rect = section.getBoundingClientRect();
-      const sectionTop = rect.top + scrollY;
+      const sectionTop = rect.top;
       
-      // If we've scrolled past the section start (with offset)
-      if (scrollY + offset >= sectionTop) {
+      // If section top is at or above the viewport offset, activate it immediately
+      if (sectionTop <= viewportOffset) {
         return sectionId;
       }
     }
@@ -231,34 +230,35 @@ function updateActiveNavOnScroll() {
   }
 }
 
-// Setup scroll spy listeners with throttling
+// Setup scroll spy listeners with immediate response
 function initScrollSpy() {
+  let rafId = null;
+  
+  const updateScrollSpy = () => {
+    updateActiveNavOnScroll();
+    rafId = null;
+  };
+  
   if (isIOS) {
-    // On iOS, use native scroll event with throttling
+    // On iOS, use native scroll event with requestAnimationFrame for immediate response
     window.addEventListener('scroll', () => {
-      if (scrollSpyTimeout) {
-        clearTimeout(scrollSpyTimeout);
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updateScrollSpy);
       }
-      scrollSpyTimeout = setTimeout(() => {
-        updateActiveNavOnScroll();
-      }, 150);
     }, { passive: true });
   } else if (lenis) {
-    // On non-iOS, use Lenis scroll event
+    // On non-iOS, use Lenis scroll event with requestAnimationFrame for immediate response
     lenis.on('scroll', () => {
-      if (scrollSpyTimeout) {
-        clearTimeout(scrollSpyTimeout);
+      if (rafId === null) {
+        rafId = requestAnimationFrame(updateScrollSpy);
       }
-      scrollSpyTimeout = setTimeout(() => {
-        updateActiveNavOnScroll();
-      }, 150);
     });
   }
   
   // Also check on initial load
   setTimeout(() => {
     updateActiveNavOnScroll();
-  }, 500);
+  }, 100);
 }
 
 // Initialize scroll spy after DOM is ready
@@ -904,14 +904,27 @@ let isFormSubmitted = false;
 // Function to open popup
 function openPopup() {
   if (popupModal && !isFormSubmitted) {
+    // Save current scroll position
+    const scrollY = window.scrollY || window.pageYOffset;
+    
     popupModal.classList.remove('hidden');
     // Use requestAnimationFrame to ensure display change happens before animation
     requestAnimationFrame(() => {
       setTimeout(() => {
         popupModal.classList.add('show');
       }, 10);
-      // Prevent body scroll when popup is open
+      // Prevent body and html scroll when popup is open
       document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
+      document.documentElement.style.overflow = 'hidden';
+      // Prevent touch scrolling on mobile
+      document.body.style.touchAction = 'none';
+      // Stop Lenis smooth scroll if available
+      if (lenis && !isIOS) {
+        lenis.stop();
+      }
     });
   }
 }
@@ -919,11 +932,30 @@ function openPopup() {
 // Function to close popup
 function closePopup() {
   if (popupModal) {
+    // Get the scroll position that was saved
+    const scrollY = document.body.style.top;
+    
     popupModal.classList.remove('show');
     // Wait for animation to complete before hiding
     setTimeout(() => {
       popupModal.classList.add('hidden');
+      // Restore body and html scroll when popup is closed
       document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.touchAction = '';
+      document.documentElement.style.overflow = '';
+      
+      // Restore scroll position
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+      
+      // Resume Lenis smooth scroll if available
+      if (lenis && !isIOS) {
+        lenis.start();
+      }
     }, 300);
 
     // Clear any existing reopen timer
