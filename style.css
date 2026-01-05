@@ -660,10 +660,19 @@ button > img {
   overflow: visible !important;
 }
 
+#popup-close img {
+  transition: filter 0.3s ease;
+}
+
 #popup-close:hover {
   border: none !important;
   border-color: transparent !important;
   outline: none !important;
+}
+
+#popup-close:hover img {
+  filter: brightness(0);
+  transition: filter 0.3s ease;
 }
 
 #popup-close:focus {
