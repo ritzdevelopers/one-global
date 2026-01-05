@@ -316,11 +316,10 @@ section:not(:first-of-type):not(#overview) div:has(> img) {
 }
 
 /* Fallback for browsers that don't support :has() - exclude section 1 and section 2 */
-section:not(:first-of-type):not(#overview) div[class*='grid'] > div,
+/* section:not(:first-of-type):not(#overview) div[class*='grid'] > div,
 section:not(:first-of-type):not(#overview) div[class*='flex'] > div:has(img) {
-  overflow: hidden;
-}
-
+  /* overflow: hidden; */
+/* } */
 /* Explicitly exclude Section 2 (#overview) from overflow hidden */
 #overview div[class*='grid'] > div,
 #overview div[class*='flex'] > div {
@@ -631,6 +630,38 @@ button > img {
 
 #menu-toggle:hover::before,
 #menu-toggle:hover::after {
+  display: none !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  animation: none !important;
+}
+
+/* Exclude popup close button from border and fill effects */
+#popup-close {
+  border: none !important;
+  overflow: visible !important;
+}
+
+#popup-close:hover {
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+}
+
+#popup-close:focus {
+  border: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+}
+
+#popup-close::before,
+#popup-close::after {
+  display: none !important;
+  content: none !important;
+}
+
+#popup-close:hover::before,
+#popup-close:hover::after {
   display: none !important;
   height: 0 !important;
   opacity: 0 !important;
@@ -1716,5 +1747,13 @@ button:disabled:hover {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+
+@media (max-width: 374px) {
+  #popup-close {
+    top: 5px !important;
+    right: -15px !important;
   }
 }

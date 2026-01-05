@@ -70,6 +70,11 @@ const navbar = document.getElementById('navbar');
 const navLinks = document.querySelectorAll('.nav-link');
 let activeNavLink = document.querySelector('.nav-link[data-nav="home"]');
 
+// Scroll Spy Variables
+let isProgrammaticScroll = false; // Flag to prevent scroll spy during programmatic scrolling (clicking nav links)
+let scrollSpyTimeout = null;
+let manualScrollTimeout = null;
+
 // Function to check if navbar has black background
 function isNavbarBlack() {
   if (navbar) {
@@ -116,6 +121,13 @@ function setActiveNavLink(link) {
 navLinks.forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
+    
+    // Set flag to prevent scroll spy during programmatic scroll
+    isProgrammaticScroll = true;
+    if (manualScrollTimeout) {
+      clearTimeout(manualScrollTimeout);
+    }
+    
     setActiveNavLink(link);
 
     // Get the target section ID from data-nav attribute
@@ -141,6 +153,11 @@ navLinks.forEach((link) => {
         }
       }
     }
+    
+    // Reset flag after scroll animation completes (2 seconds should be enough)
+    manualScrollTimeout = setTimeout(() => {
+      isProgrammaticScroll = false;
+    }, 2000);
   });
 
   // Add hover event listeners - always black bg on hover
@@ -164,6 +181,91 @@ navLinks.forEach((link) => {
 // Initialize Home link as active
 if (activeNavLink) {
   setActiveNavLink(activeNavLink);
+}
+
+// ============================================
+// Scroll Spy - Auto-activate nav links on scroll
+// ============================================
+
+// Function to find which section is currently in view
+function getCurrentSectionOnScroll() {
+  const sections = ['home', 'overview', 'amenities', 'unite-type', 'gallery', 'features', 'location', 'contact'];
+  const scrollY = isIOS ? window.pageYOffset : (lenis ? lenis.scroll : window.pageYOffset);
+  const offset = 200; // Offset from top to trigger activation
+
+  // If at the top, return home
+  if (scrollY < 100) {
+    return 'home';
+  }
+
+  // Check each section from bottom to top
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const sectionId = sections[i];
+    const section = document.getElementById(sectionId);
+    
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top + scrollY;
+      
+      // If we've scrolled past the section start (with offset)
+      if (scrollY + offset >= sectionTop) {
+        return sectionId;
+      }
+    }
+  }
+  
+  // Default to home
+  return 'home';
+}
+
+// Function to update active nav link based on scroll position
+function updateActiveNavOnScroll() {
+  // Don't update during programmatic scrolling (when clicking nav links)
+  if (isProgrammaticScroll) return;
+  
+  const currentSectionId = getCurrentSectionOnScroll();
+  const correspondingLink = document.querySelector(`.nav-link[data-nav="${currentSectionId}"]`);
+  
+  if (correspondingLink && correspondingLink !== activeNavLink) {
+    setActiveNavLink(correspondingLink);
+  }
+}
+
+// Setup scroll spy listeners with throttling
+function initScrollSpy() {
+  if (isIOS) {
+    // On iOS, use native scroll event with throttling
+    window.addEventListener('scroll', () => {
+      if (scrollSpyTimeout) {
+        clearTimeout(scrollSpyTimeout);
+      }
+      scrollSpyTimeout = setTimeout(() => {
+        updateActiveNavOnScroll();
+      }, 150);
+    }, { passive: true });
+  } else if (lenis) {
+    // On non-iOS, use Lenis scroll event
+    lenis.on('scroll', () => {
+      if (scrollSpyTimeout) {
+        clearTimeout(scrollSpyTimeout);
+      }
+      scrollSpyTimeout = setTimeout(() => {
+        updateActiveNavOnScroll();
+      }, 150);
+    });
+  }
+  
+  // Also check on initial load
+  setTimeout(() => {
+    updateActiveNavOnScroll();
+  }, 500);
+}
+
+// Initialize scroll spy after DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initScrollSpy);
+} else {
+  initScrollSpy();
 }
 
 // ============================================
@@ -829,8 +931,14 @@ function closePopup() {
       clearTimeout(popupReopenTimer);
     }
 
-    // If form not submitted, set timer to reopen after 1 minute
+    // If form not submitted, restart timer to reopen after exactly 1 minute
     if (!isFormSubmitted) {
+      // Clear any existing auto-open timer first
+      if (popupAutoOpenTimer) {
+        clearTimeout(popupAutoOpenTimer);
+        popupAutoOpenTimer = null;
+      }
+      // Start fresh timer for 1 minute
       startAutoOpenTimer();
     }
   }
@@ -838,21 +946,21 @@ function closePopup() {
 
 // Function to start auto-open timer (opens popup every 1 minute)
 function startAutoOpenTimer() {
-  // Clear any existing timer
+  // Clear any existing timer to prevent multiple timers
   if (popupAutoOpenTimer) {
     clearTimeout(popupAutoOpenTimer);
+    popupAutoOpenTimer = null;
   }
 
-  // Only start timer if form hasn't been submitted
-  if (!isFormSubmitted) {
+  // Only start timer if form hasn't been submitted and popup is hidden
+  if (!isFormSubmitted && popupModal && popupModal.classList.contains('hidden')) {
     popupAutoOpenTimer = setTimeout(() => {
-      // Only open if popup is not already visible
+      // Only open if popup is still hidden
       if (popupModal && popupModal.classList.contains('hidden')) {
         openPopup();
+        // Don't schedule next auto-open here - it will be scheduled when popup is closed
       }
-      // Schedule next auto-open after 1 minute
-      startAutoOpenTimer();
-    }, 60000); // 1 minute = 60000 milliseconds
+    }, 60000); // 1 minute = 60000 milliseconds (exactly 60 seconds)
   }
 }
 
