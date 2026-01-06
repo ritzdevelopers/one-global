@@ -1812,8 +1812,8 @@ button:disabled:hover {
   }
 }
 
-@media (min-width: 1024px) and (max-width:1285px) {
+@media (min-width: 1024px) and (max-width:1314px) {
   #amenitiesimg {
-    left: -32rem !important;
+    left: -27rem !important;
   }
 }
