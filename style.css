@@ -232,6 +232,11 @@ img {
   }
 }
 
+/* Ensure background color applies to blDv element */
+.blDv {
+  background-color: rgba(0, 0, 0, 0.8) !important;
+}
+
 @media (min-width: 1545px) {
   section:not(:first-of-type) {
     width: 80% !important;
