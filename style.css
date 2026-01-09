@@ -1822,3 +1822,10 @@ button:disabled:hover {
     left: -27rem !important;
   }
 }
+
+
+@media (min-width: 1024px) and (max-width: 1341px) {
+  .amCards {
+    width: 100% !important;
+  }
+}
