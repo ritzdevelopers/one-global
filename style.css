@@ -1838,3 +1838,16 @@ button:disabled:hover {
     height: 523px !important;
   }
 }
+
+@media (max-width:524px) {
+  .rsdv {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .rsdv p { 
+    font-size: 13px !important;
+  }
+  .mdv {
+    width: 100% !important;
+  }
+}
