@@ -1829,3 +1829,10 @@ button:disabled:hover {
     width: 100% !important;
   }
 }
+
+@media (min-width: 1380px) {
+  #lcDv {
+    width: 100% !important  ;
+  }
+  
+}
