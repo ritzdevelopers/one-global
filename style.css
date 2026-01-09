@@ -226,11 +226,7 @@ img {
   display: block;
 }
 
-@media (min-width: 768px) and (max-width:1089px) {
-  .blDv {
-    display: none !important;
-  }
-}
+
 
 /* Ensure background color applies to blDv element */
 .blDv {
