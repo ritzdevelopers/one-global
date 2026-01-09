@@ -226,7 +226,7 @@ img {
   display: block;
 }
 
-@media (min-width: 768px) and (max-width:891px) {
+@media (min-width: 768px) and (max-width:1089px) {
   .blDv {
     display: none !important;
   }
