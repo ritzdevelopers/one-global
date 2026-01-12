@@ -899,6 +899,7 @@ const popupTriggers = document.querySelectorAll('.popup-trigger');
 
 let popupAutoOpenTimer = null;
 let popupReopenTimer = null;
+let hasAutoOpened = false; // Flag to track if popup has auto-opened once
 
 // Check session storage for form submission status
 function isFormSubmitted() {
@@ -975,18 +976,6 @@ function closePopup() {
       if (lenis && !isIOS) {
         lenis.start();
       }
-      
-      // If form not submitted, restart timer to reopen after 7 seconds
-      // Do this AFTER popup is fully hidden
-      if (!isFormSubmitted()) {
-        // Clear any existing auto-open timer first
-        if (popupAutoOpenTimer) {
-          clearTimeout(popupAutoOpenTimer);
-          popupAutoOpenTimer = null;
-        }
-        // Start fresh timer for 7 seconds
-        startAutoOpenTimer();
-      }
     }, 300);
 
     // Clear any existing reopen timer
@@ -997,26 +986,23 @@ function closePopup() {
   }
 }
 
-// Function to start auto-open timer (opens popup every 7 seconds)
+// Function to start auto-open timer (opens popup once after 7 seconds)
 function startAutoOpenTimer() {
-  // Clear any existing timer to prevent multiple timers
-  if (popupAutoOpenTimer) {
-    clearTimeout(popupAutoOpenTimer);
-    popupAutoOpenTimer = null;
-  }
+  // Only start timer if form hasn't been submitted and popup hasn't auto-opened yet
+  if (!isFormSubmitted() && popupModal && !hasAutoOpened) {
+    // Clear any existing timer to prevent multiple timers
+    if (popupAutoOpenTimer) {
+      clearTimeout(popupAutoOpenTimer);
+      popupAutoOpenTimer = null;
+    }
 
-  // Only start timer if form hasn't been submitted
-  if (!isFormSubmitted() && popupModal) {
     popupAutoOpenTimer = setTimeout(() => {
       // Check again before opening (form might have been submitted while timer was running)
-      if (!isFormSubmitted() && popupModal) {
+      if (!isFormSubmitted() && popupModal && !hasAutoOpened) {
         // Only open if popup is currently hidden
         if (popupModal.classList.contains('hidden')) {
           openPopup();
-          // Timer will restart when popup is closed (handled in closePopup function)
-        } else {
-          // If popup is already open, restart timer
-          startAutoOpenTimer();
+          hasAutoOpened = true; // Mark as auto-opened so it won't open again
         }
       }
     }, 7000); // 7 seconds = 7000 milliseconds
@@ -1062,7 +1048,7 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('load', () => {
   // Only start timer if form hasn't been submitted
   if (!isFormSubmitted()) {
-    // Start auto-open timer (7 seconds) - this will continue after popup is closed
+    // Start auto-open timer (7 seconds) - opens only once
     startAutoOpenTimer();
   }
 });
