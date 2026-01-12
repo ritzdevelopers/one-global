@@ -899,11 +899,30 @@ const popupTriggers = document.querySelectorAll('.popup-trigger');
 
 let popupAutoOpenTimer = null;
 let popupReopenTimer = null;
-let isFormSubmitted = false;
+
+// Check session storage for form submission status
+function isFormSubmitted() {
+  return sessionStorage.getItem('popupFormSubmitted') === 'true';
+}
+
+// Set form as submitted in session storage
+function setFormSubmitted() {
+  sessionStorage.setItem('popupFormSubmitted', 'true');
+  // Clear any existing timers
+  if (popupAutoOpenTimer) {
+    clearTimeout(popupAutoOpenTimer);
+    popupAutoOpenTimer = null;
+  }
+  if (popupReopenTimer) {
+    clearTimeout(popupReopenTimer);
+    popupReopenTimer = null;
+  }
+}
 
 // Function to open popup
 function openPopup() {
-  if (popupModal && !isFormSubmitted) {
+  // Check session storage before opening
+  if (popupModal && !isFormSubmitted()) {
     // Save current scroll position
     const scrollY = window.scrollY || window.pageYOffset;
     
@@ -956,27 +975,29 @@ function closePopup() {
       if (lenis && !isIOS) {
         lenis.start();
       }
+      
+      // If form not submitted, restart timer to reopen after 7 seconds
+      // Do this AFTER popup is fully hidden
+      if (!isFormSubmitted()) {
+        // Clear any existing auto-open timer first
+        if (popupAutoOpenTimer) {
+          clearTimeout(popupAutoOpenTimer);
+          popupAutoOpenTimer = null;
+        }
+        // Start fresh timer for 7 seconds
+        startAutoOpenTimer();
+      }
     }, 300);
 
     // Clear any existing reopen timer
     if (popupReopenTimer) {
       clearTimeout(popupReopenTimer);
-    }
-
-    // If form not submitted, restart timer to reopen after exactly 1 minute
-    if (!isFormSubmitted) {
-      // Clear any existing auto-open timer first
-      if (popupAutoOpenTimer) {
-        clearTimeout(popupAutoOpenTimer);
-        popupAutoOpenTimer = null;
-      }
-      // Start fresh timer for 1 minute
-      startAutoOpenTimer();
+      popupReopenTimer = null;
     }
   }
 }
 
-// Function to start auto-open timer (opens popup every 1 minute)
+// Function to start auto-open timer (opens popup every 7 seconds)
 function startAutoOpenTimer() {
   // Clear any existing timer to prevent multiple timers
   if (popupAutoOpenTimer) {
@@ -984,15 +1005,21 @@ function startAutoOpenTimer() {
     popupAutoOpenTimer = null;
   }
 
-  // Only start timer if form hasn't been submitted and popup is hidden
-  if (!isFormSubmitted && popupModal && popupModal.classList.contains('hidden')) {
+  // Only start timer if form hasn't been submitted
+  if (!isFormSubmitted() && popupModal) {
     popupAutoOpenTimer = setTimeout(() => {
-      // Only open if popup is still hidden
-      if (popupModal && popupModal.classList.contains('hidden')) {
-        openPopup();
-        // Don't schedule next auto-open here - it will be scheduled when popup is closed
+      // Check again before opening (form might have been submitted while timer was running)
+      if (!isFormSubmitted() && popupModal) {
+        // Only open if popup is currently hidden
+        if (popupModal.classList.contains('hidden')) {
+          openPopup();
+          // Timer will restart when popup is closed (handled in closePopup function)
+        } else {
+          // If popup is already open, restart timer
+          startAutoOpenTimer();
+        }
       }
-    }, 60000); // 1 minute = 60000 milliseconds (exactly 60 seconds)
+    }, 7000); // 7 seconds = 7000 milliseconds
   }
 }
 
@@ -1030,11 +1057,14 @@ document.addEventListener('keydown', (e) => {
 // Old popup form handler removed - now using unified form handler in initializeFormHandlers()
 // All forms (including popup) now use the same sendDataToGoogleSheet function
 
-// Auto-open popup every 1 minute
-// Start auto-open timer when page loads
+// Auto-open popup logic
+// Start timer when page loads
 window.addEventListener('load', () => {
-  // Wait 1 minute before first auto-open
-  startAutoOpenTimer();
+  // Only start timer if form hasn't been submitted
+  if (!isFormSubmitted()) {
+    // Start auto-open timer (7 seconds) - this will continue after popup is closed
+    startAutoOpenTimer();
+  }
 });
 
 // ============================================
@@ -1749,6 +1779,9 @@ async function sendDataToGoogleSheet(form, button) {
       // Since no-cors doesn't return response, we assume success
       // Show success notification
       showNotification('success', 'Success!', 'Thank you! We will get back to you shortly.');
+      
+      // Mark form as submitted in session storage (prevents popup from opening again)
+      setFormSubmitted();
       
       // Reset form
       form.reset();
