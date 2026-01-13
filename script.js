@@ -953,50 +953,52 @@ function openPopup() {
 function closePopup() {
   if (popupModal) {
     popupModal.classList.remove('show');
-    // Wait for animation to complete before hiding
+    
     setTimeout(() => {
+      // Hide popup
       popupModal.classList.add('hidden');
       
-      // Restore body and html scroll when popup is closed
+      // Get scroll position
+      const scrollPos = savedScrollPosition || 0;
+      
+      // Remove top first (this contains the negative scroll value)
+      document.body.style.top = '';
+      
+      // Remove fixed and other styles
       document.body.style.overflow = '';
       document.body.style.position = '';
-      document.body.style.top = '';
       document.body.style.width = '';
       document.body.style.touchAction = '';
       document.documentElement.style.overflow = '';
       
-      // Restore scroll position using saved value
-      // Use requestAnimationFrame to ensure DOM is updated before scrolling
-      requestAnimationFrame(() => {
-        // First restore with native scroll to ensure position is set
-        window.scrollTo(0, savedScrollPosition);
-        
-        // If using Lenis, update its internal scroll position
-        if (lenis && !isIOS) {
-          // Update Lenis scroll position to match
-          lenis.scroll = savedScrollPosition;
-        }
-      });
+      // Restore scroll - do it immediately after removing fixed
+      window.scrollTo(0, scrollPos);
       
-      // Resume Lenis smooth scroll if available
+      // For Lenis
       if (lenis && !isIOS) {
+        lenis.scroll = scrollPos;
         lenis.start();
       }
       
-      // If form not submitted, restart timer to reopen after 7 seconds
-      // Do this AFTER popup is fully hidden
+      // Double check after a moment
+      setTimeout(() => {
+        window.scrollTo(0, scrollPos);
+        if (lenis && !isIOS) {
+          lenis.scroll = scrollPos;
+        }
+      }, 100);
+      
+      // Restart timer if needed
       if (!isFormSubmitted()) {
-        // Clear any existing auto-open timer first
         if (popupAutoOpenTimer) {
           clearTimeout(popupAutoOpenTimer);
           popupAutoOpenTimer = null;
         }
-        // Start fresh timer for 7 seconds
         startAutoOpenTimer();
       }
     }, 300);
 
-    // Clear any existing reopen timer
+    // Clear reopen timer
     if (popupReopenTimer) {
       clearTimeout(popupReopenTimer);
       popupReopenTimer = null;
