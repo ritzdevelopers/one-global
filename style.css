@@ -1828,11 +1828,11 @@ button:disabled:hover {
 
 @media (min-width: 1380px) {
   #lcDv {
-    width: 100% !important  ;
+    width: 100% !important;
   }
-  
+
 }
- 
+
 @media (min-width:1024px) and (max-width:1283px) {
   #vdpl {
     height: 523px !important;
@@ -1844,10 +1844,26 @@ button:disabled:hover {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
-  .rsdv p { 
+
+  .rsdv p {
     font-size: 13px !important;
   }
+
   .mdv {
     width: 100% !important;
+  }
+}
+
+
+
+@media (min-width: 1370px) {
+  .ctn {
+    width: 1300px !important;
+  }
+}
+
+@media (min-width: 1600px) {
+  .hdf {
+    display: none !important;
   }
 }

@@ -899,7 +899,7 @@ const popupTriggers = document.querySelectorAll('.popup-trigger');
 
 let popupAutoOpenTimer = null;
 let popupReopenTimer = null;
-let hasAutoOpened = false; // Flag to track if popup has auto-opened once
+let savedScrollPosition = 0; // Store scroll position when popup opens
 
 // Check session storage for form submission status
 function isFormSubmitted() {
@@ -925,7 +925,7 @@ function openPopup() {
   // Check session storage before opening
   if (popupModal && !isFormSubmitted()) {
     // Save current scroll position
-    const scrollY = window.scrollY || window.pageYOffset;
+    savedScrollPosition = isIOS ? window.pageYOffset : (lenis ? lenis.scroll : window.pageYOffset);
     
     popupModal.classList.remove('hidden');
     // Use requestAnimationFrame to ensure display change happens before animation
@@ -936,7 +936,7 @@ function openPopup() {
       // Prevent body and html scroll when popup is open
       document.body.style.overflow = 'hidden';
       document.body.style.position = 'fixed';
-      document.body.style.top = `-${scrollY}px`;
+      document.body.style.top = `-${savedScrollPosition}px`;
       document.body.style.width = '100%';
       document.documentElement.style.overflow = 'hidden';
       // Prevent touch scrolling on mobile
@@ -952,13 +952,11 @@ function openPopup() {
 // Function to close popup
 function closePopup() {
   if (popupModal) {
-    // Get the scroll position that was saved
-    const scrollY = document.body.style.top;
-    
     popupModal.classList.remove('show');
     // Wait for animation to complete before hiding
     setTimeout(() => {
       popupModal.classList.add('hidden');
+      
       // Restore body and html scroll when popup is closed
       document.body.style.overflow = '';
       document.body.style.position = '';
@@ -967,14 +965,34 @@ function closePopup() {
       document.body.style.touchAction = '';
       document.documentElement.style.overflow = '';
       
-      // Restore scroll position
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
-      }
+      // Restore scroll position using saved value
+      // Use requestAnimationFrame to ensure DOM is updated before scrolling
+      requestAnimationFrame(() => {
+        // First restore with native scroll to ensure position is set
+        window.scrollTo(0, savedScrollPosition);
+        
+        // If using Lenis, update its internal scroll position
+        if (lenis && !isIOS) {
+          // Update Lenis scroll position to match
+          lenis.scroll = savedScrollPosition;
+        }
+      });
       
       // Resume Lenis smooth scroll if available
       if (lenis && !isIOS) {
         lenis.start();
+      }
+      
+      // If form not submitted, restart timer to reopen after 7 seconds
+      // Do this AFTER popup is fully hidden
+      if (!isFormSubmitted()) {
+        // Clear any existing auto-open timer first
+        if (popupAutoOpenTimer) {
+          clearTimeout(popupAutoOpenTimer);
+          popupAutoOpenTimer = null;
+        }
+        // Start fresh timer for 7 seconds
+        startAutoOpenTimer();
       }
     }, 300);
 
@@ -986,23 +1004,26 @@ function closePopup() {
   }
 }
 
-// Function to start auto-open timer (opens popup once after 7 seconds)
+// Function to start auto-open timer (opens popup every 7 seconds)
 function startAutoOpenTimer() {
-  // Only start timer if form hasn't been submitted and popup hasn't auto-opened yet
-  if (!isFormSubmitted() && popupModal && !hasAutoOpened) {
-    // Clear any existing timer to prevent multiple timers
-    if (popupAutoOpenTimer) {
-      clearTimeout(popupAutoOpenTimer);
-      popupAutoOpenTimer = null;
-    }
+  // Clear any existing timer to prevent multiple timers
+  if (popupAutoOpenTimer) {
+    clearTimeout(popupAutoOpenTimer);
+    popupAutoOpenTimer = null;
+  }
 
+  // Only start timer if form hasn't been submitted
+  if (!isFormSubmitted() && popupModal) {
     popupAutoOpenTimer = setTimeout(() => {
       // Check again before opening (form might have been submitted while timer was running)
-      if (!isFormSubmitted() && popupModal && !hasAutoOpened) {
+      if (!isFormSubmitted() && popupModal) {
         // Only open if popup is currently hidden
         if (popupModal.classList.contains('hidden')) {
           openPopup();
-          hasAutoOpened = true; // Mark as auto-opened so it won't open again
+          // Timer will restart when popup is closed (handled in closePopup function)
+        } else {
+          // If popup is already open, restart timer
+          startAutoOpenTimer();
         }
       }
     }, 7000); // 7 seconds = 7000 milliseconds
@@ -1048,7 +1069,7 @@ document.addEventListener('keydown', (e) => {
 window.addEventListener('load', () => {
   // Only start timer if form hasn't been submitted
   if (!isFormSubmitted()) {
-    // Start auto-open timer (7 seconds) - opens only once
+    // Start auto-open timer (7 seconds) - this will continue after popup is closed
     startAutoOpenTimer();
   }
 });
