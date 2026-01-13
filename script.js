@@ -987,15 +987,6 @@ function closePopup() {
           lenis.scroll = scrollPos;
         }
       }, 100);
-      
-      // Restart timer if needed
-      if (!isFormSubmitted()) {
-        if (popupAutoOpenTimer) {
-          clearTimeout(popupAutoOpenTimer);
-          popupAutoOpenTimer = null;
-        }
-        startAutoOpenTimer();
-      }
     }, 300);
 
     // Clear reopen timer
@@ -1006,7 +997,7 @@ function closePopup() {
   }
 }
 
-// Function to start auto-open timer (opens popup every 7 seconds)
+// Function to start auto-open timer (opens popup only once after 7 seconds)
 function startAutoOpenTimer() {
   // Clear any existing timer to prevent multiple timers
   if (popupAutoOpenTimer) {
@@ -1014,19 +1005,14 @@ function startAutoOpenTimer() {
     popupAutoOpenTimer = null;
   }
 
-  // Only start timer if form hasn't been submitted
-  if (!isFormSubmitted() && popupModal) {
+  // Only start timer if form hasn't been submitted and popup hasn't been shown automatically
+  if (!isFormSubmitted() && popupModal && !sessionStorage.getItem('popupAutoShown')) {
     popupAutoOpenTimer = setTimeout(() => {
       // Check again before opening (form might have been submitted while timer was running)
-      if (!isFormSubmitted() && popupModal) {
-        // Only open if popup is currently hidden
-        if (popupModal.classList.contains('hidden')) {
-          openPopup();
-          // Timer will restart when popup is closed (handled in closePopup function)
-        } else {
-          // If popup is already open, restart timer
-          startAutoOpenTimer();
-        }
+      if (!isFormSubmitted() && popupModal && popupModal.classList.contains('hidden')) {
+        // Mark popup as auto-shown in session storage
+        sessionStorage.setItem('popupAutoShown', 'true');
+        openPopup();
       }
     }, 7000); // 7 seconds = 7000 milliseconds
   }
@@ -1067,11 +1053,11 @@ document.addEventListener('keydown', (e) => {
 // All forms (including popup) now use the same sendDataToGoogleSheet function
 
 // Auto-open popup logic
-// Start timer when page loads
+// Start timer when page loads - popup will show only once after 7 seconds
 window.addEventListener('load', () => {
-  // Only start timer if form hasn't been submitted
-  if (!isFormSubmitted()) {
-    // Start auto-open timer (7 seconds) - this will continue after popup is closed
+  // Only start timer if form hasn't been submitted and popup hasn't been auto-shown
+  if (!isFormSubmitted() && !sessionStorage.getItem('popupAutoShown')) {
+    // Start auto-open timer (7 seconds) - opens only once
     startAutoOpenTimer();
   }
 });
