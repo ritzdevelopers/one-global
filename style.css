@@ -1867,3 +1867,28 @@ button:disabled:hover {
     display: none !important;
   }
 }
+
+
+/* Leadership cards: on mobile show all details without clicking */
+@media (max-width: 639px) {
+  .leadership-card-detail {
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      width: 95% !important;
+      min-width: 0;
+      /* allow shrink so text can wrap */
+      overflow: visible;
+      word-wrap: break-word;
+
+  }
+}
+
+/* Leadership section: force top alignment of left text and right cards */
+.leadership-row {
+  align-items: flex-start !important;
+}
+
+.leadership-row>* {
+  align-self: flex-start !important;
+}

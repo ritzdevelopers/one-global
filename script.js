@@ -1864,3 +1864,191 @@ if (document.readyState === 'loading') {
 } else {
   initializeFormHandlers();
 }
+
+
+
+
+
+
+const img1 = document.getElementById('1');
+const absDiv1 =  document.getElementById('absDiv1');
+const img2 = document.getElementById('2');
+const absDiv2 = document.getElementById('absDiv2');
+const img3 = document.getElementById('3');
+const absDiv3 = document.getElementById('absDiv3');
+const img4 = document.getElementById('4');
+const absDiv4 = document.getElementById('absDiv4');
+let activeImg = img1;
+let imgIdArray = [img1, img2, img3, img4];
+let absDivArray = [absDiv1, absDiv2, absDiv3, absDiv4];
+let cardShowTimeout = null; // Track timeout to clear on new click
+
+// Helper function to get target width based on screen size
+function getTargetWidth(isExpanded) {
+  const width = window.innerWidth;
+  if (isExpanded) {
+    // Expanded widths
+    if (width >= 1024) return 355; // lg
+    if (width >= 768) return 355;   // md
+    if (width >= 640) return 250;   // sm
+    return '100%'; // mobile
+  } else {
+    // Collapsed widths
+    if (width >= 1024) return 145; // lg
+    if (width >= 768) return 135;  // md
+    if (width >= 640) return 120;  // sm
+    return '100%'; // mobile
+  }
+}
+
+// Initialize: on desktop (sm+) first card visible, rest hidden; on mobile all card text visible on images
+function initLeadershipCards() {
+  const isMobile = window.innerWidth < 640;
+  if (isMobile) {
+      // On mobile: show text on all cards (remove hidden, set opacity 1 so it overrides any previous GSAP inline style)
+      absDivArray.forEach((div) => {
+          if (div) {
+              div.classList.remove('hidden');
+              div.classList.add('absolute', 'flex');
+              gsap.set(div, { opacity: 1 });
+          }
+      });
+      // Reset all images to full width on mobile
+      imgIdArray.forEach((img) => {
+          if (img) {
+              gsap.set(img, { width: '100%', clearProps: 'width' });
+          }
+      });
+      return;
+  }
+  
+  // Desktop: Set initial widths using GSAP
+  imgIdArray.forEach((img, idx) => {
+      if (img) {
+          if (idx === 0) {
+              // First image expanded
+              const expandedWidth = getTargetWidth(true);
+              gsap.set(img, { width: expandedWidth });
+          } else {
+              // Other images collapsed
+              const collapsedWidth = getTargetWidth(false);
+              gsap.set(img, { width: collapsedWidth });
+          }
+      }
+  });
+  
+  absDivArray.forEach((div) => {
+      if (div) gsap.set(div, { opacity: 0 });
+  });
+  if (absDiv1) {
+      absDiv1.classList.remove('hidden');
+      absDiv1.classList.add('absolute');
+      gsap.set(absDiv1, { opacity: 1 });
+  }
+}
+
+// Handle resize - reset widths and reinitialize
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+      initLeadershipCards();
+      // If an image is active, restore its expanded state
+      if (activeImg) {
+          const clickedIdx = imgIdArray.indexOf(activeImg);
+          if (clickedIdx !== -1) {
+              const expandedWidth = getTargetWidth(true);
+              gsap.set(activeImg, { width: expandedWidth });
+              imgIdArray.forEach((img, idx) => {
+                  if (img !== activeImg && img) {
+                      const collapsedWidth = getTargetWidth(false);
+                      gsap.set(img, { width: collapsedWidth });
+                  }
+              });
+          }
+      }
+  }, 250);
+});
+
+initLeadershipCards();
+
+function handleImageClick(imageId) {
+  if (window.innerWidth < 640) return; // on mobile, no click-to-expand
+  
+  // Clear any pending timeout from previous click
+  if (cardShowTimeout) {
+      clearTimeout(cardShowTimeout);
+      cardShowTimeout = null;
+  }
+  
+  activeImg = imageId;
+  const clickedIdx = imgIdArray.indexOf(imageId);
+  
+  imgIdArray.forEach((img, idx) => {
+      if (img == activeImg) {
+          // Expand this image with smooth GSAP animation
+          const expandedWidth = getTargetWidth(true);
+          gsap.to(img, {
+              width: expandedWidth,
+              duration: 1,
+              ease: 'power2.inOut'
+          });
+          
+          // Store timeout reference so we can cancel it
+          cardShowTimeout = setTimeout(() => {
+              // Double check this is still the active card before showing
+              if (activeImg === imageId) {
+                  const currentDiv = absDivArray[idx];
+                  if (currentDiv) {
+                      currentDiv.classList.remove('hidden');
+                      currentDiv.classList.add('absolute');
+                      gsap.to(currentDiv, {
+                          opacity: 1,
+                          duration: 0.6,
+                          ease: 'power2.out'
+                      });
+                  }
+              }
+          }, 1000);
+      } else {
+          // Collapse other images with smooth GSAP animation
+          const collapsedWidth = getTargetWidth(false);
+          gsap.to(img, {
+              width: collapsedWidth,
+              duration: 1,
+              ease: 'power2.inOut'
+          });
+          
+          const currentDiv = absDivArray[idx];
+          if (currentDiv) {
+              // Immediately hide other cards
+              gsap.to(currentDiv, {
+                  opacity: 0,
+                  duration: 0.2,
+                  ease: 'power2.in',
+                  onComplete: () => {
+                      currentDiv.classList.add('hidden');
+                      currentDiv.classList.remove('absolute');
+                  }
+              });
+          }
+      }
+  });
+}
+
+document.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('data-nav');
+      const targetSection = document.getElementById(targetId);
+
+      if (targetSection) {
+          lenis.scrollTo(targetSection, {
+              offset: -98,
+              duration: 1.1,
+              easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+              immediate: false, 
+          });
+      }
+  });
+});
