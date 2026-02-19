@@ -1880,9 +1880,9 @@ const img4 = document.getElementById('4');
 const absDiv4 = document.getElementById('absDiv4');
 const img5 = document.getElementById('5');
 const absDiv5 = document.getElementById('absDiv5');
-let activeImg = img1;
-let imgIdArray = [img1, img2, img3, img4, img5];
-let absDivArray = [absDiv1, absDiv2, absDiv3, absDiv4, absDiv5];
+let activeImg = img4; // Vipin Gaur is now first
+let imgIdArray = [img4, img2, img1, img3, img5]; // New order: Vipin, Dr. Rajesh, Chirag, Aryan, Saksham
+let absDivArray = [absDiv4, absDiv2, absDiv1, absDiv3, absDiv5]; // Matching order
 let cardShowTimeout = null; // Track timeout to clear on new click
 
 // Helper function to get target width based on screen size
@@ -1942,10 +1942,10 @@ function initLeadershipCards() {
   absDivArray.forEach((div) => {
       if (div) gsap.set(div, { opacity: 0 });
   });
-  if (absDiv1) {
-      absDiv1.classList.remove('hidden');
-      absDiv1.classList.add('absolute');
-      gsap.set(absDiv1, { opacity: 1 });
+  if (absDiv4) {
+      absDiv4.classList.remove('hidden');
+      absDiv4.classList.add('absolute');
+      gsap.set(absDiv4, { opacity: 1 });
   }
 }
 
