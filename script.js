@@ -1878,9 +1878,11 @@ const img3 = document.getElementById('3');
 const absDiv3 = document.getElementById('absDiv3');
 const img4 = document.getElementById('4');
 const absDiv4 = document.getElementById('absDiv4');
+const img5 = document.getElementById('5');
+const absDiv5 = document.getElementById('absDiv5');
 let activeImg = img1;
-let imgIdArray = [img1, img2, img3, img4];
-let absDivArray = [absDiv1, absDiv2, absDiv3, absDiv4];
+let imgIdArray = [img1, img2, img3, img4, img5];
+let absDivArray = [absDiv1, absDiv2, absDiv3, absDiv4, absDiv5];
 let cardShowTimeout = null; // Track timeout to clear on new click
 
 // Helper function to get target width based on screen size
